@@ -3,23 +3,6 @@ import { useState, Fragment } from "react";
 import { motion } from "framer-motion";
 import { Project } from "types/Project";
 
-interface Props {
-  project: Project;
-}
-
-/**
- * 
- * 
- * const Description = styled.div`
-  background-color: ${(props) => props.theme.colors.darkGreenOpacity};
-  text-align: left;
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  opacity: 0;
-  transition: all 0.2s;
- * @returns 
- */
 const SingleProject = ({ slug, video, label, stack }: Project) => {
   const [showDescription, setShowDescription] = useState<boolean>(false);
   return (
