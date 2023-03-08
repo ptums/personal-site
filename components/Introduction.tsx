@@ -118,7 +118,7 @@ const Introduction = () => {
         {INTRO[0]}
       </p>
       {showFull && (
-        <>
+        <div style={{ minHeight: 450 }}>
           {longIntro.map((paragraph: string, index: number) => (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -134,7 +134,7 @@ const Introduction = () => {
               </p>
             </motion.div>
           ))}
-        </>
+        </div>
       )}
     </>
   );
