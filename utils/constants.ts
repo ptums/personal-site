@@ -1,5 +1,49 @@
-import { Review } from "../types/Review";
-import { Link } from "../types/Link";
+import { Review } from "types/Review";
+import { Link } from "types/Link";
+import { Navigation } from "types/Navigation";
+
+const defaultLinkClass =
+  "p-2 ease-in-out duration-500 hover:bg-emerald-500 hover:text-white hover:rounded h-5";
+const defaultListClass = "my-0 mx-1 ease-in-out duration-400 text-emerald-700";
+
+export const navigation: Navigation[] = [
+  {
+    name: "Home",
+    href: "/",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+  {
+    name: "Previous Work",
+    href: "/previous-work",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+  {
+    name: "Reviews",
+    href: "/reviews",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+  {
+    name: "Free Advice",
+    href: "/contact",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+  {
+    name: "Resume",
+    href: "/images/PFT-Resume-2023.pdf",
+    linkClass: defaultLinkClass,
+    listClass: defaultListClass,
+  },
+];
 
 export const CONTACTS: Link[] = [
   {

@@ -1,7 +1,7 @@
 "use client";
 import { useState, Fragment } from "react";
 import { motion } from "framer-motion";
-import { Project } from "../types/Project";
+import { Project } from "types/Project";
 
 interface Props {
   project: Project;

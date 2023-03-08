@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 import React, { useEffect, useState } from "react";
-import { INTRO } from "../utils/constants";
+import { INTRO } from "utils/constants";
 import PageTitle from "./PageTitle";
 
 const playFairDisplay = Playfair_Display({
