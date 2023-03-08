@@ -1,25 +1,9 @@
 import Image from "next/image";
-import Introduction from "../components/Introduction";
-import PageAnimationLayout from "../components/PageAnimationLayout";
-import { Link } from "../types/Link";
-import { CONTACTS, RECENT_STACK } from "../utils/constants";
+import Introduction from "components/Introduction";
+import PageAnimationLayout from "components/PageAnimationLayout";
+import { Link } from "types/Link";
+import { CONTACTS, RECENT_STACK } from "utils/constants";
 
-// const Card = styled.div`
-//   background-color: ${(props) => props.theme.colors.white};
-//   border-radius: 8px;
-//   transition: all 0.2s;
-//   max-width: 420px;
-//   margin-bottom: 24px;
-//   border: 0.5px solid ${(props) => props.theme.colors.thirdGray};
-//   position: relative;
-//   z-index: 9;
-//   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
-//     width: 435px;
-//     max-width: 100%;
-//   }
-// `;
-
-const AdditionalInfo = ({ columns }: { columns: number }) => {};
 const Home = () => (
   <div
     className="flex flex-col sm:flex-row justify-between mx-auto w-full max-w-4xl	 my-2 sm:my-20 items-start"

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import PageTitle from "../../components/PageTitle";
-import SingleProject from "../../components/SingleProject";
-import { PROJECTS } from "../../utils/constants";
+import PageTitle from "components/PageTitle";
+import SingleProject from "components/SingleProject";
+import { PROJECTS } from "utils/constants";
 
 export const metadata: Metadata = {
   title: "Previous Work | Peter Tumulty Web Developer",
