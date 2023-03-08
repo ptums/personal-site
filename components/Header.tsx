@@ -23,7 +23,7 @@ const Header = () => {
           />
         </Link>
         <Link href="mailto:ptumulty923@gmail.com">
-          <span className="text-green-900 hover:underline">
+          <span className="text-emerald-800 hover:underline">
             ptumulty923@gmail.com
           </span>
         </Link>
