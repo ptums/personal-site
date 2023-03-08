@@ -2,9 +2,8 @@ import { Review } from "types/Review";
 import { Link } from "types/Link";
 import { Navigation } from "types/Navigation";
 
-const defaultLinkClass =
-  "p-2 ease-in-out duration-500 hover:bg-emerald-500 hover:text-white hover:rounded h-5";
-const defaultListClass = "my-0 mx-1 ease-in-out duration-400 text-emerald-700";
+const defaultLinkClass = "p-2 text-emerald-800";
+const defaultListClass = "my-0 mx-1";
 
 export const navigation: Navigation[] = [
   {
@@ -170,21 +169,6 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/tumulty-web-services/video/upload/v1636741431/tumulty.me/sites/Donald_Scarinci_s_Numismatics_Catalog.mp4",
     label: "Donald Scarinci's Numismatics Catalog",
     stack: ["Cloudinary", "GraphQL", "Next", "Styled Components"],
-  },
-  {
-    id: 7,
-    slug: "https://rachelandpetertumultywedding.com/",
-    video:
-      "https://res.cloudinary.com/tumulty-web-services/video/upload/v1636741189/tumulty.me/sites/Rachel_Peter_Wedding_Photo_Gallery.mp4",
-    label: "Rachel & Peter's Wedding",
-    stack: [
-      "Cloudinary",
-      "Jest",
-      "MongoDB",
-      "Next",
-      "React Testing Library",
-      "Typescript",
-    ],
   },
 ];
 

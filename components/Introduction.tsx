@@ -23,38 +23,52 @@ interface TextButtonsProps {
   setSelectedBtn: (e: string) => void;
 }
 
+const BioRadioBtn = ({
+  selectedBtn,
+  label,
+  setShowFull,
+  setSelectedBtn,
+}: {
+  selectedBtn: boolean;
+  label: string;
+  setShowFull: () => void;
+  setSelectedBtn: () => void;
+}) => (
+  <span
+    className="sm:mr-3 flex flex-row justify-center items-center"
+    style={{ height: 16 }}
+  >
+    <input
+      type="radio"
+      checked={selectedBtn}
+      className="checked:bg-emerald-500 checked:hover:bg-emerald-500 checked:active:bg-emerald-500 checked:focus:bg-emerald-500 focus:bg-emerald-500 focus:outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer"
+      onChange={() => {
+        setShowFull();
+        setSelectedBtn();
+      }}
+    />
+    <span className="text-emerald-800 ml-1">{label}</span>
+  </span>
+);
+
 const TextButtons = ({
   selectedBtn,
   setShowFull,
   setSelectedBtn,
 }: TextButtonsProps) => (
   <div className="my-6 mx-auto flex flex-col sm:flex-row">
-    <button
-      className={`${
-        selectedBtn === "Short Bio"
-          ? "text-white bg-emerald-500"
-          : "text-emerald-500 rounded border border-emerald-500"
-      } p-2 text-base rounded sm:mr-4 w-full sm:w-24`}
-      onClick={() => {
-        setShowFull(false);
-        setSelectedBtn("Short Bio");
-      }}
-    >
-      Short Bio
-    </button>
-    <button
-      className={`${
-        selectedBtn === "Long Bio"
-          ? "text-white bg-emerald-500"
-          : "text-emerald-500 rounded border border-emerald-500"
-      } p-2 text-base rounded w-full sm:w-24`}
-      onClick={() => {
-        setShowFull(true);
-        setSelectedBtn("Long Bio");
-      }}
-    >
-      Long Bio
-    </button>
+    <BioRadioBtn
+      selectedBtn={selectedBtn === "Short Bio"}
+      label="Short Bio"
+      setShowFull={() => setShowFull(false)}
+      setSelectedBtn={() => setSelectedBtn("Short Bio")}
+    />
+    <BioRadioBtn
+      selectedBtn={selectedBtn === "Long Bio"}
+      label="Long Bio"
+      setShowFull={() => setShowFull(true)}
+      setSelectedBtn={() => setSelectedBtn("Long Bio")}
+    />
   </div>
 );
 const Introduction = () => {
@@ -94,8 +108,13 @@ const Introduction = () => {
           {PHRASES[phraseIndex]}
         </p>
       </motion.div>
+      <TextButtons
+        selectedBtn={selectedBtn}
+        setShowFull={setShowFull}
+        setSelectedBtn={setSelectedBtn}
+      />
 
-      <p className="text-lg my-6 mx-0 text-emerald-900 font-normal">
+      <p className="text-base mb-6 mx-0 text-emerald-800 font-normal">
         {INTRO[0]}
       </p>
       {showFull && (
@@ -108,38 +127,14 @@ const Introduction = () => {
               key={paragraph}
             >
               <p
-                className="text-lg my-6 mx-0 text-emerald-900 font-normal"
+                className="text-base my-6 mx-0 text-emerald-800 font-normal"
                 key={paragraph}
               >
                 {paragraph}
               </p>
             </motion.div>
           ))}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: longIntro.length + 0.3 * 1.2 }}
-          >
-            <TextButtons
-              selectedBtn={selectedBtn}
-              setShowFull={setShowFull}
-              setSelectedBtn={setSelectedBtn}
-            />
-          </motion.div>
         </>
-      )}
-      {!showFull && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0 }}
-        >
-          <TextButtons
-            selectedBtn={selectedBtn}
-            setShowFull={setShowFull}
-            setSelectedBtn={setSelectedBtn}
-          />
-        </motion.div>
       )}
     </>
   );
