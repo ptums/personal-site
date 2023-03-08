@@ -216,3 +216,8 @@ export const INTRO = [
   "I'm also passionate about teaching! In addition to creating software, I love helping others learn how to build software and kickstart their careers in tech. Through 1:1 mentorship sessions and instructing multiple web development courses at various coding bootcamps, I've gained extensive experience in guiding and supporting aspiring developers.",
   "My capabilities include advanced front-end engineering, full-stack web development, mentoring junior developers and recent boot camp graduates, documentation and proposal writing, web application architecture, web performance optimization, web vitals improvement, API and SDK integrations, and technical on-site SEO.",
 ];
+
+export const CONTENTFUL_GRAPHQL_API_URL =
+  process.env.CONTENTFUL_GRAPHQL_API_URL;
+export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN =
+  process.env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN;
