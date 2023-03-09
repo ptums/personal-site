@@ -3,6 +3,8 @@ import PageTitle from "components/PageTitle";
 import ContactForm from "components/ContactForm";
 import { Suspense } from "react";
 
+export const runtime = "experimental-edge";
+
 export const metadata: Metadata = {
   title: "Free Advice | Peter Tumulty Web Developer",
   description:

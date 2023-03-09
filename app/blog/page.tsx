@@ -4,8 +4,9 @@ import { fetchAPI } from "utils/api";
 import { IPostFields } from "types/contentful";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-
 const SinglePost = dynamic(() => import("components/SinglePost"));
+
+export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
   title: "Blog | Peter Tumulty Web Developer",
