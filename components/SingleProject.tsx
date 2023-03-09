@@ -1,12 +1,20 @@
 "use client";
 import { useState, Fragment } from "react";
 import { motion } from "framer-motion";
-import { Project } from "types/Project";
+import { IPreviousWorkFields } from "types/contentful";
+import PageAnimationLayout from "./PageAnimationLayout";
 
-const SingleProject = ({ slug, video, label, stack }: Project) => {
+const SingleProject = ({
+  project,
+  index,
+}: {
+  project: IPreviousWorkFields;
+  index: number;
+}) => {
+  const { video, label, stack, slug } = project;
   const [showDescription, setShowDescription] = useState<boolean>(false);
   return (
-    <>
+    <PageAnimationLayout duration={1.2} delay={index * 0.5}>
       <div
         className="relative rounded	mb-12 max-w-full lg:my-6 lg:mx-8 bg-white shadow flex flex-col items-center justify-center"
         style={{ width: 420, height: 210 }}
@@ -38,18 +46,13 @@ const SingleProject = ({ slug, video, label, stack }: Project) => {
             <p className="text-base mx-2 mb-2 text-white text-white font-semibold max-w-full">
               Tech Stack:{" "}
               <span className="text-sm text-white inline font-normal">
-                {stack.map((s: string, index: number) => (
-                  <Fragment key={s}>
-                    {s}
-                    {index !== stack.length - 1 ? ", " : ""}
-                  </Fragment>
-                ))}
+                {stack}
               </span>
             </p>
           </motion.div>
         </a>
       </div>
-    </>
+    </PageAnimationLayout>
   );
 };
 
