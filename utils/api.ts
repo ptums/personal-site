@@ -24,6 +24,9 @@ export async function fetchAPI(query: string, { variables }: any = {}) {
         query,
         variables,
       }),
+      next: {
+        revalidate: 10,
+      },
     });
 
     const json = await res.json();

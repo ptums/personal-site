@@ -1,13 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { playFairDisplay } from "app/font";
 import { IReviewsFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
-import { Playfair_Display } from "next/font/google";
-
-const playFairDisplay = Playfair_Display({
-  weight: ["800", "400", "500"],
-  display: "swap",
-  subsets: ["latin"],
-});
 
 const SingleReview = ({
   review,

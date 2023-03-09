@@ -1,21 +1,9 @@
 "use client";
+import { playFairDisplay } from "app/font";
 import { motion } from "framer-motion";
-import { Playfair_Display } from "next/font/google";
 import React, { useEffect, useState } from "react";
-import { INTRO } from "utils/constants";
+import { INTRO, PHRASES } from "utils/constants";
 import PageTitle from "./PageTitle";
-
-const playFairDisplay = Playfair_Display({
-  weight: "800",
-  display: "swap",
-  subsets: ["latin"],
-});
-
-const PHRASES = [
-  "Lead Web Developer",
-  "Senior Front End Engineer",
-  "Software Educator",
-];
 
 interface TextButtonsProps {
   selectedBtn: string;
@@ -38,15 +26,19 @@ const BioRadioBtn = ({
     className="sm:mr-3 flex flex-row justify-center items-center"
     style={{ height: 16 }}
   >
-    <input
-      type="radio"
-      checked={selectedBtn}
-      className="checked:bg-emerald-500 checked:hover:bg-emerald-500 checked:active:bg-emerald-500 checked:focus:bg-emerald-500 focus:bg-emerald-500 focus:outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer"
-      onChange={() => {
-        setShowFull();
-        setSelectedBtn();
-      }}
-    />
+    <label htmlFor={label}>
+      <input
+        id={label}
+        type="radio"
+        checked={selectedBtn}
+        className="checked:bg-emerald-500 checked:hover:bg-emerald-500 checked:active:bg-emerald-500 checked:focus:bg-emerald-500 focus:bg-emerald-500 focus:outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer"
+        onChange={() => {
+          setShowFull();
+          setSelectedBtn();
+        }}
+      />
+      <span className="sr-only">{label}</span>
+    </label>
     <span className="text-emerald-800 ml-1">{label}</span>
   </span>
 );
@@ -102,7 +94,7 @@ const Introduction = () => {
         transition={{ duration: 2 }}
       >
         <p
-          className={`m-0 text-emerald-500 extrabold ${playFairDisplay.className}`}
+          className={`m-0 text-emerald-500 font-bold ${playFairDisplay.className}`}
           style={{ letterSpacing: 8, fontSize: "1.5rem" }}
         >
           {PHRASES[phraseIndex]}

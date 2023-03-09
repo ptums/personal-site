@@ -1,8 +1,10 @@
 import Image from "next/image";
-import Introduction from "components/Introduction";
 import PageAnimationLayout from "components/PageAnimationLayout";
 import { Link } from "types/Link";
 import { CONTACTS, RECENT_STACK } from "utils/constants";
+import dynamic from "next/dynamic";
+
+const Introduction = dynamic(() => import("components/Introduction"));
 
 const Home = () => (
   <div

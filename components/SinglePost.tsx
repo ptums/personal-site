@@ -1,14 +1,8 @@
 "use client";
+import { playFairDisplay } from "app/font";
 import Link from "next/link";
 import { IPostFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
-import { Playfair_Display } from "next/font/google";
-
-const playFairDisplay = Playfair_Display({
-  weight: ["800", "400", "500"],
-  display: "swap",
-  subsets: ["latin"],
-});
 
 const slugify = (title: string) =>
   `/posts/${title.replaceAll(/ /g, "-").toLowerCase()}`;

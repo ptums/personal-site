@@ -1,15 +1,8 @@
-import { motion } from "framer-motion";
 import { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { lato } from "./font";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import "./globals.css";
-
-const lato = Lato({
-  weight: ["100", "300", "400", "700", "900"],
-  display: "swap",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title:
