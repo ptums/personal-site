@@ -23,9 +23,10 @@ const Page = () => (
             Ask me anything!
           </h3>
           <p className="mt-1 text-base text-emerald-800 font-normal">
-            Have a simple question about software development? Need a coding
-            mentor? Or, are looking for another hand on a project? Feel free to
-            reach out for a free 45 minute session with me.
+            Need help with software development? Whether you have a simple
+            question, need a coding mentor, or could use another hand on a
+            project, I&apos;m here for you. Let&apos;s chat! I offer a free
+            45-minute session to see how I can assist you.
           </p>
         </div>
         <Suspense fallback={<></>}>
