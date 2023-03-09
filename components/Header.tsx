@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { useSelectedLayoutSegments } from "next/navigation";
+import classNames from "classnames";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog } from "@headlessui/react";
 import { navigation } from "utils/constants";
@@ -10,6 +12,7 @@ import Image from "next/image";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [selectedLayoutSegments] = useSelectedLayoutSegments();
 
   return (
     <header className="w-full flex flex-row justify-between h-16 border-b">
@@ -43,8 +46,15 @@ const Header = () => {
         style={{ minWidth: 500 }}
       >
         {navigation.map((link: Navigation) => (
-          <li key={link?.name} className={link?.listClass}>
-            <Link href={link?.href} className={link?.linkClass}>
+          <li key={link?.name} className="my-0 mx-1">
+            <Link
+              href={link?.href}
+              className={classNames("p-2 text-emerald-800", {
+                underline:
+                  link?.href.includes(selectedLayoutSegments) ||
+                  (link?.href === "/" && selectedLayoutSegments === undefined),
+              })}
+            >
               {link?.name}
             </Link>
           </li>
@@ -78,8 +88,16 @@ const Header = () => {
                 style={{ minWidth: 500 }}
               >
                 {navigation.map((link: Navigation) => (
-                  <li key={link?.name} className={link?.listClass}>
-                    <Link href={link?.href} className={link?.linkClass}>
+                  <li key={link?.name} className="my-0 mx-1">
+                    <Link
+                      href={link?.href}
+                      className={classNames("p-2 text-emerald-800", {
+                        underline:
+                          link?.href.includes(selectedLayoutSegments) ||
+                          (link?.href === "/" &&
+                            selectedLayoutSegments === undefined),
+                      })}
+                    >
                       {link?.name}
                     </Link>
                   </li>

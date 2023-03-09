@@ -2,45 +2,30 @@ import { Review } from "types/Review";
 import { Link } from "types/Link";
 import { Navigation } from "types/Navigation";
 
-const defaultLinkClass = "p-2 text-emerald-800";
-const defaultListClass = "my-0 mx-1";
-
 export const navigation: Navigation[] = [
   {
     name: "Home",
     href: "/",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
   {
     name: "Previous Work",
     href: "/previous-work",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
   {
     name: "Blog",
     href: "/blog",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
   {
     name: "Reviews",
     href: "/reviews",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
   {
     name: "Free Advice",
     href: "/contact",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
   {
     name: "Resume",
     href: "/images/PFT-Resume-2023.pdf",
-    linkClass: defaultLinkClass,
-    listClass: defaultListClass,
   },
 ];
 
