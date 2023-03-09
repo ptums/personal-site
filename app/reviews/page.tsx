@@ -4,8 +4,9 @@ import PageTitle from "components/PageTitle";
 import { fetchAPI } from "utils/api";
 import { IReviewsFields } from "types/contentful";
 import { Suspense } from "react";
-
 const SingleReview = dynamic(() => import("components/SingleReview"));
+
+export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
   title: "Reviews | Peter Tumulty Web Developer",

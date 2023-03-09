@@ -5,6 +5,8 @@ import { IPreviousWorkFields } from "types/contentful";
 import { Suspense } from "react";
 import SingleProject from "components/SingleProject";
 
+export const runtime = "experimental-edge";
+
 export const metadata: Metadata = {
   title: "Previous Work | Peter Tumulty Web Developer",
   description:
