@@ -1,15 +1,16 @@
-"use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { IPostFields } from "types/contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { IReviewsFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
 
-const slugify = (title: string) =>
-  `/posts/${title.replaceAll(/ /g, "-").toLowerCase()}`;
-
-const SinglePost = ({ post, index }: { post: IPostFields; index: number }) => (
+const SingleReview = ({
+  review,
+  index,
+}: {
+  review: IReviewsFields;
+  index: number;
+}) => (
   <PageAnimationLayout duration={1.2} delay={index * 0.5}>
-    <Link
+    {/* <Link
       className="bg-white rounded shadow mb-6 p-4 cursor-pointer h-52 flex flex-col justify-center text-left"
       href={slugify(post?.title)}
     >
@@ -22,8 +23,9 @@ const SinglePost = ({ post, index }: { post: IPostFields; index: number }) => (
       <p className="text-sm text-emerald-800 font-normal">
         {post?.description}
       </p>
-    </Link>
+    </Link> */}
+    {documentToReactComponents((review?.statement as any)?.json)}
   </PageAnimationLayout>
 );
 
-export default SinglePost;
+export default SingleReview;

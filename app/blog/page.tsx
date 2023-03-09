@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 
 async function getData() {
   const postsQuery = `query {
-  postCollection {
-    items {
-      tagLine
-      title
-      description
-      date
+    postCollection {
+      items {
+        tagLine
+        title
+        description
+        date
+      }
     }
-  }
-}`;
+  }`;
   const posts = await fetchAPI(postsQuery, {});
 
   return posts?.data?.postCollection?.items;
@@ -34,7 +34,7 @@ const Page = async () => {
       <div className="text-center py-6">
         <PageTitle title="Blog" />
       </div>
-      <div className="flex flex-col lg:flex-row lg:flex-wrap w-full justify-center max-w-screen-lg border">
+      <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
         {data
           ?.sort((a, b) => (a.date < b.date ? 1 : -1))
           .map((post: IPostFields, index: number) => (
