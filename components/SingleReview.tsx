@@ -1,6 +1,13 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { IReviewsFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
+import { Playfair_Display } from "next/font/google";
+
+const playFairDisplay = Playfair_Display({
+  weight: ["800", "400", "500"],
+  display: "swap",
+  subsets: ["latin"],
+});
 
 const SingleReview = ({
   review,
@@ -10,25 +17,19 @@ const SingleReview = ({
   index: number;
 }) => (
   <PageAnimationLayout duration={1.2} delay={index * 0.5}>
-    {/* <Link
-      className="bg-white rounded shadow mb-6 p-4 cursor-pointer h-52 flex flex-col justify-center text-left"
-      href={slugify(post?.title)}
-    >
-      <p className="text-md text-emerald-600 font-semibold mb-1">
-        {post?.title}
+    <div className="flex flex-col mb-12 mx-4 md:mx-0">
+      <div className="flex flew-row">
+        <div className="bg-emerald-500 w-5 sm:w-4 mr-4" />
+        <blockquote className="text-base text-emerald-800 font-normal">
+          {documentToReactComponents((review?.statement as any)?.json)}
+        </blockquote>
+      </div>
+      <p
+        className={`font-semibold text-emerald-800 mt-6 text-lg ${playFairDisplay.className}`}
+      >
+        - {review?.name}
+        <span className="ml-2 text-xs">{review?.company}</span>
       </p>
-      <p className="text-sm text-gray-400 font-semibold mb-4">
-        {post?.tagLine}
-      </p>
-      <p className="text-sm text-emerald-800 font-normal">
-        {post?.description}
-      </p>
-    </Link> */}
-    <div className="flex flew-row justify-center w-full h-24 my-12">
-      <div className="bg-green-600 w-4" />
-      <span className="text-base text-emerald-900">
-        {documentToReactComponents((review?.statement as any)?.json)}
-      </span>
     </div>
   </PageAnimationLayout>
 );
