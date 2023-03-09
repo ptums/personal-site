@@ -3,6 +3,13 @@ import { useState, Fragment } from "react";
 import { motion } from "framer-motion";
 import { IPreviousWorkFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
+import { Playfair_Display } from "next/font/google";
+
+const playFairDisplay = Playfair_Display({
+  weight: ["800", "400", "500"],
+  display: "swap",
+  subsets: ["latin"],
+});
 
 const SingleProject = ({
   project,
@@ -43,11 +50,11 @@ const SingleProject = ({
             <p className="text-base mx-2 mt-1 text-white text-white font-semibold">
               {label}
             </p>
-            <p className="text-base mx-2 mb-2 text-white text-white font-semibold max-w-full">
-              Tech Stack:{" "}
-              <span className="text-sm text-white inline font-normal">
-                {stack}
-              </span>
+            <p
+              className={`text-sm mx-2 mb-2 text-white text-white font-semibold max-w-full ${playFairDisplay.className}`}
+            >
+              Stack:{" "}
+              <span className="text-white inline font-normal">{stack}</span>
             </p>
           </motion.div>
         </a>

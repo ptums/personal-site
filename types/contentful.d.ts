@@ -77,6 +77,9 @@ export interface IReviewsFields {
 
   /** statement */
   statement?: Document | undefined;
+
+  /** order */
+  order?: number | undefined;
 }
 
 export interface IReviews extends Entry<IReviewsFields> {

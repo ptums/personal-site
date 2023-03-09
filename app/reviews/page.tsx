@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import PageTitle from "components/PageTitle";
 import { fetchAPI } from "utils/api";
 import { IReviewsFields } from "types/contentful";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SingleReview from "components/SingleReview";
 
 export const metadata: Metadata = {
@@ -13,9 +12,10 @@ export const metadata: Metadata = {
 
 async function getData() {
   const reviewsQuery = `query {
-  reviewsCollection{
+  reviewsCollection(order:order_ASC){
     items {
       name
+      order
       statement {
         json
       }
@@ -31,8 +31,6 @@ async function getData() {
 
 const Page = async () => {
   const data: IReviewsFields[] = await getData();
-
-  console.log(data);
 
   return (
     <div>
