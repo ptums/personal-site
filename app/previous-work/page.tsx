@@ -14,7 +14,7 @@ const Page = () => (
     <div className="text-center py-6">
       <PageTitle title="Previous Work" />
     </div>
-    <div className="flex flex-col lg:flex-row lg:flex-wrap w-full justify-center max-w-screen-lg  border">
+    <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center max-w-screen-lg">
       {PROJECTS.map((project) => (
         <SingleProject {...project} key={project.id} />
       ))}
