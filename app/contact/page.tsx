@@ -10,16 +10,26 @@ export const metadata: Metadata = {
 };
 
 const Page = () => (
-  <div>
+  <div style={{ minHeight: "80vh" }}>
     <div className="text-center py-6">
       <PageTitle title="Free Advice" />
     </div>
-    <div className="mx-4 sm:mx-auto w-full max-w-3xl">
-      <Suspense fallback={<></>}>
-        <div className="mb-12">
-          <ContactForm />
+    <div className="mx-4 sm:mx-auto w-full max-w-3xl sm:mt-4">
+      <div className="space-y-6 sm:space-y-5">
+        <div>
+          <h3 className="font-semibold text-lg text-emerald-800">
+            Ask me anything!
+          </h3>
+          <p className="mt-1 text-base text-emerald-800 font-normal">
+            Have a simple question about software development? Need a coding
+            mentor? Or, are looking for another hand on a project? Feel free to
+            reach out for a free 45 minute session with me.
+          </p>
         </div>
-      </Suspense>
+        <Suspense fallback={<></>}>
+          <ContactForm />
+        </Suspense>
+      </div>
     </div>
   </div>
 );
