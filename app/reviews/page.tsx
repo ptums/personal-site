@@ -1,11 +1,14 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import PageTitle from "components/PageTitle";
 import { fetchAPI } from "utils/api";
 import { IReviewsFields } from "types/contentful";
-import SingleReview from "components/SingleReview";
+import { Suspense } from "react";
+
+const SingleReview = dynamic(() => import("components/SingleReview"));
 
 export const metadata: Metadata = {
-  title: "Previous Work | Peter Tumulty Web Developer",
+  title: "Reviews | Peter Tumulty Web Developer",
   description:
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };
@@ -37,11 +40,13 @@ const Page = async () => {
       <div className="text-center py-6">
         <PageTitle title="Reviews" />
       </div>
-      <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
-        {data.map((review: IReviewsFields, index: number) => (
-          <SingleReview review={review} index={index} key={review?.name} />
-        ))}
-      </div>
+      <Suspense fallback={<></>}>
+        <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
+          {data.map((review: IReviewsFields, index: number) => (
+            <SingleReview review={review} index={index} key={review?.name} />
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 };

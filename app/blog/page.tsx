@@ -2,10 +2,13 @@ import { Metadata } from "next";
 import PageTitle from "components/PageTitle";
 import { fetchAPI } from "utils/api";
 import { IPostFields } from "types/contentful";
-import SinglePost from "components/SinglePost";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const SinglePost = dynamic(() => import("components/SinglePost"));
 
 export const metadata: Metadata = {
-  title: "Previous Work | Peter Tumulty Web Developer",
+  title: "Blog | Peter Tumulty Web Developer",
   description:
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };
@@ -36,11 +39,13 @@ const Page = async () => {
         <PageTitle title="Blog" />
       </div>
       <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
-        {data
-          ?.sort((a, b) => (a.date < b.date ? 1 : -1))
-          .map((post: IPostFields, index: number) => (
-            <SinglePost post={post} index={index} key={post?.title} />
-          ))}
+        <Suspense fallback={<></>}>
+          {data
+            ?.sort((a, b) => (a.date < b.date ? 1 : -1))
+            .map((post: IPostFields, index: number) => (
+              <SinglePost post={post} index={index} key={post?.title} />
+            ))}
+        </Suspense>
       </div>
     </div>
   );

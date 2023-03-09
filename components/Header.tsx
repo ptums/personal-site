@@ -47,16 +47,28 @@ const Header = () => {
       >
         {navigation.map((link: Navigation) => (
           <li key={link?.name} className="my-0 mx-1">
-            <Link
-              href={link?.href}
-              className={classNames("p-2 text-emerald-800", {
-                underline:
-                  link?.href.includes(selectedLayoutSegments) ||
-                  (link?.href === "/" && selectedLayoutSegments === undefined),
-              })}
-            >
-              {link?.name}
-            </Link>
+            {link?.client === true ? (
+              <Link
+                href={link?.href}
+                className={classNames("p-2 text-emerald-800", {
+                  underline:
+                    link?.href.includes(selectedLayoutSegments) ||
+                    (link?.href === "/" &&
+                      selectedLayoutSegments === undefined),
+                })}
+              >
+                {link?.name}
+              </Link>
+            ) : (
+              <a
+                href={link?.href}
+                className={classNames("p-2 text-emerald-800", {
+                  underline: link?.href.includes(selectedLayoutSegments),
+                })}
+              >
+                {link?.name}
+              </a>
+            )}
           </li>
         ))}
       </ul>
@@ -89,17 +101,30 @@ const Header = () => {
               >
                 {navigation.map((link: Navigation) => (
                   <li key={link?.name} className="my-0 mx-1">
-                    <Link
-                      href={link?.href}
-                      className={classNames("p-2 text-emerald-800", {
-                        underline:
-                          link?.href.includes(selectedLayoutSegments) ||
-                          (link?.href === "/" &&
-                            selectedLayoutSegments === undefined),
-                      })}
-                    >
-                      {link?.name}
-                    </Link>
+                    {link?.client === true ? (
+                      <Link
+                        href={link?.href}
+                        className={classNames("p-2 text-emerald-800", {
+                          underline:
+                            link?.href.includes(selectedLayoutSegments) ||
+                            (link?.href === "/" &&
+                              selectedLayoutSegments === undefined),
+                        })}
+                      >
+                        {link?.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link?.href}
+                        className={classNames("p-2 text-emerald-800", {
+                          underline: link?.href.includes(
+                            selectedLayoutSegments
+                          ),
+                        })}
+                      >
+                        {link?.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
