@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 async function getData() {
   const previousWorkQuery = `query {
-    previousWorkCollection {
+    previousWorkCollection(order:order_ASC) {
       items {
         label
         slug

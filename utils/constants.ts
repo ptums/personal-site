@@ -1,4 +1,3 @@
-import { Review } from "types/Review";
 import { Link } from "types/Link";
 import { Navigation } from "types/Navigation";
 
@@ -61,44 +60,6 @@ export const RECENT_STACK: string[] = [
   "Framer Motion",
   "GraphQL",
   "PostgreSQL",
-];
-
-export const REVIEWS: Review[] = [
-  {
-    id: 1,
-    name: "Salwa Khan",
-    company: "Owner, CubbieKit",
-    statement:
-      "It’s so great to work with Peter. He’s a very talented developer that provides not only technical expertise, but excellent service to his clients. He works with us 1:1 to architect and build solutions and executes them in a timely matter. We lean on him for all of our web development and even custom application solutions.",
-  },
-  {
-    id: 2,
-    name: "Jessica Rebelo",
-    company: "Owner, Unleashed Potential Life Coaching",
-    statement:
-      "Peter has been such a huge asset to my business. I reached out to him to help me rebuild my website and he has been amazing in doing just that. He is always willing to answer any questions I have, talk through ideas with me and brings his own ideas to the table. Anyone is lucky to work with him. ",
-  },
-  {
-    id: 3,
-    name: "Andrew DeHaven",
-    company: "Developer, Appian",
-    statement:
-      "It was the pleasure of my early career as a junior web developer to have worked 1:1 with Peter. He displayed incredible patience through each step of my project and a talent for explaining complex topics in React.js. He broke down each question posed with coding examples and spent extra time making sure that the information was understood. In closing, Peter would be a great asset for any web development project no matter the size.",
-  },
-  {
-    id: 4,
-    name: "Peter Moeller",
-    company: "Business Development, Scarinci Hollenbeck",
-    statement:
-      "Peter is a high level professional, calm under pressure, extremely detailed, and produces nothing but excellent results. I've had the pleasure of working with Peter for more than eight years. He has created and recreated more than a dozen websites, applications, and countless custom widgets as well as managed large projects from start to finish. He is always my go to for any web development projects. I highly recommend Peter and would recommend to hire.",
-  },
-  {
-    id: 5,
-    name: "Ahmed F. Haque",
-    company: "Chief Product Officer at Emeritus",
-    statement:
-      "Undoubtedly Peter is a skilled developer, yet more importantly he is an unbelievably kind human being. He's full of wisdom, optimism, and a sincere desire to help those around him. I can't say enough good things about him, except to say that I hope he knows just how much of an impact he has made on the lives of others.",
-  },
 ];
 
 export const INTRO = [

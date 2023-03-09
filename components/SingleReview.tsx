@@ -24,7 +24,12 @@ const SingleReview = ({
         {post?.description}
       </p>
     </Link> */}
-    {documentToReactComponents((review?.statement as any)?.json)}
+    <div className="flex flew-row justify-center w-full h-24 my-12">
+      <div className="bg-green-600 w-4" />
+      <span className="text-base text-emerald-900">
+        {documentToReactComponents((review?.statement as any)?.json)}
+      </span>
+    </div>
   </PageAnimationLayout>
 );
 

@@ -21,6 +21,7 @@ async function getData() {
       }
     }
   }`;
+
   const posts = await fetchAPI(postsQuery, {});
 
   return posts?.data?.postCollection?.items;
