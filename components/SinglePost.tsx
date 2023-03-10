@@ -1,11 +1,9 @@
 "use client";
-import { playFairDisplay } from "app/font";
 import Link from "next/link";
 import { IPostFields } from "types/contentful";
 import PageAnimationLayout from "./PageAnimationLayout";
-
-const slugify = (title: string) =>
-  `/posts/${title.replaceAll(/ /g, "-").toLowerCase()}`;
+import { playFairDisplay } from "app/font";
+import { slugify } from "utils/functions";
 
 const SinglePost = ({ post, index }: { post: IPostFields; index: number }) => (
   <PageAnimationLayout duration={1.2} delay={index * 0.5}>

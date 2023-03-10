@@ -49,6 +49,9 @@ export interface IPreviousWorkFields {
 
   /** stack */
   stack?: string | undefined;
+
+  /** order */
+  order?: number | undefined;
 }
 
 export interface IPreviousWork extends Entry<IPreviousWorkFields> {
