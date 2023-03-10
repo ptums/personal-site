@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import PageTitle from "components/PageTitle";
 import { fetchAPI } from "utils/api";
-import { IPostFields } from "types/contentful";
+import { Posts } from "types/Posts";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 const SinglePost = dynamic(() => import("components/SinglePost"));
@@ -18,6 +18,9 @@ async function getData() {
   const postsQuery = `query {
     postCollection {
       items {
+        sys {
+          id
+        }
         tagLine
         title
         description
@@ -32,7 +35,7 @@ async function getData() {
 }
 
 const Page = async () => {
-  const data: IPostFields[] = await getData();
+  const data: Posts[] = await getData();
 
   return (
     <div>
@@ -43,7 +46,7 @@ const Page = async () => {
         <Suspense fallback={<></>}>
           {data
             ?.sort((a, b) => (a.date < b.date ? 1 : -1))
-            .map((post: IPostFields, index: number) => (
+            .map((post: Posts, index: number) => (
               <SinglePost post={post} index={index} key={post?.title} />
             ))}
         </Suspense>
