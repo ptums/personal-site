@@ -3,6 +3,21 @@ import ReactMarkdown from "react-markdown";
 import { fetchAPI } from "utils/api";
 import { slugify } from "utils/functions";
 
+export async function generateStaticParams() {
+  return [
+    {
+      slug: "/blog/post/wrap-your-component-in-battle-armor-with-react-testing-library-and-typescript",
+    },
+    { slug: "/blog/post/the-pieces-that-make-up-browser-caching" },
+    { slug: "/blog/post/a-light-introduction-to-web-components" },
+    { slug: "/blog/post/adding-graphql-to-your-skill-list" },
+    {
+      slug: "/blog/post/avoiding-the-global-scope-with-the-revealing-module-pattern",
+    },
+    { slug: "/blog/post/the-power-of-the-map-method" },
+  ];
+}
+
 async function getPostId(title: string) {
   const postsIdQuery = `query {
     postCollection {
