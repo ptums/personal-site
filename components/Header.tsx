@@ -34,7 +34,7 @@ const Header = () => {
       <div className="flex lg:hidden">
         <button
           type="button"
-          className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           onClick={() => setMobileMenuOpen(true)}
         >
           <span className="sr-only">Open main menu</span>
@@ -95,16 +95,14 @@ const Header = () => {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <ul
-                className="hidden lg:flex lg:justify-center lg:text-center lg:my-5 lg:mx-0 lg:items-center"
-                style={{ minWidth: 500 }}
-              >
+              <ul className="flex flex-col my-5 mx-0 lg:hidden">
                 {navigation.map((link: Navigation) => (
-                  <li key={link?.name} className="my-0 mx-1">
+                  <li key={link?.name} className="my-2 mx-1">
                     {link?.client === true ? (
                       <Link
                         href={link?.href}
-                        className={classNames("p-2 text-emerald-800", {
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={classNames("p-2 text-emerald-800 text-xl", {
                           underline:
                             link?.href.includes(selectedLayoutSegments) ||
                             (link?.href === "/" &&
@@ -116,7 +114,7 @@ const Header = () => {
                     ) : (
                       <a
                         href={link?.href}
-                        className={classNames("p-2 text-emerald-800", {
+                        className={classNames("p-2 text-emerald-800 text-xl", {
                           underline: link?.href.includes(
                             selectedLayoutSegments
                           ),
