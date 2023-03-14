@@ -5,7 +5,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Transition } from "@headlessui/react";
 import { useSelectedLayoutSegments } from "next/navigation";
 import classNames from "classnames";
-import { MenuIcon as HeroMenuIcon, XIcon as HeroXIcon } from "@heroicons/react/outline";
+import {
+  MenuIcon as HeroMenuIcon,
+  XIcon as HeroXIcon,
+} from "@heroicons/react/outline";
 import { navigation } from "utils/constants";
 import { Navigation } from "types/Navigation";
 import Link from "next/link";
@@ -48,44 +51,60 @@ const MobileMenu = () => {
               exit={{ x: "-100%" }}
               className="h-full bg-white shadow-lg"
             >
-              <div className="px-4 py-3 border-b border-gray-200">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Mobile Menu
-                </h2>
-                <XMarkIcon onClick={() => setIsOpen(false)} className="h-6 w-6" aria-hidden="true" />
+              <div className="p-2 border-b border-gray-200 flex justify-between items-center">
+                <Image
+                  src="/images/badge.svg"
+                  alt="Tumulty Web Services"
+                  width={62}
+                  height={62}
+                />
+                <XMarkIcon
+                  onClick={() => setIsOpen(false)}
+                  className="h-6 w-6"
+                  aria-hidden="true"
+                />
               </div>
               <div className="px-2 py-3 space-y-1">
-                {navigation.filter(l => l?.client === true).map((link:Navigation) => (
+                {navigation
+                  .filter((l) => l?.client === true)
+                  .map((link: Navigation) => (
                     <Link
-                        className={classNames("block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800", {
-                            underline:
+                      className={classNames(
+                        "block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800",
+                        {
+                          underline:
                             link?.href.includes(selectedLayoutSegments) ||
                             (link?.href === "/" &&
-                            selectedLayoutSegments === undefined),
-                        })}
-                        onClick={toggleMenu}
-                        href={link?.href}
-                        key={link?.name}
+                              selectedLayoutSegments === undefined),
+                        }
+                      )}
+                      onClick={toggleMenu}
+                      href={link?.href}
+                      key={link?.name}
                     >
-                        {link?.name}
+                      {link?.name}
                     </Link>
-                ))}
-                {navigation.filter(l => l?.client !== true).map((link:Navigation) => (
+                  ))}
+                {navigation
+                  .filter((l) => l?.client !== true)
+                  .map((link: Navigation) => (
                     <a
-                        className={classNames("block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800", {
-                            underline:
+                      className={classNames(
+                        "block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800",
+                        {
+                          underline:
                             link?.href.includes(selectedLayoutSegments) ||
                             (link?.href === "/" &&
-                            selectedLayoutSegments === undefined),
-                        })}
-                        onClick={toggleMenu}
-                        href={link?.href}
-                        key={link?.name}
+                              selectedLayoutSegments === undefined),
+                        }
+                      )}
+                      onClick={toggleMenu}
+                      href={link?.href}
+                      key={link?.name}
                     >
-                        {link?.name}
+                      {link?.name}
                     </a>
-                ))}
-                
+                  ))}
               </div>
             </motion.div>
           </div>
