@@ -23,7 +23,7 @@ const BioRadioBtn = ({
   setSelectedBtn: () => void;
 }) => (
   <span
-    className="sm:mr-3 flex flex-row justify-center items-center"
+    className="mr-3 flex flex-row justify-center items-center"
     style={{ height: 16 }}
   >
     <label htmlFor={label}>
@@ -39,7 +39,7 @@ const BioRadioBtn = ({
       />
       <span className="sr-only">{label}</span>
     </label>
-    <span className="text-emerald-800 ml-1">{label}</span>
+    <span className="text-emerald-800 ml-1 mt-1">{label}</span>
   </span>
 );
 
@@ -48,7 +48,7 @@ const TextButtons = ({
   setShowFull,
   setSelectedBtn,
 }: TextButtonsProps) => (
-  <div className="my-6 mx-auto flex flex-col sm:flex-row">
+  <div className="my-6 mx-auto flex flex-row">
     <BioRadioBtn
       selectedBtn={selectedBtn === "Short Bio"}
       label="Short Bio"

@@ -14,7 +14,7 @@ const Home = () => (
     style={{ minHeight: "80vh" }}
   >
     <Suspense fallback={<></>}>
-      <div className="sm:w-2/5 sm:mt-1">
+      <div className="sm:w-2/5 my-3 sm:mb-0 sm:mt-1">
         <PageAnimationLayout duration={1.2} delay={0}>
           <Image
             src="/images/peter-2023.png"
