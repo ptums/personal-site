@@ -99,7 +99,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body>
-        <div className="shadow-xl rounded-lg mx-auto my-12 w-full max-w-screen-lg bg-white bg-opacity-75 min-h-min">
+        <div className="shadow-xl rounded-lg mx-auto sm:my-12 w-full px-8 sm:px-0 sm:max-w-screen-lg bg-white bg-opacity-75 min-h-min">
           <Header />
           <main>{children}</main>
           <Footer />
