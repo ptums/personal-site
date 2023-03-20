@@ -81,6 +81,7 @@ const ContactForm = () => {
           <div className="sm:border-t sm:border-gray-200 py-4 sm:py-10">
             <button
               disabled={state.submitting}
+              aria-label="submit"
               className="block bg-emerald-500 text-white rounded active:shadow-md active:bg-emerald-400 px-4 py-3"
             >
               Send Away!
