@@ -26,6 +26,7 @@ const MobileMenu = () => {
     <div className="flex items-center justify-end lg:hidden">
       <button
         onClick={toggleMenu}
+        aria-label="Mobile Menu"
         className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-transparent active:outline-none active:ring-transparent"
       >
         {!isOpen && <Bars3Icon className="h-6 w-6" aria-hidden="true" />}

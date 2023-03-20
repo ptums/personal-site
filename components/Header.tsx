@@ -1,18 +1,13 @@
 "use client";
-import React, { useState } from "react";
 import { useSelectedLayoutSegments } from "next/navigation";
 import classNames from "classnames";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Dialog } from "@headlessui/react";
 import { navigation } from "utils/constants";
-import MobileMenu from "components/MobileMenu"
+import MobileMenu from "components/MobileMenu";
 import { Navigation } from "types/Navigation";
-
 import Link from "next/link";
 import Image from "next/image";
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [selectedLayoutSegments] = useSelectedLayoutSegments();
 
   return (
