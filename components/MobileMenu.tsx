@@ -26,29 +26,21 @@ const MobileMenu = () => {
     <div className="flex items-center justify-end lg:hidden">
       <button
         onClick={toggleMenu}
-        className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring"
+        className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-transparent active:outline-none active:ring-transparent"
       >
-        {isOpen ? (
-          <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-        ) : (
-          <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-        )}
+        {!isOpen && <Bars3Icon className="h-6 w-6" aria-hidden="true" />}
       </button>
-      <Transition
-        show={isOpen}
-        enter="transition-opacity duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-300"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
+      <Transition show={isOpen}>
         <div className="fixed inset-0 z-40 bg-gray-800 bg-opacity-50">
           <div className="absolute inset-y-0 left-0 w-full max-w-md">
             <motion.div
-              initial={{ x: "-100%" }}
+              initial={{ x: "-99%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
+              transition={{
+                x: { duration: 0.35 },
+                default: { ease: "linear" },
+              }}
               className="h-full bg-white shadow-lg"
             >
               <div className="p-2 border-b border-gray-200 flex justify-between items-center">
@@ -60,7 +52,7 @@ const MobileMenu = () => {
                 />
                 <XMarkIcon
                   onClick={() => setIsOpen(false)}
-                  className="h-6 w-6"
+                  className="h-6 w-6 cursor-pointer mr-3"
                   aria-hidden="true"
                 />
               </div>

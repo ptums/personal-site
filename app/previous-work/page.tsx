@@ -38,7 +38,7 @@ const Page = async () => {
       <div className="text-center py-6">
         <PageTitle title="Previous Work" />
       </div>
-      <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center max-w-screen-lg">
+      <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center items-center max-w-screen-lg">
         <Suspense fallback={<></>}>
           {data.map((project: IPreviousWorkFields) => (
             <SingleProject project={project} key={project.label} />
