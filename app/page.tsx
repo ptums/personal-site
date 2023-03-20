@@ -39,7 +39,7 @@ const Home = () => (
               {CONTACTS.map((contact: Link) => (
                 <li key={contact?.id}>
                   <a
-                    className="text-emerald-800 mr-4 text-sm underline"
+                    className="text-emerald-800 mr-4 text-sm underline my-2 block sm:inline sm:my-0"
                     href={contact?.slug}
                     target="_blank"
                   >
