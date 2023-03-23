@@ -5,7 +5,7 @@ import { Posts } from "types/Posts";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 const SinglePost = dynamic(() => import("components/SinglePost"));
-
+const Loading = dynamic(() => import("components/Loading"));
 export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ const Page = async () => {
         <PageTitle title="Blog" />
       </div>
       <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<Loading />}>
           {data
             ?.sort((a, b) => (a.date < b.date ? 1 : -1))
             .map((post: Posts, index: number) => (

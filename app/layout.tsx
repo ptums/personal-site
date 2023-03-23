@@ -22,7 +22,7 @@ export default function RootLayout({
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        ></meta>
+        />
         <meta name="msvalidate.01" content="D568BE2730F6C27E33061E84F8DE58B1" />
         <link rel="icon" href="/icons/favicon.ico" />
         <link
