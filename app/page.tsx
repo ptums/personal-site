@@ -5,7 +5,7 @@ import { CONTACTS, RECENT_STACK } from "utils/constants";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
-
+const Loading = dynamic(() => import("components/Loading"));
 export const runtime = "experimental-edge";
 
 const Home = () => (
@@ -13,7 +13,7 @@ const Home = () => (
     className="flex flex-col sm:flex-row justify-between mx-auto w-full max-w-4xl	 my-2 sm:my-20 items-start"
     style={{ minHeight: "80vh" }}
   >
-    <Suspense fallback={<></>}>
+    <Suspense fallback={<Loading />}>
       <div className="sm:w-2/5 my-3 sm:mb-0 sm:mt-1">
         <PageAnimationLayout duration={1.2} delay={0}>
           <Image
