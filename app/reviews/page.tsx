@@ -5,7 +5,7 @@ import { fetchAPI } from "utils/api";
 import { IReviewsFields } from "types/contentful";
 import { Suspense } from "react";
 const SingleReview = dynamic(() => import("components/SingleReview"));
-
+const Loading = dynamic(() => import("components/Loading"));
 export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ const Page = async () => {
       <div className="text-center py-6">
         <PageTitle title="Reviews" />
       </div>
-      <Suspense fallback={<></>}>
+      <Suspense fallback={<Loading />}>
         <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
           {data.map((review: IReviewsFields, index: number) => (
             <SingleReview review={review} index={index} key={review?.name} />

@@ -4,6 +4,9 @@ import { fetchAPI } from "utils/api";
 import { IPreviousWorkFields } from "types/contentful";
 import { Suspense } from "react";
 import SingleProject from "components/SingleProject";
+import dynamic from "next/dynamic";
+
+const Loading = dynamic(() => import("components/Loading"));
 
 export const runtime = "experimental-edge";
 
@@ -39,7 +42,7 @@ const Page = async () => {
         <PageTitle title="Previous Work" />
       </div>
       <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center items-center max-w-screen-lg">
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<Loading />}>
           {data.map((project: IPreviousWorkFields) => (
             <SingleProject project={project} key={project.label} />
           ))}
