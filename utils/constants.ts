@@ -23,7 +23,7 @@ export const navigation: Navigation[] = [
     client: true,
   },
   {
-    name: "Free Advice",
+    name: "Let's Chat",
     href: "/contact",
     client: true,
   },

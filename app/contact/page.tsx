@@ -9,7 +9,7 @@ const Loading = dynamic(() => import("components/Loading"));
 export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
-  title: "Free Advice | Peter Tumulty Web Developer",
+  title: "Let's Chat | Peter Tumulty Web Developer",
   description:
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const Page = () => (
   <div style={{ minHeight: "80vh" }}>
     <div className="text-center py-6">
-      <PageTitle title="Free Advice" />
+      <PageTitle title="Let's Chat" />
     </div>
     <div className="mx-4 sm:mx-auto w-full max-w-3xl sm:mt-4">
       <div className="space-y-6 sm:space-y-5">
