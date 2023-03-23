@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import PageTitle from "components/PageTitle";
 import ContactForm from "components/ContactForm";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const Loading = dynamic(() => import("components/Loading"));
 
 export const runtime = "experimental-edge";
 
@@ -29,7 +32,7 @@ const Page = () => (
             45-minute session to see how I can assist you.
           </p>
         </div>
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<Loading />}>
           <ContactForm />
         </Suspense>
       </div>
