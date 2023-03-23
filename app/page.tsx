@@ -17,7 +17,7 @@ const Home = () => (
       <div className="sm:w-2/5 my-3 sm:mb-0 sm:mt-1">
         <PageAnimationLayout duration={1.2} delay={0}>
           <Image
-            src="/images/peter-2023.png"
+            src="/images/peter-2023.webp"
             alt="Peter Tumulty"
             width={512}
             height={512}
