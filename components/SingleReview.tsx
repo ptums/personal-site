@@ -12,9 +12,8 @@ const SingleReview = ({
 }) => (
   <PageAnimationLayout duration={1.2} delay={index * 0.5}>
     <div className="flex flex-col mb-12 mx-4 md:mx-0">
-      <div className="flex flew-row">
-        <div className="bg-emerald-500 w-5 sm:w-4 mr-4" />
-        <blockquote className="text-base text-emerald-800 font-normal">
+      <div className="flex flew-row w-full">
+        <blockquote className="text-base text-emerald-800 font-normal border-l-4 pl-4 border-emerald-500">
           {documentToReactComponents((review?.statement as any)?.json)}
         </blockquote>
       </div>
