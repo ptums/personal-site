@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { IPreviousWorkFields } from "types/contentful";
 import { playFairDisplay } from "app/font";
+import { previousWork } from "@prisma/client";
+import { VIDEO_CDN_BASE_URL } from "utils/constants";
 
-const SingleProject = ({ project }: { project: IPreviousWorkFields }) => {
+const SingleProject = ({ project }: { project: previousWork }) => {
   const [showDescription, setShowDescription] = useState<boolean>(false);
+
+  const videoURL = `${VIDEO_CDN_BASE_URL}/${project?.video}`;
 
   return (
     <div
@@ -19,7 +22,7 @@ const SingleProject = ({ project }: { project: IPreviousWorkFields }) => {
           dangerouslySetInnerHTML={{
             __html: `
             <video  style="max-width:100%" class="graphic-container mobile-video" autoplay="true" muted="true" playsinline="true" loop="true" >
-              <source src=${project.video} type="video/mp4" />
+              <source src=${videoURL} type="video/mp4" />
             </video>
           `,
           }}

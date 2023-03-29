@@ -85,3 +85,6 @@ export const CONTENTFUL_GRAPHQL_API_URL =
   process.env.CONTENTFUL_GRAPHQL_API_URL;
 export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN =
   process.env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN;
+
+export const VIDEO_CDN_BASE_URL =
+  "https://res.cloudinary.com/tumulty-web-services";
