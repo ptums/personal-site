@@ -8,8 +8,8 @@
     "@formspree/react": "^2.4.1",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
+    "@prisma/client": "4.12.0",
     "@tailwindcss/forms": "^0.5.3",
-    "add": "^2.0.6",
     "classnames": "^2.3.2",
     "contentful-management": "^10.30.0",
     "dotenv": "^16.0.3",
@@ -17,11 +17,14 @@
     "framer-motion": "^10.2.3",
     "next": "^13.2.4",
     "prettier": "^2.8.4",
+    "prisma": "^4.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.5",
+    "react-query": "^3.39.3",
     "sharp": "^0.31.3",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/node": "18.14.6",

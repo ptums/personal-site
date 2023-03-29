@@ -1,14 +1,12 @@
 import { Metadata } from "next";
 import PageTitle from "components/PageTitle";
-import { fetchAPI } from "utils/api";
-import { IPreviousWorkFields } from "types/contentful";
 import { Suspense } from "react";
 import SingleProject from "components/SingleProject";
 import dynamic from "next/dynamic";
+import { previousWork } from "@prisma/client";
+import prisma from "../../prisma";
 
 const Loading = dynamic(() => import("components/Loading"));
-
-export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
   title: "Previous Work | Peter Tumulty Web Developer",
@@ -16,25 +14,8 @@ export const metadata: Metadata = {
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };
 
-async function getData() {
-  const previousWorkQuery = `query {
-    previousWorkCollection(order:order_ASC) {
-      items {
-        label
-        slug
-        video
-        stack
-      }
-    }
-  }`;
-
-  const previousWork = await fetchAPI(previousWorkQuery, {});
-
-  return previousWork?.data?.previousWorkCollection?.items;
-}
-
 const Page = async () => {
-  const data: IPreviousWorkFields[] = await getData();
+  const data: previousWork[] = await prisma.previousWork.findMany();
 
   return (
     <div>
@@ -43,7 +24,7 @@ const Page = async () => {
       </div>
       <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center items-center max-w-screen-lg">
         <Suspense fallback={<Loading />}>
-          {data.map((project: IPreviousWorkFields) => (
+          {data.map((project: previousWork) => (
             <SingleProject project={project} key={project.label} />
           ))}
         </Suspense>
