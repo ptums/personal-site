@@ -21,8 +21,6 @@ const Page = async () => {
     },
   });
 
-  console.log(data);
-
   return (
     <div>
       <div className="text-center py-6">
