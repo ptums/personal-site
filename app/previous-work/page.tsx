@@ -15,7 +15,13 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const data: previousWork[] = await prisma.previousWork.findMany();
+  const data: previousWork[] = await prisma.previousWork.findMany({
+    orderBy: {
+      order: "asc",
+    },
+  });
+
+  console.log(data);
 
   return (
     <div>
