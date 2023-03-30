@@ -60,12 +60,12 @@ export const CONTACTS: Link[] = [
 export const RECENT_STACK: string[] = [
   "TypeScript",
   "React",
-  "Svelte",
+  "Prisma",
   "React Testing Library",
   "Tailwind.css",
   "Framer Motion",
   "GraphQL",
-  "PostgreSQL",
+  "PlanetScale",
 ];
 
 export const INTRO = [
