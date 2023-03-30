@@ -68,23 +68,23 @@ export const RECENT_STACK: string[] = [
   "PlanetScale",
 ];
 
-export const INTRO = [
+export const INTRO: string[] = [
   "Hello! I'm Peter, the owner and lead developer at Tumulty Web Services. I am a software engineer with 10+ years of experience, and I take pride in crafting top-notch software solutions that deliver a fantastic user experience.",
   "I have plenty of experience in full stack development using JavaScript, PHP, and Python. However, after realizing my true passion is for developing beautiful and interactive user interfaces, I shifted my focus entirely to front end development. I am now dedicated to expanding my capabilities in this area and bringing my expertise to projects that require exceptional user experiences.",
   "I'm also passionate about teaching! In addition to creating software, I love helping others learn how to build software and kickstart their careers in tech. Through 1:1 mentorship sessions and instructing multiple web development courses at various coding bootcamps, I've gained extensive experience in guiding and supporting aspiring developers.",
   "My capabilities include advanced front-end engineering, full-stack web development, mentoring junior developers and recent boot camp graduates, documentation and proposal writing, web application architecture, web performance optimization, web vitals improvement, API and SDK integrations, and technical on-site SEO.",
 ];
 
-export const PHRASES = [
+export const PHRASES: string[] = [
   "Lead Web Developer",
   "Senior Front End Engineer",
   "Software Educator",
 ];
 
-export const CONTENTFUL_GRAPHQL_API_URL =
+export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
   process.env.CONTENTFUL_GRAPHQL_API_URL;
-export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN =
+export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN: unknown | string =
   process.env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN;
 
-export const VIDEO_CDN_BASE_URL =
+export const VIDEO_CDN_BASE_URL: string =
   "https://res.cloudinary.com/tumulty-web-services";
