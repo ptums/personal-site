@@ -1,7 +1,7 @@
 "use client";
 import { useSelectedLayoutSegments } from "next/navigation";
 import classNames from "classnames";
-import { navigation } from "utils/constants";
+import { EMAIL, navigation } from "utils/constants";
 import MobileMenu from "components/MobileMenu";
 import { Navigation } from "types/Navigation";
 import Link from "next/link";
@@ -21,10 +21,8 @@ const Header = () => {
             height={62}
           />
         </Link>
-        <Link href="mailto:ptumulty923@gmail.com">
-          <span className="text-emerald-800 hover:underline">
-            ptumulty923@gmail.com
-          </span>
+        <Link href={`mailto:${EMAIL}`}>
+          <span className="text-emerald-800 hover:underline">{EMAIL}</span>
         </Link>
       </div>
       <ul
