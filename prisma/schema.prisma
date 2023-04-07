@@ -14,7 +14,7 @@ model previousWork {
   video String? @db.VarChar(255)
   label String? @db.VarChar(255)
   stack String? @db.VarChar(255)
-  id    Int  @id @unique(map: "id") @default(autoincrement())
+  id    Int     @id @unique(map: "id") @default(autoincrement())
   order Int?
 }
 
@@ -23,5 +23,10 @@ model reviews {
   company   String? @db.VarChar(255)
   statement String? @db.Text
   order     Int?
-  id        Int  @id @unique(map: "id") @default(autoincrement()) 
+  id        Int     @id @unique(map: "id") @default(autoincrement())
+}
+
+model keepAwake {
+  keepOn Int?
+  id     Int  @id @unique(map: "id") @default(autoincrement())
 }
