@@ -10,11 +10,11 @@ export const runtime = "experimental-edge";
 
 const Home = () => (
   <div
-    className="flex flex-col sm:flex-row justify-between mx-auto w-full max-w-4xl	 my-2 sm:my-20 items-start"
+    className="flex flex-col justify-center items-center lg:flex-row lg:justify-between mx-auto w-full max-w-4xl	my-2 lg:my-20 lg:items-start"
     style={{ minHeight: "80vh" }}
   >
     <Suspense fallback={<Loading />}>
-      <div className="sm:w-2/5 my-3 sm:mb-0 sm:mt-1">
+      <div className="lg:w-2/5 my-4 lg:mb-0 lg:mt-1">
         <PageAnimationLayout duration={1.2} delay={0}>
           <Image
             src="/images/peter-2023.webp"
