@@ -2,7 +2,19 @@
   "crons": [
     {
       "path": "/api/keep-awake",
-      "schedule": "0 1 * * *"
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/keep-awake",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/keep-awake",
+      "schedule": "0 16 * * *"
+    },
+    {
+      "path": "/api/clean-db",
+      "schedule": "0 0 1 * *"
     }
   ]
 }

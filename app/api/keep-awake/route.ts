@@ -1,7 +1,5 @@
-import { NextResponse } from "next/server";
 import prisma from "../../../prisma";
-
-const KEEP_ON_INT = 199;
+import { KEEP_ON_INT } from "utils/constants";
 
 export async function GET() {
   try {
@@ -21,16 +19,6 @@ export async function GET() {
       status: 500,
     });
   } finally {
-    const getKeepAwakeRecord = await prisma.keepAwake.findFirst({
-      where: {
-        keepOn: KEEP_ON_INT,
-      },
-    });
-    await prisma.keepAwake.delete({
-      where: {
-        id: getKeepAwakeRecord?.id,
-      },
-    });
     await prisma.$disconnect();
   }
 }
