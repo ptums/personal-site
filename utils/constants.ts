@@ -59,15 +59,15 @@ export const CONTACTS: Link[] = [
 
 export const RECENT_STACK: string[] = [
   "Angular",
-  "Jasmine",
-  "Open API",
-  "Nx Monorepo",
   "GraphQL",
+  "Jasmine",
+  "Nx Monorepo",
+  "Open API",
   "React",
   "React Testing Library",
-  "TypeScript",
   "Tailwind.css",
   "Turborepo",
+  "TypeScript",
 ];
 
 export const INTRO: string[] = [
