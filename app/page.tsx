@@ -65,7 +65,7 @@ const Home = () => (
                 ))}
               </ul>
               <ul className="mt-2 flex flex-col">
-                {RECENT_STACK.slice(5, RECENT_STACK.length - 1).map(
+                {RECENT_STACK.slice(5, RECENT_STACK.length).map(
                   (stack: string) => (
                     <li
                       key={stack}
