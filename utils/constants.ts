@@ -61,7 +61,7 @@ export const RECENT_STACK: string[] = [
   "Angular",
   "Jasmine",
   "Open API",
-  "Nx",
+  "Nx Monorepo",
   "GraphQL",
   "React",
   "React Testing Library",
