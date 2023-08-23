@@ -58,14 +58,16 @@ export const CONTACTS: Link[] = [
 ];
 
 export const RECENT_STACK: string[] = [
-  "TypeScript",
-  "React",
-  "Prisma",
-  "React Testing Library",
-  "Tailwind.css",
-  "Framer Motion",
+  "Angular",
+  "Jasmine",
+  "Open API",
+  "Nx",
   "GraphQL",
-  "PlanetScale",
+  "React",
+  "React Testing Library",
+  "TypeScript",
+  "Tailwind.css",
+  "Turborepo",
 ];
 
 export const INTRO: string[] = [
