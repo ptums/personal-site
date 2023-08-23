@@ -65,14 +65,16 @@ const Home = () => (
                 ))}
               </ul>
               <ul className="mt-2 flex flex-col">
-                {RECENT_STACK.slice(4, 8).map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
+                {RECENT_STACK.slice(4, RECENT_STACK.length - 1).map(
+                  (stack: string) => (
+                    <li
+                      key={stack}
+                      className="text-emerald-800 mr-4 text-sm mb-2"
+                    >
+                      {stack}
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
