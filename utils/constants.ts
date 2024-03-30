@@ -61,6 +61,7 @@ export const RECENT_STACK: string[] = [
   "Angular",
   "GraphQL",
   "Jasmine",
+  "Jest",
   "Nx Monorepo",
   "Open API",
   "React",
@@ -92,5 +93,3 @@ export const VIDEO_CDN_BASE_URL: string =
   "https://res.cloudinary.com/tumulty-web-services";
 
 export const EMAIL: string = "ptumulty923@gmail.com";
-
-export const KEEP_ON_INT = 199;

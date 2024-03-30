@@ -3,8 +3,8 @@ import PageTitle from "components/PageTitle";
 import { Suspense } from "react";
 import SingleProject from "components/SingleProject";
 import dynamic from "next/dynamic";
-import { previousWork } from "@prisma/client";
-import prisma from "../../prisma";
+import { PreviousWork } from "types";
+import previousWork from "db/previousWork.json";
 
 const Loading = dynamic(() => import("components/Loading"));
 
@@ -15,12 +15,6 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const data: previousWork[] = await prisma.previousWork.findMany({
-    orderBy: {
-      order: "asc",
-    },
-  });
-
   return (
     <div>
       <div className="text-center py-6">
@@ -28,7 +22,7 @@ const Page = async () => {
       </div>
       <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center items-center max-w-screen-lg">
         <Suspense fallback={<Loading />}>
-          {data.map((project: previousWork) => (
+          {previousWork.map((project: PreviousWork) => (
             <SingleProject project={project} key={project.label} />
           ))}
         </Suspense>

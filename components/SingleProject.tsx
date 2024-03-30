@@ -2,10 +2,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { playFairDisplay } from "app/font";
-import { previousWork } from "@prisma/client";
+import { PreviousWork } from "types";
 import { VIDEO_CDN_BASE_URL } from "utils/constants";
 
-const SingleProject = ({ project }: { project: previousWork }) => {
+const SingleProject = ({ project }: { project: PreviousWork }) => {
   const [showDescription, setShowDescription] = useState<boolean>(false);
 
   const videoURL = `${VIDEO_CDN_BASE_URL}/${project?.video}`;
