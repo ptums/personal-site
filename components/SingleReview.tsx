@@ -1,12 +1,12 @@
 import { playFairDisplay } from "app/font";
 import PageAnimationLayout from "./PageAnimationLayout";
-import { reviews } from "@prisma/client";
+import { Reviews } from "types";
 
 const SingleReview = ({
   review,
   index,
 }: {
-  review: reviews;
+  review: Reviews;
   index: number;
 }) => (
   <PageAnimationLayout duration={1.2} delay={index * 0.5}>
