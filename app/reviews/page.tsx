@@ -21,9 +21,11 @@ const Page = async () => {
       </div>
       <Suspense fallback={<Loading />}>
         <div className="flex flex-col mx-auto w-full justify-center max-w-screen-md">
-          {reviews.map((review: Reviews, index: number) => (
-            <SingleReview review={review} index={index} key={review?.name} />
-          ))}
+          {reviews
+            .sort((a, b) => (a.order > b.order ? 1 : -1))
+            .map((review: Reviews, index: number) => (
+              <SingleReview review={review} index={index} key={review?.name} />
+            ))}
         </div>
       </Suspense>
     </div>

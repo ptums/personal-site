@@ -23,11 +23,6 @@ export const navigation: Navigation[] = [
     client: true,
   },
   {
-    name: "Let's Chat",
-    href: "/contact",
-    client: true,
-  },
-  {
     name: "Resume",
     href: "/images/PFT-Resume-2023.pdf",
     client: false,
