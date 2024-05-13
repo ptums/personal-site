@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
-export const runtime = "experimental-edge";
 
 const Home = () => (
   <div

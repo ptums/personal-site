@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import SinglePost from "components/SinglePost";
 const Loading = dynamic(() => import("components/Loading"));
-export const runtime = "experimental-edge";
 
 export const metadata: Metadata = {
   title: "Blog | Peter Tumulty Web Developer",
