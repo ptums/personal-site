@@ -22,9 +22,11 @@ const Page = async () => {
       </div>
       <div className="flex flex-col mx-auto lg:mx-0 lg:flex-row lg:flex-wrap w-full justify-center items-center max-w-screen-lg">
         <Suspense fallback={<Loading />}>
-          {previousWork.map((project: PreviousWork) => (
-            <SingleProject project={project} key={project.label} />
-          ))}
+          {previousWork
+            .sort((a, b) => (a.order > b.order ? 1 : -1))
+            .map((project: PreviousWork) => (
+              <SingleProject project={project} key={project.label} />
+            ))}
         </Suspense>
       </div>
     </div>
