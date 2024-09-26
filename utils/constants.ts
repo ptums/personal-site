@@ -54,7 +54,6 @@ export const CONTACTS: Link[] = [
 
 export const RECENT_STACK: string[] = [
   "Angular",
-
   "C",
   "GraphQL",
   "Neovim",

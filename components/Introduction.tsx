@@ -2,7 +2,8 @@
 import { playFairDisplay } from "app/font";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { INTRO, PHRASES } from "utils/constants";
+import { PHRASES } from "utils/constants";
+import intro from "db/intro.json";
 import PageTitle from "./PageTitle";
 
 interface TextButtonsProps {
@@ -63,19 +64,12 @@ const TextButtons = ({
     />
   </div>
 );
+
 const Introduction = () => {
-  const [phraseIndex, setPhraseIndex] = useState<number>(0);
   const [showFull, setShowFull] = useState<boolean>(false);
   const [selectedBtn, setSelectedBtn] = useState<string>("Short Bio");
-  const longIntro = INTRO.slice(1, INTRO.length);
-
-  useEffect(() => {
-    const timeout = setInterval(() => {
-      setPhraseIndex((prev) => (phraseIndex !== 2 ? prev + 1 : 0));
-    }, 3200);
-
-    return () => clearInterval(timeout);
-  }, [phraseIndex]);
+  const introContent = intro?.content;
+  const longIntro = introContent.slice(1, introContent.length);
 
   useEffect(() => {
     if (showFull) {
@@ -86,20 +80,13 @@ const Introduction = () => {
   return (
     <>
       <PageTitle title="Peter F. Tumulty" />
-      <motion.div
-        key={PHRASES[phraseIndex]}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 2 }}
+
+      <p
+        className={`m-0 text-emerald-500 font-bold ${playFairDisplay.className}`}
+        style={{ letterSpacing: 8, fontSize: "1.5rem" }}
       >
-        <p
-          className={`m-0 text-emerald-500 font-bold ${playFairDisplay.className}`}
-          style={{ letterSpacing: 8, fontSize: "1.5rem" }}
-        >
-          {PHRASES[phraseIndex]}
-        </p>
-      </motion.div>
+        {PHRASES[0]}
+      </p>
       <TextButtons
         selectedBtn={selectedBtn}
         setShowFull={setShowFull}
@@ -107,7 +94,7 @@ const Introduction = () => {
       />
 
       <p className="text-base mb-6 mx-0 text-emerald-800 font-normal">
-        {INTRO[0]}
+        {introContent[0]}
       </p>
       {showFull && (
         <div style={{ minHeight: 450 }}>
