@@ -47,19 +47,22 @@ export const CONTACTS: Link[] = [
   },
   {
     id: 5,
-    slug: "mailto:ptumulty923@gmail.com",
+    slug: "mailto:peter@tumulty.me",
     label: "Email",
   },
 ];
 
 export const RECENT_STACK: string[] = [
   "Angular",
+
+  "C",
   "GraphQL",
+  "Neovim",
   "Nx Monorepo",
-  "OpenAI",
   "Python",
   "React",
   "React Testing Library",
+  "SonarCube",
   "TypeScript",
 ];
 
@@ -70,11 +73,7 @@ export const INTRO: string[] = [
   "My capabilities include advanced front-end engineering, full-stack web development, mentoring junior developers and recent boot camp graduates, documentation and proposal writing, web application architecture, web performance optimization, web vitals improvement, API and SDK integrations, and technical on-site SEO.",
 ];
 
-export const PHRASES: string[] = [
-  "Lead Web Developer",
-  "Senior Front End Engineer",
-  "Software Educator",
-];
+export const PHRASES: string[] = ["Senior Frontend Engineer"];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
   process.env.CONTENTFUL_GRAPHQL_API_URL;
@@ -84,4 +83,4 @@ export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN: unknown | string =
 export const VIDEO_CDN_BASE_URL: string =
   "https://res.cloudinary.com/tumulty-web-services";
 
-export const EMAIL: string = "ptumulty923@gmail.com";
+export const EMAIL: string = "peter@tumulty.me";
