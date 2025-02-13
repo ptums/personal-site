@@ -24,7 +24,7 @@ export const navigation: Navigation[] = [
   },
   {
     name: "Resume",
-    href: "/images/PFT-Resume-2024.pdf",
+    href: "/images/PFT-Resume-2025.pdf",
     client: false,
   },
 ];
