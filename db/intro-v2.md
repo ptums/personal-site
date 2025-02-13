@@ -1,4 +1,4 @@
-Hello! I'm Peter, the owner and lead developer at Tumulty Web Services. I am a software engineer with 10+ years of experience, and I take pride in crafting top-notch software solutions that deliver a fantastic user experience.
+Hello! I'm Peter,I am a software engineer with 10+ years of experience, and I take pride in crafting top-notch software solutions that deliver a fantastic user experience.
 
 I have plenty of experience in full stack development using JavaScript, PHP, and Python. However, after realizing my true passion is for developing beautiful and interactive user interfaces, I shifted my focus entirely to front end development. I am now dedicated to expanding my capabilities in this area and bringing my expertise to projects that require exceptional user experiences.
 
@@ -6,4 +6,12 @@ I'm also passionate about teaching! In addition to creating software, I love hel
 
 My capabilities include advanced front-end engineering, full-stack web development, mentoring junior developers and recent boot camp graduates, documentation and proposal writing, web application architecture, web performance optimization, web vitals improvement, API and SDK integrations, and technical on-site SEO.
 
-Hello! I'm Peter a software engineer
+Hello! I'm Peter,I am a software engineer with 10+ years of experience, and I take pride in crafting top-notch software solutions that deliver a fantastic user experience.
+
+- current status
+
+Hell
+- goals
+-- Network & Security
+-- Systems & Platform Engineering
+- background

@@ -3,9 +3,10 @@ import PageAnimationLayout from "components/PageAnimationLayout";
 import { Link } from "types/Link";
 import { CONTACTS, RECENT_STACK } from "utils/constants";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
+RECENT_STACK.sort();
 
 const Home = () => (
   <div
