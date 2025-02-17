@@ -65,6 +65,9 @@ export const RECENT_STACK: string[] = [
   "Node.js",
   "Jest",
   "React Testing Library",
+  "REST",
+  "tRPC",
+  "ORMs",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
