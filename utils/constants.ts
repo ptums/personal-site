@@ -63,6 +63,7 @@ export const RECENT_STACK: string[] = [
   "JavaScript",
   "Next.js",
   "React Native",
+  "Node.js",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
