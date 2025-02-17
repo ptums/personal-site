@@ -64,7 +64,7 @@ const Home = () => (
                   </li>
                 ))}
               </ul>
-              <ul className="mt-2 flex flex-col">
+              <ul className="sm:mt-2 flex flex-col">
                 {RECENT_STACK.slice(6, RECENT_STACK.length).map(
                   (stack: string) => (
                     <li
