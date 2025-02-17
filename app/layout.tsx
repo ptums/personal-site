@@ -3,6 +3,7 @@ import { lato } from "./font";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title:
@@ -108,6 +109,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
