@@ -56,14 +56,15 @@ export const RECENT_STACK: string[] = [
   "Angular",
   "GraphQL",
   "Nx Monorepo",
-  "React",
-  "React Testing Library",
+  "React.js",
   "SonarCube",
   "TypeScript",
   "JavaScript",
   "Next.js",
   "React Native",
   "Node.js",
+  "Jest",
+  "React Testing Library",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
