@@ -17,9 +17,11 @@ const Introduction = () => {
       <p className="text-base mb-6 mx-0 text-emerald-800 font-normal">
         I&#39;m a JavaScript full-stack engineer with a focus on front-end
         development and a strong background in backend systems. I create fast,
-        reliable, and easy-to-maintain applications. My goal is to build
-        software that works smoothly for users while being efficient and
-        scalable behind the scenes.
+        reliable, and easy-to-maintain applications, ensuring smooth user
+        experiences while optimizing performance, scalability, and automated
+        CI/CD workflows for seamless deployments. My goal is to build software
+        that works smoothly for users while being efficient and scalable behind
+        the scenes.
       </p>
     </>
   );
