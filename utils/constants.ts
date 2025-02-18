@@ -68,6 +68,8 @@ export const RECENT_STACK: string[] = [
   "REST",
   "tRPC",
   "ORMs",
+  "TestCafe",
+  "Playwright",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
