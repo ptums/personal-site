@@ -55,7 +55,7 @@ export const CONTACTS: Link[] = [
 export const RECENT_STACK: string[] = [
   "Angular",
   "GraphQL",
-  "Nx Monorepo",
+  "Monorepos",
   "React.js",
   "SonarCube",
   "TypeScript",
