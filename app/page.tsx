@@ -55,17 +55,7 @@ const Home = () => (
             </p>
             <div className="flex flex-col sm:flex-row">
               <ul className="mt-2 flex flex-col w-full sm:w-52">
-                {RECENT_STACK.slice(0, 9).map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
-              </ul>
-              <ul className="sm:mt-2 flex flex-col">
-                {RECENT_STACK.slice(9, RECENT_STACK.length).map(
+                {RECENT_STACK.slice(0, RECENT_STACK.length + 1).map(
                   (stack: string) => (
                     <li
                       key={stack}
@@ -75,6 +65,19 @@ const Home = () => (
                     </li>
                   )
                 )}
+              </ul>
+              <ul className="sm:mt-2 flex flex-col">
+                {RECENT_STACK.slice(
+                  RECENT_STACK.length + 1,
+                  RECENT_STACK.length
+                ).map((stack: string) => (
+                  <li
+                    key={stack}
+                    className="text-emerald-800 mr-4 text-sm mb-2"
+                  >
+                    {stack}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

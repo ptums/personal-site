@@ -70,6 +70,12 @@ export const RECENT_STACK: string[] = [
   "ORMs",
   "TestCafe",
   "Playwright",
+  "Open AI",
+  "AWS",
+  "GCP",
+  "Azure",
+  "Cursor",
+  "Github CoPilot",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
