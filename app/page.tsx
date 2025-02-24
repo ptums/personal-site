@@ -7,6 +7,7 @@ import { Suspense, useEffect } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
 RECENT_STACK.sort();
+const skillSplit = RECENT_STACK.length / 2 + 1;
 
 const Home = () => (
   <div
@@ -55,7 +56,17 @@ const Home = () => (
             </p>
             <div className="flex flex-col sm:flex-row">
               <ul className="mt-2 flex flex-col w-full sm:w-52">
-                {RECENT_STACK.slice(0, RECENT_STACK.length + 1).map(
+                {RECENT_STACK.slice(0, skillSplit).map((stack: string) => (
+                  <li
+                    key={stack}
+                    className="text-emerald-800 mr-4 text-sm mb-2"
+                  >
+                    {stack}
+                  </li>
+                ))}
+              </ul>
+              <ul className="sm:mt-2 flex flex-col">
+                {RECENT_STACK.slice(skillSplit, RECENT_STACK.length).map(
                   (stack: string) => (
                     <li
                       key={stack}
@@ -65,19 +76,6 @@ const Home = () => (
                     </li>
                   )
                 )}
-              </ul>
-              <ul className="sm:mt-2 flex flex-col">
-                {RECENT_STACK.slice(
-                  RECENT_STACK.length + 1,
-                  RECENT_STACK.length
-                ).map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
               </ul>
             </div>
           </div>
