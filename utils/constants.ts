@@ -74,7 +74,10 @@ export const RECENT_STACK: string[] = [
   "AWS",
   "GCP",
   "Azure",
-  "Cursor",
+  "Ollama",
+  "Hugging Face",
+  "Large Language Models",
+  "AI Agents",
   "Github CoPilot",
 ];
 
