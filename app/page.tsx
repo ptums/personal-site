@@ -3,12 +3,17 @@ import PageAnimationLayout from "components/PageAnimationLayout";
 import { Link } from "types/Link";
 import { CONTACTS, RECENT_STACK } from "utils/constants";
 import dynamic from "next/dynamic";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
 RECENT_STACK.sort();
-const skillSplit = RECENT_STACK.length / 2 + 1;
+const colOne = RECENT_STACK.length / 3 + 1;
+const colTwo = RECENT_STACK.length / 6 + 1;
 
+const chunkSize = Math.ceil(RECENT_STACK.length / 3);
+const list1 = RECENT_STACK.slice(0, chunkSize);
+const list2 = RECENT_STACK.slice(chunkSize, chunkSize * 2);
+const list3 = RECENT_STACK.slice(chunkSize * 2);
 const Home = () => (
   <div
     className="flex flex-col justify-center items-center lg:flex-row lg:justify-between mx-auto w-full max-w-4xl	my-2 lg:my-20 lg:items-start"
@@ -56,7 +61,17 @@ const Home = () => (
             </p>
             <div className="flex flex-col sm:flex-row">
               <ul className="mt-2 flex flex-col w-full sm:w-52">
-                {RECENT_STACK.slice(0, skillSplit).map((stack: string) => (
+                {list1.map((stack: string) => (
+                  <li
+                    key={stack}
+                    className="text-emerald-800 mr-4 text-sm mb-2"
+                  >
+                    {stack}
+                  </li>
+                ))}
+              </ul>
+              <ul className="sm:mt-2 flex flex-col  sm:w-52">
+                {list2.map((stack: string) => (
                   <li
                     key={stack}
                     className="text-emerald-800 mr-4 text-sm mb-2"
@@ -66,16 +81,14 @@ const Home = () => (
                 ))}
               </ul>
               <ul className="sm:mt-2 flex flex-col">
-                {RECENT_STACK.slice(skillSplit, RECENT_STACK.length).map(
-                  (stack: string) => (
-                    <li
-                      key={stack}
-                      className="text-emerald-800 mr-4 text-sm mb-2"
-                    >
-                      {stack}
-                    </li>
-                  )
-                )}
+                {list3.map((stack: string) => (
+                  <li
+                    key={stack}
+                    className="text-emerald-800 mr-4 text-sm mb-2"
+                  >
+                    {stack}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
