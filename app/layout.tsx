@@ -7,10 +7,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
-  title:
-    "Peter Tumulty - Lead Web Developer | Senior Frontend Engineer | Software Educator",
+  title: "Peter Tumulty - Senior Frontend Engineer",
   description:
-    "Peter Tumulty, owner and lead developer at Tumulty Web Services. Web engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies.",
+    "Peter Tumulty, software engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies.",
 };
 
 export default function RootLayout({
