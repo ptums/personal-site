@@ -9,7 +9,7 @@ import previousWork from "db/previousWork.json";
 const Loading = dynamic(() => import("components/Loading"));
 
 export const metadata: Metadata = {
-  title: "Previous Work | Peter Tumulty Web Developer",
+  title: "Previous Work | Peter Tumulty Senior Software Engineer",
   description:
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };

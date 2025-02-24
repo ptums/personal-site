@@ -8,7 +8,7 @@ import { Reviews } from "types";
 const Loading = dynamic(() => import("components/Loading"));
 
 export const metadata: Metadata = {
-  title: "Reviews | Peter Tumulty Web Developer",
+  title: "Reviews | Peter Tumulty Senior Software Engineer",
   description:
     "I provide a variety of different digital services, so you can focus on your customers, clients, and buisness operations.",
 };
