@@ -12,7 +12,7 @@ const Introduction = () => {
         className={`m-0 text-emerald-500 font-bold mb-8 ${playFairDisplay.className}`}
         style={{ letterSpacing: 4, fontSize: "1.25rem" }}
       >
-        Fullstack JavaScript Engineer
+        Senior Software Engineer
       </p>
       <p className="text-base mb-6 mx-0 text-emerald-800 font-normal">
         I&#39;m a JavaScript full-stack engineer with a focus on front-end
