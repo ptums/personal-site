@@ -70,7 +70,6 @@ export const RECENT_STACK: string[] = [
   "ORMs",
   "TestCafe",
   "Playwright",
-  "Open AI",
   "AWS/GCP/Azure",
   "Ollama",
   "Hugging Face",
