@@ -47,7 +47,7 @@ export const CONTACTS: Link[] = [
   },
   {
     id: 5,
-    slug: "mailto:peter@tumulty.me",
+    slug: "mailto:peterftumulty@gmail.com",
     label: "Email",
   },
 ];
@@ -85,4 +85,4 @@ export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN: unknown | string =
 export const VIDEO_CDN_BASE_URL: string =
   "https://res.cloudinary.com/tumulty-web-services";
 
-export const EMAIL: string = "peter@tumulty.me";
+export const EMAIL: string = "peterftumulty@gmail.com";
