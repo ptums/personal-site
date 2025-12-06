@@ -32,8 +32,8 @@ export const navigation: Navigation[] = [
 export const CONTACTS: Link[] = [
   {
     id: 1,
-    slug: "https://twitter.com/ptums923",
-    label: "Twitter",
+    slug: "https://x.com/ptums923",
+    label: "X",
   },
   {
     id: 3,
@@ -72,9 +72,9 @@ export const RECENT_STACK: string[] = [
   "Playwright",
   "AWS/GCP/Azure",
   "Ollama",
-  "Hugging Face",
+  "Open Observe/Splunk",
   "LLMs",
-  "Github CoPilot",
+  "CoPilot/Cursor",
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
