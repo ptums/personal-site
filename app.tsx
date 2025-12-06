@@ -1,30 +1,39 @@
-import { Metadata } from "next";
-import { lato } from "./font";
-import Footer from "components/Footer";
-import Header from "components/Header";
+import {
+  createRouter,
+  RouterProvider,
+  createRoute,
+  createRootRoute,
+  Outlet,
+} from "@tanstack/react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
-export const metadata: Metadata = {
-  title: "Peter Tumulty - Senior Frontend Engineer",
-  description:
-    "Peter Tumulty, software engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies.",
-};
+// Import route components
+import HomePage from "./routes/index";
+import BlogPage from "./routes/blog";
+import BlogPostPage from "./routes/blog.post.$slug";
+import PreviousWorkPage from "./routes/previous-work";
+import ReviewsPage from "./routes/reviews";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={`${lato.className} m-0 p-0`}>
+// Create root route
+const rootRoute = createRootRoute({
+  component: () => (
+    <html lang="en" className="font-lato m-0 p-0">
       <head>
+        <meta charSet="utf-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="msvalidate.01" content="D568BE2730F6C27E33061E84F8DE58B1" />
+        <title>Peter Tumulty - Senior Frontend Engineer</title>
+        <meta
+          name="description"
+          content="Peter Tumulty, software engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies."
+        />
         <link rel="icon" href="/icons/favicon.ico" />
         <link
           rel="apple-touch-icon"
@@ -106,12 +115,76 @@ export default function RootLayout({
       <body>
         <div className="shadow-xl rounded-lg mx-auto sm:my-12 w-full px-8 sm:px-0 sm:max-w-screen-lg bg-white bg-opacity-75 min-h-min">
           <Header />
-          <main>{children}</main>
+          <main>
+            <Outlet />
+          </main>
           <Footer />
         </div>
-        <Analytics />
-        <SpeedInsights />
+        <TanStackRouterDevtools />
       </body>
     </html>
+  ),
+});
+
+// Create routes
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: HomePage,
+});
+
+const blogRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog",
+  component: BlogPage,
+});
+
+const blogPostRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog/post/$slug",
+  component: BlogPostPage,
+});
+
+const previousWorkRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/previous-work",
+  component: PreviousWorkPage,
+});
+
+const reviewsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/reviews",
+  component: ReviewsPage,
+});
+
+// Create the route tree
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  blogRoute,
+  blogPostRoute,
+  previousWorkRoute,
+  reviewsRoute,
+]);
+
+// Create a new router instance
+const router = createRouter({ routeTree });
+
+// Create a client
+const queryClient = new QueryClient();
+
+// Register the router instance for type safety
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }
+
+export default App;

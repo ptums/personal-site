@@ -1,6 +1,5 @@
-import { playFairDisplay } from "app/font";
 import PageAnimationLayout from "./PageAnimationLayout";
-import { Reviews } from "types";
+import { Reviews } from "../types";
 
 const SingleReview = ({
   review,
@@ -16,9 +15,7 @@ const SingleReview = ({
           {review?.statement}
         </blockquote>
       </div>
-      <p
-        className={`font-semibold text-emerald-800 mt-6 text-lg ${playFairDisplay.className}`}
-      >
+      <p className="font-semibold text-emerald-800 mt-6 text-lg font-lato">
         - {review?.name}
         <span className="ml-2 text-xs">{review?.company}</span>
       </p>

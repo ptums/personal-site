@@ -3,7 +3,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -14,19 +15,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "paths": {
+      "@/*": ["./*"],
+      "components/*": ["./components/*"],
+      "utils/*": ["./utils/*"],
+      "types/*": ["./types/*"],
+      "db/*": ["./db/*"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.tsx",
-    "/Users/petertumulty/Sites/tumulty.me-next-13/.next/types/**/*.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/**/*.tsx"],
   "exclude": ["node_modules"]
 }
