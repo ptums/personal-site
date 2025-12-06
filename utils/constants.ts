@@ -77,7 +77,9 @@ export const RECENT_STACK: string[] = [
   "CoPilot/Cursor",
 "PHP",
 "Laravel",
-"WordPress"
+"WordPressi",
+"Python",
+"Flask"
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
