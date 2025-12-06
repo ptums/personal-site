@@ -77,7 +77,7 @@ export const RECENT_STACK: string[] = [
   "CoPilot/Cursor",
 "PHP",
 "Laravel",
-"WordPressi",
+"WordPress",
 "Python",
 "Flask"
 ];
