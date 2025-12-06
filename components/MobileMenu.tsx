@@ -1,22 +1,21 @@
-"use client";
 import React, { useState, Fragment } from "react";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Transition } from "@headlessui/react";
-import { useSelectedLayoutSegments } from "next/navigation";
+import { useRouterState } from "@tanstack/react-router";
 import classNames from "classnames";
 import {
   MenuIcon as HeroMenuIcon,
   XIcon as HeroXIcon,
 } from "@heroicons/react/outline";
-import { navigation } from "utils/constants";
-import { Navigation } from "types/Navigation";
-import Link from "next/link";
-import Image from "next/image";
+import { navigation } from "../utils/constants";
+import { Navigation } from "../types/Navigation";
+import { Link } from "@tanstack/react-router";
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLayoutSegments] = useSelectedLayoutSegments();
+  const routerState = useRouterState();
+  const currentPath = routerState.location.pathname;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,7 +44,7 @@ const MobileMenu = () => {
               className="h-full bg-white shadow-lg"
             >
               <div className="p-2 border-b border-gray-200 flex justify-between items-center">
-                <Image
+                <img
                   src="/images/badge.svg"
                   alt="Tumulty Web Services"
                   width={62}
@@ -66,13 +65,12 @@ const MobileMenu = () => {
                         "block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800",
                         {
                           underline:
-                            link?.href.includes(selectedLayoutSegments) ||
-                            (link?.href === "/" &&
-                              selectedLayoutSegments === undefined),
+                            link?.href === currentPath ||
+                            (link?.href === "/" && currentPath === "/"),
                         }
                       )}
                       onClick={toggleMenu}
-                      href={link?.href}
+                      to={link?.href}
                       key={link?.name}
                     >
                       {link?.name}
@@ -86,9 +84,8 @@ const MobileMenu = () => {
                         "block px-3 py-2 text-base font-medium rounded-md hover:text-gray-900 hover:bg-gray-50 text-emerald-800",
                         {
                           underline:
-                            link?.href.includes(selectedLayoutSegments) ||
-                            (link?.href === "/" &&
-                              selectedLayoutSegments === undefined),
+                            link?.href === currentPath ||
+                            (link?.href === "/" && currentPath === "/"),
                         }
                       )}
                       onClick={toggleMenu}

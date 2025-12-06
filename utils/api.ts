@@ -1,7 +1,7 @@
 import {
   CONTENTFUL_GRAPHQL_API_URL,
   CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN,
-} from "utils/constants";
+} from "./constants";
 
 export const headers = {
   "Content-Type": "application/json",
@@ -24,9 +24,6 @@ export async function fetchAPI(query: string, { variables }: any = {}) {
         query,
         variables,
       }),
-      next: {
-        revalidate: 10,
-      },
     });
 
     const json = await res.json();

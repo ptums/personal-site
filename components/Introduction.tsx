@@ -1,6 +1,3 @@
-"use client";
-import { playFairDisplay } from "app/font";
-
 import PageTitle from "./PageTitle";
 
 const Introduction = () => {
@@ -9,7 +6,7 @@ const Introduction = () => {
       <PageTitle title="Peter F. Tumulty" />
 
       <p
-        className={`m-0 text-emerald-500 font-bold mb-8 ${playFairDisplay.className}`}
+        className="m-0 text-emerald-500 font-bold mb-8 font-lato"
         style={{ letterSpacing: 4, fontSize: "1.25rem" }}
       >
         Senior Software Engineer

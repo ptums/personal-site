@@ -1,29 +1,28 @@
-"use client";
-import { useSelectedLayoutSegments } from "next/navigation";
+import { useRouterState } from "@tanstack/react-router";
 import classNames from "classnames";
-import { EMAIL, navigation } from "utils/constants";
-import MobileMenu from "components/MobileMenu";
-import { Navigation } from "types/Navigation";
-import Link from "next/link";
-import Image from "next/image";
+import { EMAIL, navigation } from "../utils/constants";
+import MobileMenu from "./MobileMenu";
+import { Navigation } from "../types/Navigation";
+import { Link } from "@tanstack/react-router";
 
 const Header = () => {
-  const [selectedLayoutSegments] = useSelectedLayoutSegments();
+  const routerState = useRouterState();
+  const currentPath = routerState.location.pathname;
 
   return (
     <header className="w-full flex flex-row justify-between h-16 border-b">
       <div className="flex items-center">
-        <Link href="/">
-          <Image
+        <Link to="/">
+          <img
             src="/images/badge.svg"
             alt="Tumulty Web Services"
             width={62}
             height={62}
           />
         </Link>
-        <Link href={`mailto:${EMAIL}`}>
+        <a href={`mailto:${EMAIL}`}>
           <span className="text-emerald-800 hover:underline">{EMAIL}</span>
-        </Link>
+        </a>
       </div>
       <ul
         className="hidden lg:flex lg:justify-center lg:text-center lg:my-5 lg:mx-4 lg:items-center"
@@ -33,12 +32,11 @@ const Header = () => {
           <li key={link?.name} className="my-0 mx-1">
             {link?.client === true ? (
               <Link
-                href={link?.href}
+                to={link?.href}
                 className={classNames("p-2 text-emerald-800", {
                   underline:
-                    link?.href.includes(selectedLayoutSegments) ||
-                    (link?.href === "/" &&
-                      selectedLayoutSegments === undefined),
+                    link?.href === currentPath ||
+                    (link?.href === "/" && currentPath === "/"),
                 })}
               >
                 {link?.name}
@@ -47,7 +45,7 @@ const Header = () => {
               <a
                 href={link?.href}
                 className={classNames("p-2 text-emerald-800", {
-                  underline: link?.href.includes(selectedLayoutSegments),
+                  underline: link?.href === currentPath,
                 })}
               >
                 {link?.name}

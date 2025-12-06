@@ -1,5 +1,3 @@
-"use client";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Loading = () => (
@@ -19,7 +17,7 @@ const Loading = () => (
           repeatDelay: 1,
         }}
       >
-        <Image
+        <img
           src="/images/badge.svg"
           alt="Tumulty Web Services"
           width={62}
