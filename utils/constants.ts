@@ -75,6 +75,9 @@ export const RECENT_STACK: string[] = [
   "Open Observe/Splunk",
   "LLMs",
   "CoPilot/Cursor",
+"PHP",
+"Laravel",
+"WordPress"
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
