@@ -78,7 +78,8 @@ export const RECENT_STACK: string[] = [
 "Laravel",
 "WordPress",
 "Python",
-"Flask"
+"Flask",
+"Burp Suite"
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
