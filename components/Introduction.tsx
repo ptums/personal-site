@@ -12,16 +12,10 @@ const Introduction = () => {
         className={`m-0 text-emerald-500 font-bold mb-8 ${playFairDisplay.className}`}
         style={{ letterSpacing: 4, fontSize: "1.25rem" }}
       >
-        Senior Software Engineer
+        Software Engineer
       </p>
       <p className="text-base mb-6 mx-0 text-emerald-800 font-normal">
-        I&#39;m a JavaScript full-stack engineer with a focus on front-end
-        development and a strong background in backend systems. I create fast,
-        reliable, and easy-to-maintain applications, ensuring smooth user
-        experiences while optimizing performance, scalability, and automated
-        workflows for seamless deployments. My goal is to build software that
-        works smoothly for users while being efficient and scalable behind the
-        scenes.
+Building reliable software means more than just writing code—it’s about creating clean, maintainable systems that run smoothly and securely. Like a detective piecing together clues, I focus on understanding the hidden details that keep complex systems safe and dependable. I leverage automation and AI tools to speed up development and reduce errors, making processes smarter and more efficient. Behind the scenes, I manage networks and system infrastructure to ensure everything stays strong and ready to grow. Staying curious, I continuously learn new approaches to software design and monitoring to keep up with today’s fast-changing tech landscape. Ultimately, I bring a big-picture perspective that leads to smarter, more thoughtful solutions beyond just coding.
       </p>
     </>
   );
