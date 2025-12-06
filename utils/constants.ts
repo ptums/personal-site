@@ -58,8 +58,7 @@ export const RECENT_STACK: string[] = [
   "Monorepos",
   "React.js",
   "SonarCube",
-  "TypeScript",
-  "JavaScript",
+  "JS/TypeScript",
   "Next.js",
   "React Native",
   "Node.js",
@@ -79,7 +78,8 @@ export const RECENT_STACK: string[] = [
 "WordPress",
 "Python",
 "Flask",
-"Burp Suite"
+"Burp Suite",
+"SQL/NoSQL"
 ];
 
 export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
