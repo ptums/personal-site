@@ -7,13 +7,12 @@ import { Suspense } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
 RECENT_STACK.sort();
-const colOne = RECENT_STACK.length / 3 + 1;
-const colTwo = RECENT_STACK.length / 6 + 1;
 
 const chunkSize = Math.ceil(RECENT_STACK.length / 3);
 const list1 = RECENT_STACK.slice(0, chunkSize);
 const list2 = RECENT_STACK.slice(chunkSize, chunkSize * 2);
 const list3 = RECENT_STACK.slice(chunkSize * 2);
+
 const Home = () => (
   <div
     className="flex flex-col justify-center items-center lg:flex-row lg:justify-between mx-auto w-full max-w-4xl	my-2 lg:my-20 lg:items-start"
