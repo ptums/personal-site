@@ -5,14 +5,18 @@ import { useEffect, useState } from "react";
 
 import PageTitle from "./PageTitle";
 
+const words = ["Engineer", "Tinkerer", "Detective"];
+
 const Introduction = () => {
-  const [currentWord, setCurrentWord] = useState("Engineer");
+  const [currentWord, setCurrentWord] = useState(words[0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentWord((prev) =>
-        prev === "Engineer" ? "Detective" : "Engineer"
-      );
+      setCurrentWord((prev) => {
+        const currentIndex = words.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % words.length;
+        return words[nextIndex];
+      });
     }, 3500);
 
     return () => clearInterval(interval);
