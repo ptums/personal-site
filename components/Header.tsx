@@ -11,8 +11,8 @@ const Header = () => {
   const [selectedLayoutSegments] = useSelectedLayoutSegments();
 
   return (
-    <header className="w-full flex flex-row justify-between h-16 border-b">
-      <div className="flex items-center">
+    <header className="w-full flex flex-row items-center justify-between h-16 border-b">
+      <div className="flex items-center min-w-0 shrink">
         <Link href="/">
           <Image
             src="/images/badge.svg"
@@ -25,10 +25,7 @@ const Header = () => {
           <span className="text-emerald-800 hover:underline">{EMAIL}</span>
         </Link>
       </div>
-      <ul
-        className="hidden lg:flex lg:justify-center lg:text-center lg:my-5 lg:mx-4 lg:items-center"
-        style={{ minWidth: 500 }}
-      >
+      <ul className="hidden lg:flex lg:items-center lg:justify-end lg:ml-auto lg:my-0 lg:pl-4 shrink-0">
         {navigation.map((link: Navigation) => (
           <li key={link?.name} className="my-0 mx-1">
             {link?.client === true ? (

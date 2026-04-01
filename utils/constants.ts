@@ -8,8 +8,8 @@ export const navigation: Navigation[] = [
     client: true,
   },
   {
-    name: "Reviews",
-    href: "/reviews",
+    name: "Blog",
+    href: "/blog",
     client: true,
   },
   {

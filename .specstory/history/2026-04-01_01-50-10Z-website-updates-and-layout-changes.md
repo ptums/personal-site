@@ -69,7 +69,63 @@ _**Agent (composer-1.5)**_
 <details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
 
-Status: **loading**
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "previous-work|blog|technologies"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "previous-work|blog|technologies",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "./.specstory/history/2025-10-07_02-47-56Z-i-need-to-make.md"
+    },
+    {
+      "matchCount": 2,
+      "uri": "./utils/constants.ts"
+    },
+    {
+      "matchCount": 56,
+      "uri": "./.specstory/history/2025-10-06_00-38-58Z-refactor-mysite-to-use-tanstack-start.md"
+    },
+    {
+      "matchCount": 1,
+      "uri": "./app/page.tsx"
+    },
+    {
+      "matchCount": 53,
+      "uri": "./.specstory/history/2025-10-06_00-38Z-refactor-mysite-to-use-tanstack-start.md"
+    },
+    {
+      "matchCount": 6,
+      "uri": "./app/blog/post/[slug]/page.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "./utils/functions.ts"
+    },
+    {
+      "matchCount": 1,
+      "uri": "./db/reviews.json"
+    }
+  ],
+  "totalFiles": 8,
+  "totalMatches": 122
+}
+```
+Status: **completed**
 
 
 </details>
@@ -77,5 +133,847 @@ Status: **loading**
 
 <tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "RECENT_STACK"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "RECENT_STACK",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "./utils/constants.ts"
+    },
+    {
+      "matchCount": 9,
+      "uri": "./.specstory/history/2025-10-06_00-38-58Z-refactor-mysite-to-use-tanstack-start.md"
+    },
+    {
+      "matchCount": 6,
+      "uri": "./app/page.tsx"
+    },
+    {
+      "matchCount": 9,
+      "uri": "./.specstory/history/2025-10-06_00-38Z-refactor-mysite-to-use-tanstack-start.md"
+    }
+  ],
+  "totalFiles": 4,
+  "totalMatches": 25
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **6** results in **1** directory</summary>
+
+Directory: **/Users/petertumulty/Documents/Sites/personal-site/app** (6 files)
+
+| File |
+|------|
+| `layout.tsx` |
+| `page.tsx` |
+| `globals.css` |
+| `font.ts` |
+| `blog/post/[slug]/page.tsx` |
+| `blog/page.tsx` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<think><details><summary>Thought Process</summary>
+**Refactoring constants**
+
+I'm replacing RECENT_STACK constant with CORE_COMPETENCIES array structure. </details></think>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts,jsx,js,xml}",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "previous-work|/blog"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "previous-work|/blog",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": "./utils/constants.ts"
+    },
+    {
+      "matchCount": 6,
+      "uri": "./app/blog/post/[slug]/page.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "./utils/functions.ts"
+    }
+  ],
+  "totalFiles": 3,
+  "totalMatches": 9
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/components/Introduction.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<think><details><summary>Thought Process</summary>
+**Implementing nav constants**
+
+I'm replacing the Previous Work and Blog nav items with CORE_COMPETENCIES array in constants.ts. 
+
+**Updating nav constants**
+
+I'm replacing Previous Work and Blog nav items with CORE_COMPETENCIES array in constants.ts. I'm updating the nav constants to use correct spelling 'Core Competencies' and applying consistent text styles with `text-sm leading-relaxed`. I'm implementing CORE_COMPETENCIES as a readonly array of objects with title and description fields. I'm updating the navigation constants to include new technical skill categories and tools. </details></think>
+
+_**Agent (composer-1.5)**_
+
+
+Updating navigation and replacing the stack section with structured core competencies. Checking for a Snyk tool to scan the changes.
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **11** results in **1** directory</summary>
+
+Directory: **/Users/petertumulty/.cursor/projects/Users-petertumulty-Documents-Sites-personal-site/mcps/user-Snyk/tools** (11 files)
+
+| File |
+|------|
+| `snyk_version.json` |
+| `snyk_trust.json` |
+| `snyk_send_feedback.json` |
+| `snyk_sca_scan.json` |
+| `snyk_sbom_scan.json` |
+| `snyk_logout.json` |
+| `snyk_iac_scan.json` |
+| `snyk_container_scan.json` |
+| `snyk_code_scan.json` |
+| `snyk_auth.json` |
+| `snyk_aibom.json` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/.cursor/projects/Users-petertumulty-Documents-Sites-personal-site/mcps/user-Snyk/tools/snyk_code_scan.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<think><details><summary>Thought Process</summary>
+**Defining core competencies**
+
+I'm defining core competencies as a const array with as const in constants file. </details></think>
+
+_**Agent (composer-1.5)**_
+
+
+Applying changes: using "Core Competencies" (correcting the typo).
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/petertumulty/Documents/Sites/personal-site/app/page.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/petertumulty/Documents/Sites/personal-site/app/page.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/petertumulty/Documents/Sites/personal-site/app/page.tsx",
+    "/Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/petertumulty/Documents/Sites/personal-site/app/page.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="mcp-Snyk-user-Snyk-snyk_code_scan">
+<details>
+<summary>Tool use: **mcp-Snyk-user-Snyk-snyk_code_scan**</summary>
+
+
+Parameters:
+
+```json
+{
+  "tools": [
+    {
+      "name": "snyk_code_scan",
+      "parameters": "{\"path\":\"/Users/petertumulty/Documents/Sites/personal-site\"}",
+      "serverName": "Snyk"
+    }
+  ]
+}
+```
+Additional data:
+
+```json
+{
+  "status": "success"
+}
+```
+Result:
+
+```json
+{
+  "result": "{\"content\":[{\"type\":\"text\",\"text\":\"User not authenticated. Please run 'snyk_auth' first\"}]}"
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="mcp-Snyk-user-Snyk-snyk_code_scan"><details>
+<summary>Tool use: **mcp-Snyk-user-Snyk-snyk_code_scan**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/package.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/petertumulty/Documents/Sites/personal-site && yarn build</summary>
+
+```bash
+cd /Users/petertumulty/Documents/Sites/personal-site && yarn build
+```
+
+```
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 14.1.4
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:157855
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168180
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at l.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:133901)
+    at i.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:134435)
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168032
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at v.trace (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:167986)
+Error: Failed to fetch API
+    at o (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:34:2666)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async nh (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:10:8)
+    at async nm (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:21:62)
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:157855
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168180
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at l.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:133901)
+    at i.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:134435)
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168032
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at v.trace (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:167986)
+Error: Failed to fetch API
+    at o (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:34:2666)
+    at async nh (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:10:8)
+    at async nm (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:21:62)
+
+Error occurred prerendering page "/blog/post/%2Fblog%2Fpost%2Fwrap-your-component-in-battle-armor-with-react-testing-library-and-typescript". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Failed to fetch API
+    at o (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:34:2666)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async nh (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:10:8)
+    at async nm (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:21:62)
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:157855
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168180
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at l.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:133901)
+    at i.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:134435)
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168032
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at v.trace (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:167986)
+Error: Failed to fetch API
+    at o (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:34:2666)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async nh (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:10:8)
+    at async nm (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:21:62)
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:157855
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168180
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at l.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:133901)
+    at i.startActiveSpan (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:134435)
+    at /Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:168032
+    at i.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:124646)
+    at l.with (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:118846)
+    at v.trace (/Users/petertumulty/Documents/Sites/personal-site/.next/server/chunks/164.js:1:167986)
+Error: Failed to fetch API
+    at o (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:34:2666)
+    at async nh (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:10:8)
+    at async nm (/Users/petertumulty/Documents/Sites/personal-site/.next/server/app/blog/post/[slug]/page.js:21:62)
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<think><details><summary>Thought Process</summary>
+**Fixing auth middleware**
+
+I'm removing previous work and blog from navigation constants. </details></think>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{tsx,ts}",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "navigation|Previous Work|/blog"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/petertumulty/Documents/Sites/personal-site",
+  "pattern": "navigation|Previous Work|/blog",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "./utils/constants.ts"
+    },
+    {
+      "matchCount": 4,
+      "uri": "./components/MobileMenu.tsx"
+    },
+    {
+      "matchCount": 3,
+      "uri": "./components/Header.tsx"
+    },
+    {
+      "matchCount": 6,
+      "uri": "./app/blog/post/[slug]/page.tsx"
+    },
+    {
+      "matchCount": 1,
+      "uri": "./utils/functions.ts"
+    }
+  ],
+  "totalFiles": 5,
+  "totalMatches": 15
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+Here is what changed.
+
+### 1. Navigation (`utils/constants.ts`)
+**Previous Work** and **Blog** were removed from `navigation`. `Header` and `MobileMenu` both read that array, so those items disappear everywhere. `/blog` and `/previous-work` routes are unchanged; they are just not linked in the nav.
+
+### 2. Core competencies (`utils/constants.ts` + `app/page.tsx`)
+- `RECENT_STACK` was removed and replaced with **`CORE_COMPETENCIES`**: an array of `{ title, body }` using your copy (middle dots in the body strings).
+- Exported type **`CoreCompetencySection`** for that shape.
+- The home card title is **`Core Competencies`** (spelling fixed from “Compentencies”).
+- Layout: card title → top rule → stacked **`<section>`**s. Each has an **`h2`** (`font-semibold text-base text-emerald-800`) and **`p`** (`text-sm text-emerald-800 leading-relaxed`) so it matches the existing emerald palette and the “Connect with me” heading weight.
+
+### 3. Snyk
+`snyk_code_scan` could not run here because the MCP session is not authenticated (`snyk_auth` first).
+
+### Note on `yarn build`
+The build still fails during prerender of blog posts (`Failed to fetch API` / Contentful). That comes from existing blog pages, not from these edits. Typescript check for the edited files passed.
+
+---
+
+_**User**_
+
+The links are messed up. It should be Home | Blog | Resume
+
+---
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **0** results in **1** directory</summary>
+
+Directory: **/Users/petertumulty/Documents/Sites/personal-site/public/images** (0 files)
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+Updating navigation to Home → Blog → Resume and removing Reviews.
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/petertumulty/Documents/Sites/personal-site/utils/constants.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/components/Header.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/components/MobileMenu.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+
+`utils/constants.ts` is updated so **`navigation`** is only these three, in order:
+
+1. **Home** → `/`  
+2. **Blog** → `/blog`  
+3. **Resume** → `/images/PFT-Resume-2026.pdf` (unchanged; still `client: false` so it opens as a normal file link)
+
+**Reviews** is removed from the nav.
+
+Desktop header and mobile drawer both use this `navigation` array, so you get **Home → Blog → Resume** everywhere. The pipes in your message are just wording; the UI is still spaced list items. If you want literal `|` separators in the header, say so and we can add them.
+
+---
+
+_**User**_
+
+And push these links to the right
+
+---
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/components/Header.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-1.5)**_
+
+<think><details><summary>Thought Process</summary>
+**Analyzing layout**
+
+The layout uses flex justify-between with three children: left div, nav ul, and MobileMenu. I'm checking if MobileMenu hidden on lg still affects flex layout - it should collapse completely with display:none, leaving only two flex children. The third flex child should collapse completely, leaving only two flex items for justify-between alignment. The ul's justify-center behavior within the flex container isn't affecting its horizontal position, and mobile breakpoint layout needs adjustment. </details></think>
+
+_**Agent (composer-1.5)**_
+
+
+
+
+
+
+_**Agent (composer-1.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/petertumulty/Documents/Sites/personal-site/app/layout.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
