@@ -1,17 +1,15 @@
 import Image from "next/image";
 import PageAnimationLayout from "components/PageAnimationLayout";
 import { Link } from "types/Link";
-import { CONTACTS, RECENT_STACK } from "utils/constants";
+import {
+  CONTACTS,
+  CORE_COMPETENCIES,
+  type CoreCompetencySection,
+} from "utils/constants";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 const Introduction = dynamic(() => import("components/Introduction"));
 const Loading = dynamic(() => import("components/Loading"));
-RECENT_STACK.sort();
-
-const chunkSize = Math.ceil(RECENT_STACK.length / 3);
-const list1 = RECENT_STACK.slice(0, chunkSize);
-const list2 = RECENT_STACK.slice(chunkSize, chunkSize * 2);
-const list3 = RECENT_STACK.slice(chunkSize * 2);
 
 const Home = () => (
   <div
@@ -55,40 +53,20 @@ const Home = () => (
             </ul>
           </div>
           <div className="bg-white border rounded p-4 shadow-sm">
-            <p className="font-semibold text-lg text-emerald-800 mb-2">
-              A few technologies I&apos;ve been working with recently
+            <p className="font-semibold text-lg text-emerald-800 mb-5">
+              Core Competencies
             </p>
-            <div className="flex flex-col sm:flex-row">
-              <ul className="mt-2 flex flex-col w-full sm:w-52">
-                {list1.map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
-              </ul>
-              <ul className="sm:mt-2 flex flex-col  sm:w-52">
-                {list2.map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
-              </ul>
-              <ul className="sm:mt-2 flex flex-col">
-                {list3.map((stack: string) => (
-                  <li
-                    key={stack}
-                    className="text-emerald-800 mr-4 text-sm mb-2"
-                  >
-                    {stack}
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col gap-5 border-t border-emerald-100 pt-5">
+              {CORE_COMPETENCIES.map((section: CoreCompetencySection) => (
+                <section key={section.title} className="space-y-1.5">
+                  <h2 className="font-semibold text-base text-emerald-800 tracking-tight">
+                    {section.title}
+                  </h2>
+                  <p className="text-sm text-emerald-800 leading-relaxed font-normal m-0">
+                    {section.body}
+                  </p>
+                </section>
+              ))}
             </div>
           </div>
         </PageAnimationLayout>
