@@ -1,8 +1,26 @@
 # Personal Site
 
-Using the latest features of Next.js with the experiemental `app` dir and exporting the edge runtime.
+My personal site and blog, built with Astro.
 
-## TODO
+## Stack
 
-- Blog post pagess
-- Clean up mobile
+- [Astro 4](https://astro.build) — static site generator
+- React — used for two interactive islands (animated intro, mobile nav)
+- Tailwind CSS
+- Framer Motion
+- Markdown files for blog posts
+
+## Blog
+
+Posts live in `src/content/blog/` as plain `.md` files. Each filename becomes the URL slug at `/blog/post/[slug]`.
+
+Required frontmatter:
+
+```md
+---
+title: "Post Title"
+date: "YYYY-MM-DD"
+tagLine: "Short hook line"
+description: "One sentence description."
+---
+```
