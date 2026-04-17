@@ -1,48 +1,31 @@
 {
-  "name": "tumulty.me-next-13",
+  "name": "tumulty.me",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.16.2",
-    "@formspree/react": "^2.4.1",
-    "@headlessui/react": "^1.7.13",
-    "@heroicons/react": "^2.0.16",
-    "@tailwindcss/forms": "^0.5.3",
+    "@astrojs/react": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "classnames": "^2.3.2",
-    "contentful-management": "^10.30.0",
-    "dotenv": "^16.0.3",
-    "eslint-config-next": "^13.2.3",
+    "astro": "^4.0.0",
+    "@heroicons/react": "^2.0.16",
     "framer-motion": "^10.2.3",
-    "next": "^14.1.4",
-    "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.5",
-    "react-query": "^3.39.3",
-    "sharp": "^0.31.3",
-    "yarn": "^1.22.19",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/node": "18.14.6",
-    "@types/react": "18.0.28",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.13",
-    "contentful-typescript-codegen": "^3.4.0",
-    "eslint": "8.35.0",
-    "eslint-config-prettier": "^8.7.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
-    "typescript": "4.9.5"
+    "typescript": "^5.0.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prod": "next lint && next build",
-    "codegen": "contentful-typescript-codegen --output types/contentful.d.ts"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "astro dev"
   }
 }
