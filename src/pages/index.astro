@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Introduction from "../components/Introduction";
+
+const CONTACTS = [
+  { id: 1, slug: "https://x.com/ptums923", label: "X" },
+  { id: 3, slug: "https://github.com/ptums", label: "Github" },
+  { id: 4, slug: "https://www.linkedin.com/in/petertumulty", label: "LinkedIn" },
+  { id: 5, slug: "mailto:peter@tumulty.me", label: "Email" },
+];
+
+const CORE_COMPETENCIES = [
+  {
+    title: "AI & Emerging Technologies",
+    body: "Claude Code · Cursor · GitHub Copilot · Multi-Agent Orchestration · Agent Skills & MCP Integrations · Prompt & Context Engineering · Scripting & Prototyping",
+  },
+  {
+    title: "Languages & Frameworks",
+    body: "TypeScript · JavaScript · Python · PHP · Node.js · React.js · Next.js · GraphQL · Laravel",
+  },
+  {
+    title: "Databases & Storage",
+    body: "SQL · NoSQL",
+  },
+  {
+    title: "Cloud & Infrastructure",
+    body: "AWS · GCP · Azure · Docker · CI/CD · Git · GitHub Actions · GitLab CI/CD · Apache Airflow · Monorepos",
+  },
+  {
+    title: "Testing & Quality",
+    body: "Jest · React Testing Library · Playwright · TestCafe · SonarQube · OpenObserve · Splunk · E2E Testing · Automation Testing · Regression Testing",
+  },
+  {
+    title: "Practices & Tools",
+    body: "Agile/SDLC · Web Performance Optimization · JIRA · Confluence",
+  },
+  {
+    title: "Leadership & Collaboration",
+    body: "Team Leadership & Mentorship · Engineer Onboarding · Cross-functional Collaboration · Stakeholder Communication · Hiring & Interviewing · Technical Roadmap Planning",
+  },
+];
+---
+
+<Layout>
+  <div
+    class="flex flex-col justify-center items-center lg:flex-row lg:justify-between mx-auto w-full max-w-4xl my-2 lg:my-20 lg:items-start"
+    style="min-height: 80vh"
+  >
+    <div class="lg:w-2/5 my-4 lg:mb-0 lg:mt-1 fade-in-up">
+      <img
+        src="/images/peter-2023.webp"
+        alt="Peter Tumulty"
+        width="512"
+        height="512"
+        class="shadow-lg rounded-sm"
+      />
+    </div>
+
+    <div class="sm:ml-8 sm:w-3/5">
+      <div class="fade-in-up-delay-1">
+        <Introduction client:load />
+      </div>
+
+      <div class="fade-in-up-delay-2">
+        <div class="bg-white border rounded p-4 mb-8 shadow-sm">
+          <p class="font-semibold text-lg text-emerald-800">Connect with me</p>
+          <ul class="mt-2 flex flex-col sm:flex-row">
+            {CONTACTS.map((contact) => (
+              <li key={contact.id}>
+                <a
+                  class="text-emerald-800 mr-4 text-sm underline my-2 block sm:inline sm:my-0"
+                  href={contact.slug}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {contact.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white border rounded p-4 shadow-sm">
+          <p class="font-semibold text-lg text-emerald-800 mb-5">Core Competencies</p>
+          <div class="flex flex-col gap-5 border-t border-emerald-100 pt-5">
+            {CORE_COMPETENCIES.map((section) => (
+              <section class="space-y-1.5">
+                <h2 class="font-semibold text-base text-emerald-800 tracking-tight">
+                  {section.title}
+                </h2>
+                <p class="text-sm text-emerald-800 leading-relaxed font-normal m-0">
+                  {section.body}
+                </p>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
