@@ -1,5 +1,5 @@
-import { Link } from "types/Link";
-import { Navigation } from "types/Navigation";
+export type Navigation = { name: string; href: string; client: boolean };
+export type Link = { id: number; slug: string; label: string };
 
 export const navigation: Navigation[] = [
   {
@@ -82,11 +82,6 @@ export const CORE_COMPETENCIES: CoreCompetencySection[] = [
       "Team Leadership & Mentorship · Engineer Onboarding · Cross-functional Collaboration · Stakeholder Communication · Hiring & Interviewing · Technical Roadmap Planning",
   },
 ];
-
-export const CONTENTFUL_GRAPHQL_API_URL: unknown | string =
-  process.env.CONTENTFUL_GRAPHQL_API_URL;
-export const CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN: unknown | string =
-  process.env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN;
 
 export const VIDEO_CDN_BASE_URL: string =
   "https://res.cloudinary.com/tumulty-web-services";
