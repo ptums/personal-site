@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  tagLine: string;
+  description: string;
+  slug: string;
+  index: number;
+}
+
+const { title, tagLine, description, slug, index } = Astro.props;
+const delay = index * 0.15;
+---
+
+<a
+  href={`/blog/post/${slug}`}
+  class="bg-white rounded shadow mb-6 p-4 cursor-pointer h-52 flex flex-col justify-center text-left fade-in-up"
+  style={`animation-delay: ${delay}s`}
+>
+  <p class="text-xl text-emerald-600 font-semibold mb-1">{title}</p>
+  <p class="text-sm text-gray-400 font-semibold mb-4 playfair-display">{tagLine}</p>
+  <p class="text-sm text-emerald-800 font-normal playfair-display">{description}</p>
+</a>
