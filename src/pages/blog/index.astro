@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PostCard from "../../components/PostCard.astro";
+
+const posts = await getCollection("blog");
+const sorted = posts.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+---
+
+<Layout
+  title="Blog | Peter Tumulty Senior Software Engineer"
+  description="Technical writing on web development, JavaScript, testing, and software engineering best practices."
+>
+  <div>
+    <div class="text-center py-6">
+      <h1
+        style="letter-spacing: 8px"
+        class="text-4xl text-emerald-800 tracking-wider mb-1 font-bold"
+      >
+        Blog
+      </h1>
+    </div>
+    <div class="flex flex-col mx-auto w-full justify-center max-w-screen-md">
+      {sorted.map((post, index) => (
+        <PostCard
+          title={post.data.title}
+          tagLine={post.data.tagLine}
+          description={post.data.description}
+          slug={post.slug}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>
