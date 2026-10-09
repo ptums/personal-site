@@ -4,7 +4,11 @@ import Nav from "../components/Nav.astro";
 
 const CONTACTS = [
   { id: 1, slug: "https://github.com/ptums", label: "Github" },
-  { id: 2, slug: "https://www.linkedin.com/in/petertumulty", label: "LinkedIn" },
+  {
+    id: 2,
+    slug: "https://www.linkedin.com/in/petertumulty",
+    label: "LinkedIn",
+  },
   { id: 3, slug: "mailto:peter@tumulty.me", label: "Email" },
 ];
 
@@ -71,7 +75,7 @@ const PROJECTS: Project[] = [
     description: [
       {
         label: "Task",
-        text: "A law firm's WordPress site was bloated, its home page graded D on GTmetrix, and hosting was expensive.",
+        text: "A law firm's WordPress site was bloated, its home page graded D on GTmetrix, and it went down periodically because it kept maxing out its hosting limits. Hosting was expensive too.",
       },
       {
         label: "Execution",
@@ -79,7 +83,7 @@ const PROJECTS: Project[] = [
       },
       {
         label: "Outcome",
-        text: "Home page GTmetrix grade went from **D to A**. Hosting costs dropped about **90%**, which paid for new marketing integrations.",
+        text: "Home page GTmetrix grade went from **D to A**. Uptime reached **99%**. Hosting costs dropped about **90%**, which paid for new marketing integrations.",
       },
     ],
     tools: [
@@ -123,7 +127,9 @@ const PROJECTS: Project[] = [
     class="flex flex-col items-start lg:flex-row w-full pl-3 pr-4 mt-2 mb-8 gap-8 lg:gap-0 lg:gap-x-[5%]"
     style="min-height: 80vh"
   >
-    <div class="w-full max-w-xs lg:w-[30%] lg:max-w-none lg:shrink-0 fade-in-up">
+    <div
+      class="w-full max-w-xs lg:w-[30%] lg:max-w-none lg:shrink-0 fade-in-up"
+    >
       <img
         src="/images/peter-2023.webp"
         alt="Peter Tumulty"
@@ -133,8 +139,12 @@ const PROJECTS: Project[] = [
       />
     </div>
 
-    <div class="w-full lg:w-[65%] bg-white border rounded-lg p-6 shadow-sm fade-in-up-delay-1">
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-1">
+    <div
+      class="w-full lg:w-[65%] bg-white border rounded-lg p-6 shadow-sm fade-in-up-delay-1"
+    >
+      <div
+        class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-1"
+      >
         <h1
           style="letter-spacing: 8px"
           class="text-4xl text-emerald-800 tracking-wider font-bold"
@@ -153,18 +163,20 @@ const PROJECTS: Project[] = [
       <div class="mb-8">
         <p class="font-semibold text-lg text-emerald-800">Connect with me</p>
         <ul class="mt-2 flex flex-row flex-wrap">
-          {CONTACTS.map((contact) => (
-            <li>
-              <a
-                class="text-emerald-800 mr-4 text-sm underline"
-                href={contact.slug}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {contact.label}
-              </a>
-            </li>
-          ))}
+          {
+            CONTACTS.map((contact) => (
+              <li>
+                <a
+                  class="text-emerald-800 mr-4 text-sm underline"
+                  href={contact.slug}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {contact.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
@@ -187,58 +199,74 @@ const PROJECTS: Project[] = [
           class="max-h-[70vh] lg:max-h-[640px] overflow-y-auto overscroll-contain px-1 pb-2 -mx-1"
         >
           <ol class="flex flex-col">
-            {PROJECTS.map((project, i) => (
-              <li
-                class={`flex flex-col items-center opacity-0 ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
-                data-project
-              >
-                {i > 0 && <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />}
-                <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
-                  <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
-                    {project.title}
-                  </h2>
-                  {typeof project.description === "string" ? (
-                    <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
-                      {project.description}
-                    </p>
-                  ) : (
-                    <div class="flex flex-col gap-1.5 mb-3">
-                      {project.description.map((section) => (
-                        <p class="text-sm text-emerald-800 leading-relaxed font-normal">
-                          <span class="font-semibold">{section.label}:</span>{" "}
-                          {section.text.split(/\*\*(.+?)\*\*/).map((part, j) =>
-                            j % 2 === 1 ? <strong>{part}</strong> : part,
-                          )}
-                        </p>
-                      ))}
-                    </div>
+            {
+              PROJECTS.map((project, i) => (
+                <li
+                  class={`flex flex-col items-center opacity-0 ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
+                  data-project
+                >
+                  {i > 0 && (
+                    <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />
                   )}
-                  <p class="text-sm text-emerald-500 font-semibold">
-                    {project.tools.join(" · ")}
-                    {project.links.length > 0 && (
-                      <>
-                        <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>
-                        {project.links.map((link) => (
-                          <a
-                            href={link.href}
-                            class="text-emerald-800 underline mr-3"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {link.label}
-                          </a>
+                  <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
+                    <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
+                      {project.title}
+                    </h2>
+                    {typeof project.description === "string" ? (
+                      <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
+                        {project.description}
+                      </p>
+                    ) : (
+                      <div class="flex flex-col gap-1.5 mb-3">
+                        {project.description.map((section) => (
+                          <p class="text-sm text-emerald-800 leading-relaxed font-normal">
+                            <span class="font-semibold">{section.label}:</span>{" "}
+                            {section.text
+                              .split(/\*\*(.+?)\*\*/)
+                              .map((part, j) =>
+                                j % 2 === 1 ? <strong>{part}</strong> : part,
+                              )}
+                          </p>
                         ))}
-                      </>
+                      </div>
                     )}
-                  </p>
-                </article>
-              </li>
-            ))}
+                    <p class="text-sm text-emerald-500 font-semibold">
+                      {project.tools.join(" · ")}
+                      {project.links.length > 0 && (
+                        <>
+                          <span
+                            class="mx-2 text-emerald-300"
+                            aria-hidden="true"
+                          >
+                            |
+                          </span>
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              class="text-emerald-800 underline mr-3"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {link.label}
+                            </a>
+                          ))}
+                        </>
+                      )}
+                    </p>
+                  </article>
+                </li>
+              ))
+            }
           </ol>
           <div data-project-sentinel class="h-px" aria-hidden="true"></div>
         </div>
         <noscript>
-          <style>[data-project] { display: flex !important; opacity: 1 !important; }</style>
+          <style>
+            [data-project] {
+              display: flex !important;
+              opacity: 1 !important;
+            }
+          </style>
         </noscript>
       </div>
     </div>
@@ -249,7 +277,9 @@ const PROJECTS: Project[] = [
   const BATCH_SIZE = 3;
   const scroller = document.querySelector("[data-project-scroller]");
   const sentinel = document.querySelector("[data-project-sentinel]");
-  const projects = Array.from(document.querySelectorAll<HTMLElement>("[data-project]"));
+  const projects = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-project]"),
+  );
   const queue = projects.filter((item) => item.classList.contains("hidden"));
 
   function show(item: HTMLElement, delay = 0) {
@@ -283,7 +313,9 @@ const PROJECTS: Project[] = [
       const loadObserver = new IntersectionObserver(
         (entries) => {
           if (!entries[0].isIntersecting) return;
-          queue.splice(0, BATCH_SIZE).forEach((item) => item.classList.remove("hidden"));
+          queue
+            .splice(0, BATCH_SIZE)
+            .forEach((item) => item.classList.remove("hidden"));
           loadObserver.unobserve(sentinel);
           if (queue.length === 0) {
             loadObserver.disconnect();
