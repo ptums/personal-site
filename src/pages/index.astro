@@ -156,7 +156,7 @@ const PROJECTS = [
         <ol class="flex flex-col">
           {PROJECTS.map((project, i) => (
             <li
-              class={`flex flex-col items-center ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
+              class={`flex flex-col items-center opacity-0 ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
               data-project
             >
               {i > 0 && <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />}
@@ -191,7 +191,7 @@ const PROJECTS = [
         </ol>
         <div data-project-sentinel class="h-px" aria-hidden="true"></div>
         <noscript>
-          <style>[data-project].hidden { display: flex; }</style>
+          <style>[data-project] { display: flex !important; opacity: 1 !important; }</style>
         </noscript>
       </div>
     </div>
@@ -201,38 +201,53 @@ const PROJECTS = [
 <script>
   const BATCH_SIZE = 3;
   const sentinel = document.querySelector("[data-project-sentinel]");
-  const queue = Array.from(
-    document.querySelectorAll<HTMLElement>("[data-project].hidden"),
-  );
+  const projects = Array.from(document.querySelectorAll<HTMLElement>("[data-project]"));
+  const queue = projects.filter((item) => item.classList.contains("hidden"));
 
-  function revealBatch() {
-    queue.splice(0, BATCH_SIZE).forEach((item, i) => {
-      item.style.animationDelay = `${i * 0.15}s`;
-      item.classList.remove("hidden");
-      item.classList.add("fade-in-up");
-    });
+  function show(item: HTMLElement, delay = 0) {
+    item.style.animationDelay = `${delay}s`;
+    item.classList.remove("opacity-0");
+    item.classList.add("fade-in-up");
   }
 
-  if (sentinel && queue.length > 0) {
-    if (!("IntersectionObserver" in window)) {
-      while (queue.length > 0) revealBatch();
-    } else {
-      const observer = new IntersectionObserver(
+  if (!("IntersectionObserver" in window)) {
+    projects.forEach((item) => {
+      item.classList.remove("hidden");
+      show(item);
+    });
+  } else {
+    // Fade each card in as it scrolls into view
+    const fadeObserver = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, i) => {
+            show(entry.target as HTMLElement, i * 0.15);
+            fadeObserver.unobserve(entry.target);
+          });
+      },
+      { threshold: 0.15 },
+    );
+    projects.forEach((item) => fadeObserver.observe(item));
+
+    // Unhide the next batch of cards when the end of the list nears the viewport
+    if (sentinel && queue.length > 0) {
+      const loadObserver = new IntersectionObserver(
         (entries) => {
           if (!entries[0].isIntersecting) return;
-          revealBatch();
-          observer.unobserve(sentinel);
+          queue.splice(0, BATCH_SIZE).forEach((item) => item.classList.remove("hidden"));
+          loadObserver.unobserve(sentinel);
           if (queue.length === 0) {
-            observer.disconnect();
+            loadObserver.disconnect();
             sentinel.remove();
           } else {
             // Re-observing fires again immediately if the sentinel is still on screen
-            observer.observe(sentinel);
+            loadObserver.observe(sentinel);
           }
         },
         { rootMargin: "0px 0px 100px 0px" },
       );
-      observer.observe(sentinel);
+      loadObserver.observe(sentinel);
     }
   }
 </script>
