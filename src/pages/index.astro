@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
   {
     title: "Law Firm Web Platform: Monolith to Headless",
     description:
-      "Law firm's WordPress site was bloated, its home page **graded D on GTmetrix**, and it kept **crashing due to hosting limits.** I split the front end from the content server, put each on its own host, and set up monitoring and outage alerts on both. I also automated deploys, abd wrote a microservice for complex content delivery. With this new flexibility I was able to add  email marketing and a CRM integrations, which grew a new mailing list to 40+ subscribers in the first year. The home page grade went from **D to A**, uptime reached **99%**, and hosting costs fell about **90%**, which funded the new marketing integrations.",
+      "Law firm's WordPress site was bloated, its home page **graded D on GTmetrix**, and it kept **crashing due to hosting limits.** I split the front end from the content server, put each on its own host, and set up monitoring and outage alerts on both. I also automated deploys, abd wrote a microservice for complex content delivery. With this new flexibility I was able to add  email marketing and a CRM integrations, which grew a new mailing list to 40+ subscribers in the first year. The home page grade went from **D to A**, uptime reached **99%**, and **hosting costs fell about 90%**, which funded the new marketing integrations.",
     tools: [
       "Digital Ocean",
       "Next.js",
@@ -93,9 +93,18 @@ const PROJECTS: Project[] = [
   {
     title: "Asbury Park High School Hall of Fame: Redesign & Migration",
     description:
-      "High school Hall of Fame site wasn't mobile friendly, was hard to read and navigate, ran on plain HTTP, and was full of outdated information. Every new member bio or event photo meant hand-coding a new HTML page. I scoped it, set a three-phase plan and timeline, and rebuilt it: a mobile-responsive site with a member directory filterable by year, a donation page, an event page with printable invitation and ad forms, and past ceremony photo pages. It now runs on secure, database-backed pages with accessibility and basic SEO covered. Updates no longer need a hand-coded page: they email me content and images, I add them, and hosting dropped from paid to **free**.",
-    tools: ["Next.js", "MongoDB", "ADA", "SEO"],
-    links: [],
+      "A high school Hall of Fame site had to be hand-coded page by page: adding one inductee meant editing up to **107 files**, because the navigation was copied into every page. It also ran on plain HTTP, had no mobile layout, and still showed a four-year-old announcement. I scoped it, planned three phases, and rebuilt it with a member directory filterable by year, ceremony photo galleries, event and donation pages, and contact and nomination forms. All content lives in one small data file that generates every page, so there is no database to host or maintain. Adding an inductee now takes **1 file**, accessibility rose from **53 to 96**, SEO from **82 to 100**, requires no hosting costs, and the site runs on HTTPS.",
+    tools: ["Next.js", "Cloudinary", "Vercel", "Accessibility", "SEO"],
+    links: [
+      {
+        label: "Baseline",
+        href: "https://github.com/aphshf/aphshalloffame.com/blob/main/BASELINE.md",
+      },
+      {
+        label: "Results",
+        href: "https://github.com/aphshf/aphshalloffame.com/blob/main/RESULTS.md",
+      },
+    ],
   },
   {
     title: "Unleashed Potential: Headless CMS Rebuild",
