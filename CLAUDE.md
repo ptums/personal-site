@@ -27,7 +27,7 @@ No test suite, no lint script configured.
 
 **Navigation**: `src/components/Nav.astro` renders the "Words | Resume" links. On `/` it sits inside the main content card; on other pages `Header.astro` shows it on the right.
 
-Everything is static Astro — no client JS.
+Everything is static Astro. The only client JS is an inline `<script>` in `index.astro` that reveals project cards in batches of 3 (with a fade-in) via IntersectionObserver as the user scrolls; all cards are server-rendered, with a `<noscript>` fallback that shows them all.
 
 **Styles**:
 - `src/styles/global.css` — Tailwind base + custom `.post-content` styles for rendered markdown, `.playfair-display` font class, and CSS `fade-in-up` animation classes.

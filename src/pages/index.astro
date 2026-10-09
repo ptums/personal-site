@@ -8,6 +8,9 @@ const CONTACTS = [
   { id: 3, slug: "mailto:peter@tumulty.me", label: "Email" },
 ];
 
+// Projects shown on first load; the rest reveal in batches as the user scrolls
+const INITIAL_PROJECTS = 3;
+
 // TODO: replace placeholder projects with real content
 const PROJECTS = [
   {
@@ -152,7 +155,10 @@ const PROJECTS = [
         <p class="font-semibold text-lg text-emerald-800 mb-4">Projects</p>
         <ol class="flex flex-col">
           {PROJECTS.map((project, i) => (
-            <li class="flex flex-col items-center">
+            <li
+              class={`flex flex-col items-center ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
+              data-project
+            >
               {i > 0 && <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />}
               <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
                 <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
@@ -183,7 +189,50 @@ const PROJECTS = [
             </li>
           ))}
         </ol>
+        <div data-project-sentinel class="h-px" aria-hidden="true"></div>
+        <noscript>
+          <style>[data-project].hidden { display: flex; }</style>
+        </noscript>
       </div>
     </div>
   </div>
 </Layout>
+
+<script>
+  const BATCH_SIZE = 3;
+  const sentinel = document.querySelector("[data-project-sentinel]");
+  const queue = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-project].hidden"),
+  );
+
+  function revealBatch() {
+    queue.splice(0, BATCH_SIZE).forEach((item, i) => {
+      item.style.animationDelay = `${i * 0.15}s`;
+      item.classList.remove("hidden");
+      item.classList.add("fade-in-up");
+    });
+  }
+
+  if (sentinel && queue.length > 0) {
+    if (!("IntersectionObserver" in window)) {
+      while (queue.length > 0) revealBatch();
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0].isIntersecting) return;
+          revealBatch();
+          observer.unobserve(sentinel);
+          if (queue.length === 0) {
+            observer.disconnect();
+            sentinel.remove();
+          } else {
+            // Re-observing fires again immediately if the sentinel is still on screen
+            observer.observe(sentinel);
+          }
+        },
+        { rootMargin: "0px 0px 100px 0px" },
+      );
+      observer.observe(sentinel);
+    }
+  }
+</script>
