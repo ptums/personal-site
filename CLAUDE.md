@@ -14,7 +14,7 @@ No test suite, no lint script configured.
 
 ## Architecture
 
-**Stack**: Astro 4, React (islands only), TypeScript, Tailwind CSS. Fully static output — no server runtime needed.
+**Stack**: Astro 4, TypeScript, Tailwind CSS. Fully static output — no server runtime needed.
 
 **Content**: Blog posts are plain markdown files in `src/content/blog/`. No CMS or API keys required. Adding a new post = adding a `.md` file with the required frontmatter (`title`, `date`, `tagLine`, `description`). The filename becomes the URL slug.
 
@@ -25,11 +25,9 @@ No test suite, no lint script configured.
 - `/blog` → `src/pages/blog/index.astro` (lists all posts, sorted by date)
 - `/blog/post/[slug]` → `src/pages/blog/post/[slug].astro` (renders markdown via `entry.render()`)
 
-**React islands**: Only two components use React (for interactivity):
-- `src/components/Introduction.tsx` — animated rotating word ("Engineer / Tinkerer / Detective") using Framer Motion. Mounted with `client:load`.
-- `src/components/MobileMenu.tsx` — slide-in mobile nav using Framer Motion. Mounted with `client:load` inside `Header.astro`.
+**Navigation**: `src/components/Nav.astro` renders the "Words | Resume" links. On `/` it sits inside the main content card; on other pages `Header.astro` shows it on the right.
 
-Everything else is static Astro — no client JS.
+Everything is static Astro — no client JS.
 
 **Styles**:
 - `src/styles/global.css` — Tailwind base + custom `.post-content` styles for rendered markdown, `.playfair-display` font class, and CSS `fade-in-up` animation classes.

@@ -1,5 +1,5 @@
 ---
-import MobileMenu from "./MobileMenu";
+import Nav from "./Nav.astro";
 
 interface Props {
   pathname: string;
@@ -8,20 +8,10 @@ interface Props {
 const { pathname } = Astro.props;
 
 const EMAIL = "peter@tumulty.me";
-
-const navigation = [
-  { name: "Home", href: "/", external: false },
-  { name: "Blog", href: "/blog", external: false },
-  { name: "Resume", href: "/images/PFT-Resume-2026.pdf", external: true },
-];
-
-function isActive(href: string): boolean {
-  if (href === "/") return pathname === "/";
-  return pathname.startsWith(href);
-}
+const isHome = pathname === "/";
 ---
 
-<header class="w-full flex flex-row items-center justify-between h-16 border-b">
+<header class="w-full flex flex-row items-center justify-between h-16 pr-4">
   <div class="flex items-center min-w-0 shrink">
     <a href="/">
       <img
@@ -35,26 +25,5 @@ function isActive(href: string): boolean {
       <span class="text-emerald-800 hover:underline">{EMAIL}</span>
     </a>
   </div>
-  <ul class="hidden lg:flex lg:items-center lg:justify-end lg:ml-auto lg:my-0 lg:pl-4 shrink-0">
-    {navigation.map((link) => (
-      <li class="my-0 mx-1">
-        {link.external ? (
-          <a
-            href={link.href}
-            class={`p-2 text-emerald-800 ${isActive(link.href) ? "underline" : ""}`}
-          >
-            {link.name}
-          </a>
-        ) : (
-          <a
-            href={link.href}
-            class={`p-2 text-emerald-800 ${isActive(link.href) ? "underline" : ""}`}
-          >
-            {link.name}
-          </a>
-        )}
-      </li>
-    ))}
-  </ul>
-  <MobileMenu pathname={pathname} client:load />
+  {!isHome && <Nav pathname={pathname} />}
 </header>

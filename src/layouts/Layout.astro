@@ -6,11 +6,13 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  transparent?: boolean;
 }
 
 const {
   title = "Peter Tumulty | Software Engineer",
   description = "Peter Tumulty, software engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies.",
+  transparent = false,
 } = Astro.props;
 ---
 
@@ -49,14 +51,14 @@ const {
     <link rel="manifest" href="/icons/manifest.json" />
 
   </head>
-  <body>
-    <div class="shadow-xl rounded-lg mx-auto sm:my-12 w-full px-8 sm:px-0 sm:max-w-screen-lg bg-white bg-opacity-75 min-h-min">
+  <body class="min-h-screen flex flex-col">
+    <div class={`rounded-lg mx-auto sm:my-12 w-full px-8 sm:px-0 sm:max-w-screen-xl min-h-min ${transparent ? "" : "shadow-xl bg-white bg-opacity-75"}`}>
       <Header pathname={Astro.url.pathname} />
       <main>
         <slot />
       </main>
-      <Footer />
     </div>
+    <Footer />
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
