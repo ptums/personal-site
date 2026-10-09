@@ -153,43 +153,48 @@ const PROJECTS = [
 
       <div class="fade-in-up-delay-2">
         <p class="font-semibold text-lg text-emerald-800 mb-4">Projects</p>
-        <ol class="flex flex-col">
-          {PROJECTS.map((project, i) => (
-            <li
-              class={`flex flex-col items-center opacity-0 ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
-              data-project
-            >
-              {i > 0 && <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />}
-              <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
-                <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
-                  {project.title}
-                </h2>
-                <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
-                  {project.description}
-                </p>
-                <p class="text-sm text-emerald-500 font-semibold">
-                  {project.tools.join(" · ")}
-                  {project.links.length > 0 && (
-                    <>
-                      <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>
-                      {project.links.map((link) => (
-                        <a
-                          href={link.href}
-                          class="text-emerald-800 underline mr-3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </>
-                  )}
-                </p>
-              </article>
-            </li>
-          ))}
-        </ol>
-        <div data-project-sentinel class="h-px" aria-hidden="true"></div>
+        <div
+          data-project-scroller
+          class="max-h-[70vh] lg:max-h-[640px] overflow-y-auto overscroll-contain px-1 pb-2 -mx-1"
+        >
+          <ol class="flex flex-col">
+            {PROJECTS.map((project, i) => (
+              <li
+                class={`flex flex-col items-center opacity-0 ${i >= INITIAL_PROJECTS ? "hidden" : ""}`}
+                data-project
+              >
+                {i > 0 && <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />}
+                <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
+                  <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
+                    {project.title}
+                  </h2>
+                  <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
+                    {project.description}
+                  </p>
+                  <p class="text-sm text-emerald-500 font-semibold">
+                    {project.tools.join(" · ")}
+                    {project.links.length > 0 && (
+                      <>
+                        <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>
+                        {project.links.map((link) => (
+                          <a
+                            href={link.href}
+                            class="text-emerald-800 underline mr-3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </>
+                    )}
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ol>
+          <div data-project-sentinel class="h-px" aria-hidden="true"></div>
+        </div>
         <noscript>
           <style>[data-project] { display: flex !important; opacity: 1 !important; }</style>
         </noscript>
@@ -200,6 +205,7 @@ const PROJECTS = [
 
 <script>
   const BATCH_SIZE = 3;
+  const scroller = document.querySelector("[data-project-scroller]");
   const sentinel = document.querySelector("[data-project-sentinel]");
   const projects = Array.from(document.querySelectorAll<HTMLElement>("[data-project]"));
   const queue = projects.filter((item) => item.classList.contains("hidden"));
@@ -226,7 +232,7 @@ const PROJECTS = [
             fadeObserver.unobserve(entry.target);
           });
       },
-      { threshold: 0.15 },
+      { root: scroller, threshold: 0.15 },
     );
     projects.forEach((item) => fadeObserver.observe(item));
 
@@ -245,7 +251,7 @@ const PROJECTS = [
             loadObserver.observe(sentinel);
           }
         },
-        { rootMargin: "0px 0px 100px 0px" },
+        { root: scroller, rootMargin: "0px 0px 100px 0px" },
       );
       loadObserver.observe(sentinel);
     }
