@@ -18,41 +18,82 @@ const INITIAL_PROJECTS = 3;
 // A description is either one paragraph or labelled sections; **text** renders bold
 type Project = {
   title: string;
+  // Optional tag shown at the right of the title row, e.g. "Personal"
+  label?: string;
   description: string | { label: string; text: string }[];
   tools: string[];
   links: { label: string; href: string }[];
 };
 
-// TODO: replace placeholder projects with real content
+// Split text on **markers**; odd-indexed parts are rendered as <strong>
+const boldParts = (text: string) => text.split(/\*\*(.+?)\*\*/);
+
 const PROJECTS: Project[] = [
   {
     title: "Legacy App Migration to a New Stack, Built with AI",
+    label: "Personal",
     description:
-      "Migrated a legacy photo-gallery app to Angular, ASP.NET Core, Azure Cosmos DB, and Blob Storage, a stack I hadn't used before, with Claude as a working partner. I made the design decisions and verified every claim myself. Response compression alone cut CSS from 232 KB to 49 KB over the wire, and a fresh clone runs in 16 seconds with 13 commands. The README states what was and wasn't measured.",
-    tools: ["Angular", "ASP.NET Core", "Azure Cosmos DB"],
+      "A legacy photo-gallery app had **3 high-severity vulnerabilities** in its upload dependencies, **9 packages it used but never declared**, and failed to start on a clean install. I rebuilt it on a modern stack I had never used, with Claude as a partner, but made every design decision myself. I checked each result by hand, threw out two bad performance measurements, and confirmed deletes remove both the record and the stored file. Dependency checks now find **0** vulnerabilities, a fresh clone runs locally in **16 seconds** with **13 commands**, and compression cut CSS from **232 KB to 49 KB**.",
+    tools: [
+      "Angular",
+      "ASP.NET Core",
+      "Azure Cosmos DB",
+      "Blob Storage",
+      "Claude",
+    ],
     links: [
-      { label: "Live", href: "#" },
-      { label: "Source", href: "#" },
+      {
+        label: "Source",
+        href: "https://github.com/ptums/rachels-favorite-pets",
+      },
+      {
+        label: "Baseline",
+        href: "https://github.com/ptums/rachels-favorite-pets/blob/master/BASELINE.md",
+      },
     ],
   },
   {
     title: "Agentic Removal of a Deprecated Feature",
     description:
-      "Removed a deprecated, still-live feature from a production codebase using a multi-pass agentic workflow: map dependencies, verify, escalate scope questions, then execute. The initial scope undercounted the real dependency graph, and the workflow surfaced multiple corrections instead of guessing. Result: 300+ files removed in about half a day across a stack of CI-passing pull requests.",
+      "A deprecated feature was still live in a production codebase that was **slowing teams down** with routine maintenance. I ran a multi-pass AI workflow: map every dependency, verify, send each scope question to a person, then delete. It caught multiple scope corrections the first estimate missed, and it kept files that a plain pattern-match would have wrongly removed. **300+ files** came out in **about half a day**, in a stack of pull requests that all passed CI.",
     tools: ["Agentic Workflows", "CI/CD", "Code Migration"],
     links: [],
   },
   {
     title: "AI Agent Skill for Design-System Migration",
     description:
-      "Built a custom AI agent skill, using spec-driven development, to run a design-system migration end to end per library: branch creation, automated code migration, generated verification guides, and quality gates. Per-library effort dropped from hours of manual work to near-zero, covering two dozen libraries in about three weeks.",
-    tools: ["Spec-Driven Development", "AI Agent Skills", "Code Migration"],
+      "Team owned **two dozen libraries** with **thousands of lines of code** that had to move to the latest UI design system before the end of the quarter. We were given an AI skill that updated one library at a time. I built a wrapper skill around it that put every library on its own branch, generated a verification guide for each one, and added quality gates before review. I then handed the complex skill to an agentic workflow to run through the whole list. Per-library effort dropped from **hours to near-zero**, and the full set was done in **about three weeks**.",
+    tools: ["Agentic Workflows", "AI Agent Skills", "Code Migration"],
     links: [],
+  },
+  {
+    title: "Multi-Ticket Lint Cleanup Pipeline",
+    description:
+      "Ran a multi-phase agentic workflow (spec, plan, implement, test, review, PR) to resolve dozens of linting violations across roughly ten interconnected projects ahead of a strict compliance deadline. Parallel implementation agents handled independently scoped work items, with independent verification so a shared-state regression never reached review. Result: a handful of clean, CI-passing PRs opened in about a day and merged the next, with every caveat disclosed.",
+    tools: ["Agentic Workflows", "Parallel Agents", "CI/CD"],
+    links: [],
+  },
+  {
+    title: "Law Firm Web Platform: Monolith to Headless",
+    description:
+      "Law firm's WordPress site was bloated, its home page **graded D on GTmetrix**, and it kept **crashing due to hosting limits.** I split the front end from the content server, put each on its own host, and set up monitoring and outage alerts on both. I also automated deploys, abd wrote a microservice for complex content delivery. With this new flexibility I was able to add  email marketing and a CRM integrations, which grew a new mailing list to 40+ subscribers in the first year. The home page grade went from **D to A**, uptime reached **99%**, and hosting costs fell about **90%**, which funded the new marketing integrations.",
+    tools: [
+      "Digital Ocean",
+      "Next.js",
+      "Node.js",
+      "Vercel",
+      "WordPress GraphQL",
+      "MySQL",
+      "GitHub Actions",
+      "Mailchimp",
+      "HubSpot",
+    ],
+    links: [{ label: "Site", href: "https://scarincihollenbeck.com" }],
   },
   {
     title: "Asbury Park High School Hall of Fame: Redesign & Migration",
     description:
-      "Defined the scope, three-phase delivery plan, and timeline for a full redesign, then built it: a mobile-responsive site with a member directory filterable by year, a donation page, an event page with printable invitation and advertisement forms, and past ceremony photo pages. Moved it from static HTML/CSS/JS to Next.js and MongoDB on new hosting with SSL, with ADA compliance and basic SEO covered.",
+      "High school Hall of Fame site wasn't mobile friendly, was hard to read and navigate, ran on plain HTTP, and was full of outdated information. Every new member bio or event photo meant hand-coding a new HTML page. I scoped it, set a three-phase plan and timeline, and rebuilt it: a mobile-responsive site with a member directory filterable by year, a donation page, an event page with printable invitation and ad forms, and past ceremony photo pages. It now runs on secure, database-backed pages with accessibility and basic SEO covered. Updates no longer need a hand-coded page: they email me content and images, I add them, and hosting dropped from paid to **free**.",
     tools: ["Next.js", "MongoDB", "ADA", "SEO"],
     links: [],
   },
@@ -68,34 +109,6 @@ const PROJECTS: Project[] = [
     description:
       "Designed the backend solution to a shipping label problem for a Shopify store and owned it as lead engineer, tracking work in Linear with twice-weekly standups. Built a Node.js server that queries Shopify through GraphQL and creates labels through Shippo, deployed it to Heroku, and tested it against the live store. Worked with customer service to automate return labels using sample orders.",
     tools: ["Node.js", "Shopify GraphQL", "Shippo", "Heroku"],
-    links: [],
-  },
-  {
-    title: "Law Firm Web Platform: Monolith to Headless",
-    description: [
-      {
-        label: "Task",
-        text: "A law firm's WordPress site was bloated, its home page graded D on GTmetrix, and it went down periodically because it kept maxing out its hosting limits. Hosting was expensive too.",
-      },
-      {
-        label: "Execution",
-        text: "Split it in two: a Next.js front end on Vercel, with WordPress on its own server as the content API. Wrote a Node.js microservice, added GitHub Actions deploys, and integrated Mailchimp and HubSpot CRM, which built a new mailing list of 40+ subscribers in the first year.",
-      },
-      {
-        label: "Outcome",
-        text: "Home page GTmetrix grade went from **D to A**. Uptime reached **99%**. Hosting costs dropped about **90%**, which paid for new marketing integrations.",
-      },
-    ],
-    tools: [
-      "Next.js",
-      "Node.js",
-      "Vercel",
-      "WordPress GraphQL",
-      "MySQL",
-      "GitHub Actions",
-      "Mailchimp",
-      "HubSpot",
-    ],
     links: [],
   },
   {
@@ -181,13 +194,12 @@ const PROJECTS: Project[] = [
       </div>
 
       <p class="text-base mb-8 text-emerald-800 font-normal">
-        I'm a software engineer focused on AI enablement and modernization:
-        moving legacy code, stacks, and workflows onto modern ones, with AI
-        doing the heavy lifting and a person checking the work. I care most
-        about the checking. Anyone can generate a migration; the value is in
-        catching the wrong measurement, the missed dependency, and the claim
-        that doesn't hold up. Below is work I can show, plus what I learned
-        doing it.
+        I'm a software engineer focused on outcomes over outputs, with a focus
+        on automation and cloud. I use AI to modernize legacy code, stacks, and
+        workflows, guided by implementation strategy and system design. The goal
+        is to cut engineering effort and technical costs while building products
+        that scale, stay maintainable, and cost less to run. Below is work I can
+        show, with the results.
       </p>
 
       <hr class="border-stone-200 mb-8" />
@@ -209,23 +221,30 @@ const PROJECTS: Project[] = [
                     <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />
                   )}
                   <article class="w-full bg-white border-[0.5px] border-stone-200 rounded-lg p-4 shadow-md">
-                    <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
-                      {project.title}
-                    </h2>
+                    <div class="flex items-start justify-between gap-3 mb-1.5">
+                      <h2 class="font-semibold text-base text-emerald-800 tracking-tight">
+                        {project.title}
+                      </h2>
+                      {project.label && (
+                        <span class="shrink-0 text-xs font-semibold text-stone-500 bg-stone-100 border-[0.5px] border-stone-200 rounded-full px-2 py-0.5">
+                          {project.label}
+                        </span>
+                      )}
+                    </div>
                     {typeof project.description === "string" ? (
                       <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
-                        {project.description}
+                        {boldParts(project.description).map((part, j) =>
+                          j % 2 === 1 ? <strong>{part}</strong> : part,
+                        )}
                       </p>
                     ) : (
                       <div class="flex flex-col gap-1.5 mb-3">
                         {project.description.map((section) => (
                           <p class="text-sm text-emerald-800 leading-relaxed font-normal">
                             <span class="font-semibold">{section.label}:</span>{" "}
-                            {section.text
-                              .split(/\*\*(.+?)\*\*/)
-                              .map((part, j) =>
-                                j % 2 === 1 ? <strong>{part}</strong> : part,
-                              )}
+                            {boldParts(section.text).map((part, j) =>
+                              j % 2 === 1 ? <strong>{part}</strong> : part,
+                            )}
                           </p>
                         ))}
                       </div>
