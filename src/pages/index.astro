@@ -11,8 +11,16 @@ const CONTACTS = [
 // Projects shown on first load; the rest reveal in batches as the user scrolls
 const INITIAL_PROJECTS = 3;
 
+// A description is either one paragraph or labelled sections; **text** renders bold
+type Project = {
+  title: string;
+  description: string | { label: string; text: string }[];
+  tools: string[];
+  links: { label: string; href: string }[];
+};
+
 // TODO: replace placeholder projects with real content
-const PROJECTS = [
+const PROJECTS: Project[] = [
   {
     title: "Legacy App Migration to a New Stack, Built with AI",
     description:
@@ -60,9 +68,30 @@ const PROJECTS = [
   },
   {
     title: "Law Firm Web Platform: Monolith to Headless",
-    description:
-      "Owned a law firm's web platform and its web budget: technical strategy, hosting, analytics, SEO, and marketing integrations. Led the migration from a monolithic WordPress site to a headless architecture with Next.js, WordPress (GraphQL), managed cloud MySQL, and GitHub Actions CI/CD, cutting monthly hosting costs by about 90% and funding new marketing integrations. Introduced stand-ups and Kanban boards to run work across developers, designers, and writers.",
-    tools: ["Next.js", "WordPress GraphQL", "GitHub Actions", "SEO"],
+    description: [
+      {
+        label: "Task",
+        text: "A law firm's WordPress site was bloated, its home page graded D on GTmetrix, and hosting was expensive.",
+      },
+      {
+        label: "Execution",
+        text: "Split it in two: a Next.js front end on Vercel, with WordPress on its own server as the content API. Wrote a Node.js microservice, added GitHub Actions deploys, and integrated Mailchimp and HubSpot CRM, which built a new mailing list of 40+ subscribers in the first year.",
+      },
+      {
+        label: "Outcome",
+        text: "Home page GTmetrix grade went from **D to A**. Hosting costs dropped about **90%**, which paid for new marketing integrations.",
+      },
+    ],
+    tools: [
+      "Next.js",
+      "Node.js",
+      "Vercel",
+      "WordPress GraphQL",
+      "MySQL",
+      "GitHub Actions",
+      "Mailchimp",
+      "HubSpot",
+    ],
     links: [],
   },
   {
@@ -168,9 +197,22 @@ const PROJECTS = [
                   <h2 class="font-semibold text-base text-emerald-800 tracking-tight mb-1.5">
                     {project.title}
                   </h2>
-                  <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
-                    {project.description}
-                  </p>
+                  {typeof project.description === "string" ? (
+                    <p class="text-sm text-emerald-800 leading-relaxed font-normal mb-3">
+                      {project.description}
+                    </p>
+                  ) : (
+                    <div class="flex flex-col gap-1.5 mb-3">
+                      {project.description.map((section) => (
+                        <p class="text-sm text-emerald-800 leading-relaxed font-normal">
+                          <span class="font-semibold">{section.label}:</span>{" "}
+                          {section.text.split(/\*\*(.+?)\*\*/).map((part, j) =>
+                            j % 2 === 1 ? <strong>{part}</strong> : part,
+                          )}
+                        </p>
+                      ))}
+                    </div>
+                  )}
                   <p class="text-sm text-emerald-500 font-semibold">
                     {project.tools.join(" · ")}
                     {project.links.length > 0 && (
