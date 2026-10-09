@@ -1,0 +1,28 @@
+---
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+
+const navigation = [
+  { name: "Words", href: "/blog" },
+  { name: "Resume", href: "/images/PFT-Resume-2026.pdf" },
+];
+---
+
+<nav>
+  <ul class="flex items-center text-emerald-800">
+    {navigation.map((link, i) => (
+      <li class="flex items-center">
+        {i > 0 && <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>}
+        <a
+          href={link.href}
+          class={`hover:underline ${pathname.startsWith(link.href) ? "underline" : ""}`}
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
