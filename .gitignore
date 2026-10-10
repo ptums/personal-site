@@ -9,3 +9,6 @@ public/.DS_Store
 .cursor/rules/snyk_rules.mdc
 # Obsidian vault settings
 src/content/words/.obsidian/
+.DS_Store
+wireframe.png
+.astro/*
