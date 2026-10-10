@@ -9,11 +9,13 @@ export async function GET(context) {
     title: "Words | Peter Tumulty",
     description: "Writing on software engineering, AI enablement, and modernization.",
     site: context.site,
+    // Match the canonical URLs, which have no trailing slash
+    trailingSlash: false,
     items: sorted.map((post) => ({
       title: post.data.title,
       description: post.data.summary,
       pubDate: post.data.date,
-      link: `/words/${post.slug}/`,
+      link: `/words/${post.slug}`,
     })),
   });
 }
