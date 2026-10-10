@@ -7,3 +7,5 @@ node_modules
 public/.DS_Store
 # Snyk Security Extension - AI Rules (auto-generated)
 .cursor/rules/snyk_rules.mdc
+# Obsidian vault settings
+src/content/words/.obsidian/
