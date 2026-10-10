@@ -47,6 +47,19 @@ button:focus-visible,
   color: #959da5 !important;
 }
 
+/* A single word too long for a narrow screen (e.g. with larger text spacing) breaks
+   instead of widening the page; this has no effect when the word fits */
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+}
+
+/* Long inline code (e.g. Array.prototype.map()) wraps instead of widening the page */
+.post-content :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
 .post-content p code {
   @apply text-black py-0 px-0.5 bg-gray-300 text-lg;
 }
@@ -96,4 +109,16 @@ button:focus-visible,
 
 .fade-in-up-delay-2 {
   animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* Honour the reduce-motion setting: no animations or transitions. Elements end in their
+   final (visible) state because the fade-in keyframes only animate from opacity 0. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
