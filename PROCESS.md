@@ -86,7 +86,7 @@ Skip this gate for clear, small requests. Stop here when the request is ambiguou
 
 ### Commit (G1)
 
-Report the change and wait for "commit; push". Then: rebuild, `git add` the source plus `dist/`, commit with a message that says what and why, push the branch.
+Report the change and wait for "commit; push". Then: rebuild (to catch errors; `dist/` is gitignored), `git add` the source, commit with a message that says what and why, push the branch.
 
 ### Preview (auto)
 
@@ -111,4 +111,4 @@ Only when the human says to put it live: fast-forward `main2` (`git push origin 
 
 ## 6. Definition of done
 
-Build passes; changed pages checked in a browser; owner's copy verbatim; `dist/` committed with the source; `CLAUDE.md` updated if routing, content schema, or navigation changed; preview (or production, if shipped) deployment is green and checked; `SELF_IMPROVEMENT.md` updated for any real process problem.
+Build passes; changed pages checked in a browser; owner's copy verbatim; `CLAUDE.md` updated if routing, content schema, or navigation changed; preview (or production, if shipped) deployment is green and checked; `SELF_IMPROVEMENT.md` updated for any real process problem.

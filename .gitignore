@@ -12,3 +12,5 @@ src/content/words/.obsidian/
 .DS_Store
 wireframe.png
 .astro/*
+# Build output; Vercel runs npm run build itself
+dist/
