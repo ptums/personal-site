@@ -40,9 +40,9 @@ No test suite, no lint script configured.
 - `/testimonials` → `src/pages/testimonials.astro` (reads `db/testimonials.json`, sorted by `order`)
 - `/blog` and `/blog/post/<slug>` redirect to `/words` via `redirects` in `astro.config.mjs`
 
-**Navigation**: `src/components/Nav.astro` lists Home, Words, Testimonials and Resume, minus the page being viewed. On `/`, `/words` and `/testimonials` it sits beside the page heading; on other pages `Header.astro` shows it on the right.
+**Navigation**: `src/components/Nav.astro` lists Home, Words, Testimonials and Work with me, minus the page being viewed. `Header.astro` shows it on the same row as the logo and email on every page; below 640px the links wrap as whole items without the `|` separators. The email address is never in the static HTML: elements with `data-email-user` / `data-email-domain` get their `mailto:` from the inline script in `Header.astro`, with a `<noscript>` fallback.
 
-Everything is static Astro. The only client JS is an inline `<script>` in `index.astro` that unhides project cards in batches of 3 as the user nears the end of the list, and fades each card in as it scrolls into view (both via IntersectionObserver); all cards are server-rendered, with a `<noscript>` fallback that shows them all.
+Everything is static Astro. The only client JS is the email script in `Header.astro` (above) and an inline `<script>` in `index.astro` that unhides project cards in batches of 3 as the user nears the end of the list, and fades each card in as it scrolls into view (both via IntersectionObserver); all cards are server-rendered, with a `<noscript>` fallback that shows them all.
 
 **Styles**:
 - `src/styles/global.css` — Tailwind base + custom `.post-content` styles for rendered markdown, `.playfair-display` font class, and CSS `fade-in-up` animation classes.

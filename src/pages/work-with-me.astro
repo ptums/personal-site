@@ -1,0 +1,183 @@
+---
+import Layout from "../layouts/Layout.astro";
+import testimonials from "../../db/testimonials.json";
+
+const BOOKING_URL = "https://cal.com/peter-tumulty-hnhdwj/30min";
+// Split so the address never appears in the HTML; the script in Header.astro joins it
+const EMAIL_USER = "peter";
+const EMAIL_DOMAIN = "tumulty.me";
+
+const SERVICES = [
+  "Project planning",
+  "Technical roadmaps",
+  "Technical strategy",
+  "Product solutions",
+  "AI modernization and enablement",
+  "Full-stack engineering",
+  "Automation",
+  "Cloud solutions",
+  "Mentorship",
+];
+
+const STEPS = [
+  {
+    name: "Discover",
+    text: "We start with conversation. I learn what the real problems are before anyone talks about solutions.",
+  },
+  { name: "Deliver", text: "I come up with a solution and build it." },
+  {
+    name: "Refine",
+    text: "I keep tuning the strategy until you're getting the results you want.",
+  },
+];
+
+// Only numbers already shown on the home page project cards (which have no anchors to link to)
+const RESULTS = [
+  "A law firm's home page went from a D to an A on GTmetrix, uptime reached 99%, and hosting costs fell about 90%.",
+  "A life coach's site cut hosting from $240 a year to $8.",
+  "A high school Hall of Fame site went from editing up to 107 files per new inductee to 1.",
+];
+
+// First three by order; cardQuote is the shorter excerpt when one exists
+const featured = [...testimonials]
+  .sort((a, b) => a.order - b.order)
+  .slice(0, 3)
+  .map((t) => ({ ...t, quote: t.cardQuote ?? t.statement }));
+
+const focusRing =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-800";
+const sectionHeading = "text-2xl text-emerald-800 font-bold mb-4";
+const bodyText = "text-emerald-800 playfair-display";
+---
+
+<Layout
+  title="Work with me | Peter Tumulty"
+  description="Software engineer and technical product manager for long-term contract work: lead engineering, technical roadmaps, and technical strategy."
+>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <div
+      class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-8"
+    >
+      <!-- Tighter letter-spacing below 640px so the heading stays on one line at 375px -->
+      <h1
+        class="text-4xl text-emerald-800 tracking-[3px] sm:tracking-[8px] font-bold"
+      >
+        Work with me
+      </h1>
+    </div>
+
+    <div class="bg-white border rounded-lg p-6 shadow-sm flex flex-col gap-10">
+      <section aria-label="Introduction" class="flex flex-col gap-6">
+        <p class={`text-lg ${bodyText}`}>
+          Software engineer and technical product manager for long-term contract
+          work.
+        </p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-block rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 ${focusRing}`}
+          >
+            Book an intro call<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a
+            data-email-user={EMAIL_USER}
+            data-email-domain={EMAIL_DOMAIN}
+            hidden
+            class={`text-emerald-800 font-semibold underline ${focusRing}`}
+            >Or email me</a
+          >
+          <noscript>
+            <span class="text-emerald-800">Or email me: peter at tumulty dot me</span>
+          </noscript>
+        </div>
+        <p class={bodyText}>
+          I take ownership of a business's technology, from the public website
+          and internal apps to the cloud they run on. I build what's missing and
+          get engineering teams onto better tooling so they ship faster.
+        </p>
+      </section>
+
+      <section aria-labelledby="services-heading">
+        <h2 id="services-heading" class={sectionHeading}>What I do</h2>
+        <ul class={`list-disc pl-5 sm:columns-2 gap-x-10 space-y-2 ${bodyText}`}>
+          {SERVICES.map((service) => <li>{service}</li>)}
+        </ul>
+      </section>
+
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading" class={sectionHeading}>Results</h2>
+        <ul class="grid gap-4 md:grid-cols-3">
+          {RESULTS.map((result) => (
+            <li
+              class={`border-[0.5px] border-stone-200 rounded-lg shadow-md p-4 ${bodyText}`}
+            >
+              {result}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="process-heading">
+        <h2 id="process-heading" class={sectionHeading}>
+          How an engagement works
+        </h2>
+        <ol class={`list-decimal pl-5 flex flex-col gap-2 ${bodyText}`}>
+          {STEPS.map((step) => (
+            <li>
+              <strong>{step.name}.</strong> {step.text}
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="testimonials-heading">
+        <h2 id="testimonials-heading" class={sectionHeading}>Testimonials</h2>
+        <ul class="flex flex-col gap-4">
+          {featured.map((testimonial) => (
+            <li class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4">
+              <figure>
+                <blockquote class={`mb-3 ${bodyText}`}>
+                  “{testimonial.quote}”
+                </blockquote>
+                <figcaption>
+                  <span class="block text-lg text-emerald-700 font-bold">
+                    {testimonial.name}
+                  </span>
+                  <span class="block text-sm text-stone-600 font-semibold playfair-display">
+                    {testimonial.company}
+                  </span>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="contact-heading" class="flex flex-col gap-4">
+        <h2 id="contact-heading" class={sectionHeading}>Get in touch</h2>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-block rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 ${focusRing}`}
+          >
+            Book an intro call<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a
+            data-email-user={EMAIL_USER}
+            data-email-domain={EMAIL_DOMAIN}
+            hidden
+            class={`text-emerald-800 font-semibold underline ${focusRing}`}
+            >Or email me</a
+          >
+          <noscript>
+            <span class="text-emerald-800">Or email me: peter at tumulty dot me</span>
+          </noscript>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
