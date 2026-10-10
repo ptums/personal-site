@@ -20,6 +20,11 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npm run build
+      - name: Check notes for Obsidian-only syntax and broken images
+        run: npm run check:words
+
+      - name: Build the site
+        run: npm run build
