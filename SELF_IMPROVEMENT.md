@@ -44,3 +44,10 @@ OBSERVED: Making tumulty.me canonical showed the /blog redirect pages (Astro met
 CAUSE: Astro `redirects` without an adapter can only write HTML pages; Vercel served both URL forms because no trailingSlash rule was set.
 ACTION: Moved the /blog redirects from astro.config.mjs to vercel.json as permanent redirects (applies seeded lesson 10), and set `trailingSlash: false` in vercel.json with canonical tags and RSS links that drop the slash.
 STATUS: applied (branch tumulty-domain)
+
+### [2026-10-10] Ship / assistant
+OBSERVED: dist/ was committed with every change, so diffs carried dozens of generated files, and it went stale whenever a commit skipped the rebuild. A test commit without rebuilding dist still deployed correctly.
+CAUSE: Vercel runs `npm run build` (vercel.json) and serves its own output, so the committed dist/ was never used.
+ACTION: Stopped tracking dist/ (added to .gitignore); CLAUDE.md and PROCESS.md now say to build before committing but not to commit dist/.
+STATUS: applied (branch tagline-update)
+
