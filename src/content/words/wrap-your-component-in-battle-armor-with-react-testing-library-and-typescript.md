@@ -2,10 +2,9 @@
 title: "Wrap Your Component in Battle Armor with React Testing Library and TypeScript"
 date: "2022-03-15"
 tagLine: "Write tests that survive refactors"
-description: "Learn how to combine React Testing Library with TypeScript to write robust component tests that catch real bugs and stay resilient through code changes."
+summary: "Learn how to combine React Testing Library with TypeScript to write robust component tests that catch real bugs and stay resilient through code changes."
+published: true
 ---
-
-# Wrap Your Component in Battle Armor with React Testing Library and TypeScript
 
 Testing React components used to mean reaching for Enzyme and testing implementation details—checking state, calling lifecycle methods directly, and asserting on internal structure. React Testing Library flipped that model: test your UI the way a user actually interacts with it. Pair it with TypeScript, and you get compile-time safety on top of behavioral correctness.
 

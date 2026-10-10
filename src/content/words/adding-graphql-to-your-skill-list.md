@@ -2,10 +2,9 @@
 title: "Adding GraphQL to Your Skill List"
 date: "2020-11-10"
 tagLine: "Query exactly what you need, nothing more"
-description: "GraphQL solves the over-fetching and under-fetching problems of REST by letting clients request exactly the data shape they need. Here's how to get started."
+summary: "GraphQL solves the over-fetching and under-fetching problems of REST by letting clients request exactly the data shape they need. Here's how to get started."
+published: true
 ---
-
-# Adding GraphQL to Your Skill List
 
 REST APIs have served the web well, but they come with a predictable set of frustrations: endpoints that return too much data, multiple round trips to assemble a view, and versioning headaches as clients evolve. GraphQL addresses all three. Understanding it—even if you're primarily a frontend developer—opens up a new way of thinking about data fetching.
 

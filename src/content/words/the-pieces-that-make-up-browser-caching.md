@@ -2,10 +2,9 @@
 title: "The Pieces That Make Up Browser Caching"
 date: "2021-09-08"
 tagLine: "Understanding the levers that control speed"
-description: "A practical breakdown of HTTP caching headers—Cache-Control, ETags, and Vary—and how they work together to make the web fast."
+summary: "A practical breakdown of HTTP caching headers—Cache-Control, ETags, and Vary—and how they work together to make the web fast."
+published: true
 ---
-
-# The Pieces That Make Up Browser Caching
 
 Browser caching is one of the highest-leverage performance tools available to a web developer. Getting it right means returning visitors load your site in milliseconds. Getting it wrong means stale pages, broken deployments, or cache misses on every request. Understanding the pieces that control caching puts you in the driver's seat.
 

@@ -2,10 +2,9 @@
 title: "A Light Introduction to Web Components"
 date: "2021-04-22"
 tagLine: "Native browser components without a framework"
-description: "Web Components let you build reusable UI elements that work in any framework—or none at all. Here's how the three core APIs fit together."
+summary: "Web Components let you build reusable UI elements that work in any framework—or none at all. Here's how the three core APIs fit together."
+published: true
 ---
-
-# A Light Introduction to Web Components
 
 Every major frontend framework ships its own component model. React has function components, Vue has single-file components, Svelte has its own syntax. But the browser itself has a native component model that works everywhere: Web Components.
 
