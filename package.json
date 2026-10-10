@@ -25,7 +25,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/check-words.mjs && astro build",
     "preview": "astro preview",
     "start": "astro dev",
     "check:words": "node scripts/check-words.mjs"
