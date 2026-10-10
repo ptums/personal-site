@@ -64,9 +64,16 @@ const canonicalUrl = new URL(canonicalPath, Astro.site).href;
 
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- First Tab stop on every page; hidden until focused -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-white focus:text-emerald-800 focus:font-bold focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-md"
+    >
+      Skip to main content
+    </a>
     <div class="mx-auto sm:my-12 w-full px-8 sm:px-0 sm:max-w-6xl min-h-min">
       <Header pathname={Astro.url.pathname} />
-      <main>
+      <main id="main-content" tabindex="-1" class="focus:outline-none">
         <slot />
       </main>
     </div>
