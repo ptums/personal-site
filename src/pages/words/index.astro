@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/PostCard.astro";
-import Nav from "../../components/Nav.astro";
 
 const posts = await getCollection("words", ({ data }) => data.published);
 const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -22,7 +21,6 @@ const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf(
       >
         Words
       </h1>
-      <Nav pathname={Astro.url.pathname} />
     </div>
     <div class="flex flex-col w-full">
       {sorted.map((post, index) => (
