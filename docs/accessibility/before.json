@@ -1,0 +1,245 @@
+{
+  "label": "before",
+  "date": "2026-10-10T17:49:36.834Z",
+  "axeVersion": "4.14.0",
+  "lighthouseVersion": "12.8.2",
+  "results": [
+    {
+      "name": "Home",
+      "path": "/",
+      "width": 375,
+      "lighthouse": {
+        "score": 95,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 3,
+          "targets": [
+            ".m-0",
+            ".shrink-0",
+            ".fade-in-up.flex-col[data-project=\"\"] > article > .text-emerald-500.text-sm.font-semibold"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Home",
+      "path": "/",
+      "width": 1440,
+      "lighthouse": {
+        "score": 95,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 5,
+          "targets": [
+            ".m-0",
+            ".shrink-0",
+            ".fade-in-up.flex-col[data-project=\"\"]:nth-child(1) > article > .text-emerald-500.text-sm.font-semibold"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Words",
+      "path": "/words",
+      "width": 375,
+      "lighthouse": {
+        "score": 95,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 12,
+          "targets": [
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(1) > .text-xl.text-emerald-600.mb-1",
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(1) > .text-gray-400.mb-4.text-sm",
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(2) > .text-xl.text-emerald-600.mb-1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Words",
+      "path": "/words",
+      "width": 1440,
+      "lighthouse": {
+        "score": 95,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 12,
+          "targets": [
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(1) > .text-xl.text-emerald-600.mb-1",
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(1) > .text-gray-400.mb-4.text-sm",
+            ".bg-white.border-\\[0\\.5px\\].border-stone-200:nth-child(2) > .text-xl.text-emerald-600.mb-1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "path": "/words/the-power-of-the-map-method",
+      "width": 375,
+      "lighthouse": {
+        "score": 96,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 12,
+          "targets": [
+            "time",
+            "pre[data-language=\"js\"]:nth-child(6) > code > .line:nth-child(4) > span:nth-child(4)",
+            "pre[data-language=\"js\"]:nth-child(6) > code > .line:nth-child(5) > span:nth-child(4)"
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "tags": [
+            "wcag2a",
+            "wcag211",
+            "wcag213"
+          ],
+          "nodes": 1,
+          "targets": [
+            "table"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "path": "/words/the-power-of-the-map-method",
+      "width": 1440,
+      "lighthouse": {
+        "score": 96,
+        "failing": [
+          "color-contrast"
+        ]
+      },
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "wcag2aa",
+            "wcag143"
+          ],
+          "nodes": 12,
+          "targets": [
+            "time",
+            "pre[data-language=\"js\"]:nth-child(6) > code > .line:nth-child(4) > span:nth-child(4)",
+            "pre[data-language=\"js\"]:nth-child(6) > code > .line:nth-child(5) > span:nth-child(4)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Work with me",
+      "path": "/work-with-me",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Work with me",
+      "path": "/work-with-me",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Testimonials",
+      "path": "/testimonials",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Testimonials",
+      "path": "/testimonials",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "404",
+      "path": "/this-page-does-not-exist",
+      "width": 375,
+      "lighthouse": {
+        "score": null,
+        "failing": [],
+        "error": "Runtime error encountered: Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 404)"
+      },
+      "axe": []
+    },
+    {
+      "name": "404",
+      "path": "/this-page-does-not-exist",
+      "width": 1440,
+      "lighthouse": {
+        "score": null,
+        "failing": [],
+        "error": "Runtime error encountered: Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 404)"
+      },
+      "axe": []
+    }
+  ]
+}
