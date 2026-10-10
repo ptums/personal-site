@@ -27,8 +27,9 @@ body {
   @apply text-xl text-emerald-800 my-4;
 }
 
+/* Long lines scroll inside the code block instead of widening the page */
 .post-content pre {
-  @apply bg-gray-300 p-4 text-lg whitespace-pre-wrap;
+  @apply bg-gray-300 p-4 text-lg whitespace-pre-wrap overflow-x-auto max-w-full;
 }
 
 .post-content p code {
@@ -41,6 +42,13 @@ body {
 
 .post-content table {
   @apply w-full border-collapse text-emerald-800 text-base my-4;
+}
+
+/* On small screens a wide table scrolls inside its own box instead of widening the page */
+@media (max-width: 639px) {
+  .post-content table {
+    @apply block overflow-x-auto;
+  }
 }
 
 .post-content th,
