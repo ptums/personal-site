@@ -7,7 +7,7 @@ export async function GET(context) {
 
   return rss({
     title: "Words | Peter Tumulty",
-    description: "Writing on software engineering, AI enablement, and modernization.",
+    description: "Notes on software engineering, technical product management, and AI-driven modernization.",
     site: context.site,
     // Match the canonical URLs, which have no trailing slash
     trailingSlash: false,
