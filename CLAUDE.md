@@ -2,6 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Claude Code specifics
+
+- If the user says **"read process.md and ship <change>"**, open `PROCESS.md` and follow it. Read `SELF_IMPROVEMENT.md` first.
+- Run `git status` and `git diff` before editing. The user edits copy by hand (and runs Prettier) between turns; build on their version, never overwrite it.
+- Never rewrite the user's wording. Paste copy verbatim; point out typos and let the user decide.
+- `dist/` is tracked: run `npm run build` before every commit and commit `dist/` with the source.
+- Never commit `wireframe.png`, `.astro/settings.json`, or `public/.DS_Store`.
+- Commit or push only when asked ("commit; push"). `main2` is the production branch (there is no `main`); pushing to it deploys the live site, so do it only when the user says so.
+- Never claim something works unless you ran it this session and can show the output. Visual changes are checked in a real browser (see PROCESS.md, Verify). State what you did not check.
+- Explain any new dependency before adding it; keep dependencies minimal. Install with npm only (`vercel.json` uses `npm install`; npm also keeps `yarn.lock` in sync).
+- Ask only when blocked or at a gate; batch questions; include a recommendation.
+- Log real process problems in `SELF_IMPROVEMENT.md`.
+
 ## Commands
 
 ```bash
