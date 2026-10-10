@@ -7,13 +7,16 @@ const { pathname } = Astro.props;
 
 const current = pathname.replace(/\/$/, "") || "/";
 
-// Every page except the one being viewed; posts still link back to /words
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Words", href: "/words" },
   { name: "Testimonials", href: "/testimonials" },
   { name: "Work with me", href: "/work-with-me" },
-].filter((link) => link.href !== current);
+];
+
+// Home matches only itself; other links also match their sub-pages (e.g. posts under /words)
+const isCurrent = (href: string) =>
+  href === "/" ? current === "/" : current === href || current.startsWith(`${href}/`);
 ---
 
 <!-- On small screens the links wrap as whole items, without the | separators -->
@@ -22,9 +25,11 @@ const navigation = [
     {navigation.map((link, i) => (
       <li class="flex items-center whitespace-nowrap">
         {i > 0 && <span class="hidden sm:inline mx-2 text-emerald-300" aria-hidden="true">|</span>}
+        {/* Every link has a 2px bottom border so marking the current page doesn't shift the layout */}
         <a
           href={link.href}
-          class={`hover:underline ${link.href !== "/" && pathname.startsWith(link.href) ? "underline" : ""}`}
+          aria-current={isCurrent(link.href) ? "page" : undefined}
+          class={`border-b-2 ${isCurrent(link.href) ? "border-emerald-300" : "border-transparent hover:border-emerald-200"}`}
         >
           {link.name}
         </a>
