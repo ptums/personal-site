@@ -140,58 +140,50 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": {
+		"words": {
 "a-light-introduction-to-web-components.md": {
 	id: "a-light-introduction-to-web-components.md";
   slug: "a-light-introduction-to-web-components";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 "adding-graphql-to-your-skill-list.md": {
 	id: "adding-graphql-to-your-skill-list.md";
   slug: "adding-graphql-to-your-skill-list";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 "avoiding-the-global-scope-with-the-revealing-module-pattern.md": {
 	id: "avoiding-the-global-scope-with-the-revealing-module-pattern.md";
   slug: "avoiding-the-global-scope-with-the-revealing-module-pattern";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 "the-pieces-that-make-up-browser-caching.md": {
 	id: "the-pieces-that-make-up-browser-caching.md";
   slug: "the-pieces-that-make-up-browser-caching";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 "the-power-of-the-map-method.md": {
 	id: "the-power-of-the-map-method.md";
   slug: "the-power-of-the-map-method";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 "wrap-your-component-in-battle-armor-with-react-testing-library-and-typescript.md": {
 	id: "wrap-your-component-in-battle-armor-with-react-testing-library-and-typescript.md";
   slug: "wrap-your-component-in-battle-armor-with-react-testing-library-and-typescript";
   body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
+  collection: "words";
+  data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
 };
-"words": Record<string, {
-  id: string;
-  slug: string;
-  body: string;
-  collection: "words";
-  data: InferEntrySchema<"words">;
-  render(): Render[".md"];
-}>;
 
 	};
 
