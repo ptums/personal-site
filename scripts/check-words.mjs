@@ -1,6 +1,7 @@
 // Checks the /words notes for Obsidian-only syntax and broken images.
 // Usage: node scripts/check-words.mjs
 // Published notes report errors (exit 1); drafts report warnings (exit 0).
+// Uppercase letters in an image path are always a warning.
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
@@ -22,11 +23,13 @@ function findNotes(dir) {
   return notes.sort();
 }
 
-// Returns the frontmatter text, the body lines, and the file line number of the first body line
+// Returns the frontmatter text, the body lines, and the file line number of the first body line.
+// Ignores a leading byte-order mark and trailing spaces after the "---" lines.
 function splitFrontmatter(text) {
-  const lines = text.split(/\r?\n/);
-  if (lines[0] !== "---") return { frontmatter: "", body: lines, firstLine: 1 };
-  const end = lines.indexOf("---", 1);
+  const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/);
+  const isDelimiter = (line) => line.trimEnd() === "---";
+  if (!isDelimiter(lines[0])) return { frontmatter: "", body: lines, firstLine: 1 };
+  const end = lines.findIndex((line, i) => i > 0 && isDelimiter(line));
   if (end === -1) return { frontmatter: "", body: lines, firstLine: 1 };
   return {
     frontmatter: lines.slice(1, end).join("\n"),
@@ -40,31 +43,60 @@ function stripInlineCode(line) {
   return line.replace(/(`+)[\s\S]*?\1/g, (span) => " ".repeat(span.length));
 }
 
-// Null if the image target exists (or is remote), otherwise a message
+// Problems with one image target; remote and data: URLs are skipped
 function checkImage(target, notePath) {
-  if (/^(https?:|data:)/i.test(target)) return null;
+  if (/^(https?:|data:)/i.test(target)) return [];
   const clean = target.replace(/[?#].*$/, "");
   let decoded;
   try {
     decoded = decodeURI(clean);
   } catch {
-    return `image path can't be decoded: ${target}`;
+    return [{ message: `image path can't be decoded: ${target}` }];
+  }
+  const problems = [];
+  // macOS ignores case but Vercel builds on Linux, so a wrong-case path passes here and breaks there
+  if (/[A-Z]/.test(decoded)) {
+    problems.push({
+      message: "Image path has uppercase letters; this can break on Linux.",
+      alwaysWarning: true,
+    });
   }
   const file = decoded.startsWith("/")
     ? join(PUBLIC_DIR, decoded)
     : resolve(dirname(notePath), decoded);
-  if (existsSync(file) && statSync(file).isFile()) return null;
-  return `image not found: ${target} (looked for ${relative(ROOT, file)})`;
+  if (!existsSync(file) || !statSync(file).isFile()) {
+    problems.push({ message: `image not found: ${target} (looked for ${relative(ROOT, file)})` });
+  }
+  return problems;
+}
+
+// Short preview of an Obsidian comment for the report
+function commentPreview(text) {
+  const oneLine = text.replace(/\s+/g, " ").trim();
+  return oneLine.length > 40 ? `${oneLine.slice(0, 40)}...` : oneLine;
 }
 
 function checkNote(notePath) {
   const { body, firstLine } = splitFrontmatter(readFileSync(notePath, "utf8"));
   const findings = [];
   let fence = null; // the opening fence, e.g. "```" or "~~~~", while inside a code block
+  let openComment = null; // the finding for a %% comment that hasn't closed yet
 
   body.forEach((rawLine, i) => {
     const lineNumber = firstLine + i;
-    const fenceMatch = rawLine.match(/^\s{0,3}(`{3,}|~{3,})/);
+    const add = (message, alwaysWarning = false) =>
+      findings.push({ line: lineNumber, message, alwaysWarning });
+
+    // Inside an Obsidian comment everything is hidden until the closing %%, code fences included
+    let line = rawLine;
+    if (openComment) {
+      const close = line.indexOf("%%");
+      if (close === -1) return;
+      openComment = null;
+      line = " ".repeat(close + 2) + line.slice(close + 2);
+    }
+
+    const fenceMatch = line.match(/^\s{0,3}(`{3,}|~{3,})/);
     if (fence) {
       // A closing fence uses the same character, is at least as long, and has nothing after it
       if (fenceMatch && fenceMatch[1][0] === fence[0] && fenceMatch[1].length >= fence.length && rawLine.trim() === fenceMatch[1]) {
@@ -77,8 +109,23 @@ function checkNote(notePath) {
       return;
     }
 
-    const line = stripInlineCode(rawLine);
-    const add = (message) => findings.push({ line: lineNumber, message });
+    line = stripInlineCode(line);
+
+    // Flag each %% comment where it opens, then blank it out so its contents aren't checked
+    let start;
+    while ((start = line.indexOf("%%")) !== -1) {
+      const close = line.indexOf("%%", start + 2);
+      const finding = { line: lineNumber, alwaysWarning: false };
+      findings.push(finding);
+      if (close === -1) {
+        finding.message = `Obsidian comment: %%${commentPreview(line.slice(start + 2))}`;
+        openComment = finding;
+        line = line.slice(0, start);
+        break;
+      }
+      finding.message = `Obsidian comment: %%${commentPreview(line.slice(start + 2, close))}%%`;
+      line = line.slice(0, start) + " ".repeat(close + 2 - start) + line.slice(close + 2);
+    }
 
     for (const match of line.matchAll(/(!?)\[\[([^\]]*)\]\]/g)) {
       add(`Obsidian ${match[1] ? "embed" : "wikilink"}: ${match[0]}`);
@@ -87,11 +134,13 @@ function checkNote(notePath) {
       add(`Obsidian callout: ${line.trim()}`);
     }
     for (const match of line.matchAll(/!\[[^\]]*\]\(\s*<?([^)\s>]+)>?(?:\s+["'][^)]*["'])?\s*\)/g)) {
-      const problem = checkImage(match[1], notePath);
-      if (problem) add(problem);
+      for (const problem of checkImage(match[1], notePath)) {
+        add(problem.message, problem.alwaysWarning);
+      }
     }
   });
 
+  if (openComment) openComment.message += " (no closing %%)";
   return findings;
 }
 
@@ -101,10 +150,10 @@ let warnings = 0;
 
 for (const notePath of notes) {
   const { frontmatter } = splitFrontmatter(readFileSync(notePath, "utf8"));
-  const isDraft = /^published:\s*false\s*$/m.test(frontmatter);
-  for (const { line, message } of checkNote(notePath)) {
-    const level = isDraft ? "warning" : "error";
-    if (isDraft) warnings++;
+  const isDraft = /^published:\s*(false|"false"|'false')\s*$/m.test(frontmatter);
+  for (const { line, message, alwaysWarning } of checkNote(notePath)) {
+    const level = isDraft || alwaysWarning ? "warning" : "error";
+    if (level === "warning") warnings++;
     else errors++;
     console.log(`${level}: ${relative(ROOT, notePath)}:${line}  ${message}`);
   }
