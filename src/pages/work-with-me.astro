@@ -4,7 +4,7 @@ import Nav from "../components/Nav.astro";
 import testimonials from "../../db/testimonials.json";
 
 const BOOKING_URL = "https://cal.com/peter-tumulty-hnhdwj/30min";
-// Split so the address never appears in the HTML; the script at the bottom joins it
+// Split so the address never appears in the HTML; the script in Header.astro joins it
 const EMAIL_USER = "peter";
 const EMAIL_DOMAIN = "tumulty.me";
 
@@ -167,11 +167,3 @@ const placeholder =
     </div>
   </div>
 </Layout>
-
-<script is:inline>
-  // Build the mailto links at runtime so the address isn't in the HTML for scrapers
-  document.querySelectorAll("[data-email-user]").forEach((link) => {
-    link.href = `mailto:${link.dataset.emailUser}@${link.dataset.emailDomain}`;
-    link.hidden = false;
-  });
-</script>

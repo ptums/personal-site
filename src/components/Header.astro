@@ -7,7 +7,9 @@ interface Props {
 
 const { pathname } = Astro.props;
 
-const EMAIL = "peter@tumulty.me";
+// Split so the address never appears in the HTML; the script below joins it
+const EMAIL_USER = "peter";
+const EMAIL_DOMAIN = "tumulty.me";
 // These pages render Nav beside their own heading instead
 const hasOwnNav = ["/", "/words", "/testimonials", "/work-with-me"].includes(
   pathname.replace(/\/$/, "") || "/",
@@ -24,9 +26,29 @@ const hasOwnNav = ["/", "/words", "/testimonials", "/work-with-me"].includes(
         height="62"
       />
     </a>
-    <a href={`mailto:${EMAIL}`}>
-      <span class="text-emerald-800 hover:underline">{EMAIL}</span>
-    </a>
+    <a
+      data-email-user={EMAIL_USER}
+      data-email-domain={EMAIL_DOMAIN}
+      data-email-show-address
+      hidden
+      class="text-emerald-800 hover:underline"
+    ></a>
+    <noscript>
+      <span class="text-emerald-800">peter at tumulty dot me</span>
+    </noscript>
   </div>
   {!hasOwnNav && <Nav pathname={pathname} />}
 </header>
+
+<script is:inline>
+  // Build every email link on the page (data-email-user + data-email-domain) at runtime,
+  // so scrapers never see the address. Links with data-email-show-address also display it.
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-email-user]").forEach((link) => {
+      const address = `${link.dataset.emailUser}@${link.dataset.emailDomain}`;
+      link.href = `mailto:${address}`;
+      if (link.hasAttribute("data-email-show-address")) link.textContent = address;
+      link.hidden = false;
+    });
+  });
+</script>
