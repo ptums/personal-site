@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import testimonials from "../../db/testimonials.json";
+
+const sorted = [...testimonials].sort((a, b) => a.order - b.order);
+---
+
+<Layout
+  title="Testimonials | Peter Tumulty"
+  description="What clients and colleagues say about working with Peter Tumulty."
+>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <div
+      class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-8"
+    >
+      <h1
+        style="letter-spacing: 8px"
+        class="text-4xl text-emerald-800 tracking-wider font-bold"
+      >
+        Testimonials
+      </h1>
+      <Nav pathname={Astro.url.pathname} />
+    </div>
+    <ul class="flex flex-col w-full">
+      {sorted.map((testimonial, index) => (
+        <li
+          class="bg-white border-[0.5px] border-stone-200 rounded-lg shadow-md mb-6 last:mb-0 p-4 fade-in-up"
+          style={`animation-delay: ${index * 0.15}s`}
+        >
+          <blockquote class="text-sm text-emerald-800 playfair-display mb-4">
+            “{testimonial.statement}”
+          </blockquote>
+          <p class="text-xl text-emerald-600 font-semibold">{testimonial.name}</p>
+          <p class="text-sm text-gray-400 font-semibold playfair-display">
+            {testimonial.company}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
