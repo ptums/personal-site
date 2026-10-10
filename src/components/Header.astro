@@ -9,7 +9,7 @@ const { pathname } = Astro.props;
 
 const EMAIL = "peter@tumulty.me";
 // These pages render Nav beside their own heading instead
-const hasOwnNav = ["/", "/blog", "/words", "/testimonials"].includes(
+const hasOwnNav = ["/", "/words", "/testimonials"].includes(
   pathname.replace(/\/$/, "") || "/",
 );
 ---
