@@ -1,0 +1,128 @@
+{
+  "label": "after",
+  "date": "2026-10-10T18:04:24.326Z",
+  "axeVersion": "4.14.0",
+  "lighthouseVersion": "12.8.2",
+  "results": [
+    {
+      "name": "Home",
+      "path": "/",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Home",
+      "path": "/",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Words",
+      "path": "/words",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Words",
+      "path": "/words",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Post",
+      "path": "/words/the-power-of-the-map-method",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Post",
+      "path": "/words/the-power-of-the-map-method",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Work with me",
+      "path": "/work-with-me",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Work with me",
+      "path": "/work-with-me",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Testimonials",
+      "path": "/testimonials",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "Testimonials",
+      "path": "/testimonials",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "404",
+      "path": "/this-page-does-not-exist",
+      "width": 375,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    },
+    {
+      "name": "404",
+      "path": "/this-page-does-not-exist",
+      "width": 1440,
+      "lighthouse": {
+        "score": 100,
+        "failing": []
+      },
+      "axe": []
+    }
+  ]
+}

@@ -38,11 +38,13 @@ No test suite, no lint script configured.
 - `/words` → `src/pages/words/index.astro` (published posts, newest first)
 - `/words/[slug]` → `src/pages/words/[slug].astro` (prints the title and date, then renders markdown via `entry.render()`)
 - `/testimonials` → `src/pages/testimonials.astro` (reads `db/testimonials.json`, sorted by `order`)
+- `/work-with-me` → `src/pages/work-with-me.astro`
+- `src/pages/404.astro` → `dist/404.html`, which Vercel serves for missing URLs
 - `/blog` and `/blog/post/<slug>` redirect permanently (308) to `/words` and `/words/<slug>` via `redirects` in `vercel.json` (they only work on Vercel, not in `npm run dev`). `vercel.json` also sets `trailingSlash: false`, so `/page/` redirects to `/page`.
 
 **Navigation**: `src/components/Nav.astro` lists Home, Words, Testimonials and Work with me on every page; the current page (posts count as Words) gets `aria-current="page"` and a light green bottom border. `Header.astro` shows it on the same row as the logo and email on every page; below 640px the links wrap as whole items without the `|` separators. The email address is never in the static HTML: elements with `data-email-user` / `data-email-domain` get their `mailto:` from the inline script in `Header.astro`, with a `<noscript>` fallback.
 
-Everything is static Astro. The only client JS is the email script in `Header.astro` (above) and an inline `<script>` in `index.astro` that unhides project cards in batches of 3 as the user nears the end of the list, and fades each card in as it scrolls into view (both via IntersectionObserver); all cards are server-rendered, with a `<noscript>` fallback that shows them all.
+Everything is static Astro. The only client JS is the email script in `Header.astro` (above) and an inline `<script>` in `index.astro` that fades each project card in as it scrolls into view inside the fixed-height "Projects" box (IntersectionObserver). All cards are rendered (none hidden), the box is a focusable region, and a `<noscript>` rule shows them without JS.
 
 **Styles**:
 - `src/styles/global.css` — Tailwind base + custom `.post-content` styles for rendered markdown, `.playfair-display` font class, and CSS `fade-in-up` animation classes.
@@ -50,6 +52,8 @@ Everything is static Astro. The only client JS is the email script in `Header.as
 - Google Fonts (Lato + Playfair Display) loaded via link tag in `src/layouts/Layout.astro`.
 
 **Layout**: `src/layouts/Layout.astro` wraps all pages with Header, Footer, analytics scripts, and all `<head>` meta/favicon tags.
+
+**Accessibility** (WCAG 2.2 AA; see `docs/accessibility-audit.md`): `Layout.astro` has a skip link to `<main id="main-content">`; `global.css` defines one `:focus-visible` outline for every link and control and turns off animation under `prefers-reduced-motion`; `astro.config.mjs` adds `tabindex="0"` to Markdown tables. Keep text at 4.5:1 or more (use emerald-700 or darker on white, not emerald-500/600; gray-500 or darker, not gray-400), and give `target="_blank"` links hidden "(opens in a new tab)" text.
 
 ## Adding Posts
 
