@@ -8,7 +8,8 @@ interface Props {
 const { pathname } = Astro.props;
 
 const EMAIL = "peter@tumulty.me";
-const isHome = pathname === "/";
+// These pages render Nav beside their own heading instead
+const hasOwnNav = pathname === "/" || pathname.replace(/\/$/, "") === "/blog";
 ---
 
 <header class="w-full flex flex-row items-center justify-between h-16 pr-4">
@@ -25,5 +26,5 @@ const isHome = pathname === "/";
       <span class="text-emerald-800 hover:underline">{EMAIL}</span>
     </a>
   </div>
-  {!isHome && <Nav pathname={pathname} />}
+  {!hasOwnNav && <Nav pathname={pathname} />}
 </header>
