@@ -30,7 +30,7 @@ const sorted = posts.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
           title={post.data.title}
           tagLine={post.data.tagLine}
           description={post.data.description}
-          slug={post.slug}
+          href={`/blog/post/${post.slug}`}
           index={index}
         />
       ))}
