@@ -62,19 +62,34 @@ Every page has a skip link, one h1, no skipped heading levels, and no hidden pro
 | Hidden content | All 8 project cards render (cards 4 to 8 were `display: none` until scrolled). The scroll box is a focusable region labelled "Projects"; "Projects" is now an h2 and card titles h3, styled as before. | `67723435` |
 | 404 | New site-styled 404 page with one h1 and links to Home and Work with me. | `a36180aa` |
 
+## Follow-up decisions
+
+| Item | Decision | Commit |
+|---|---|---|
+| Current-page marker in the nav | Darkened from emerald-300 (1.6:1) to emerald-600 (3.8:1), meeting WCAG 1.4.11 for state indicators. Still green, just less faint. | `2b11c441` |
+| Long words in post titles on phones | Below 640px post titles are text-3xl with normal letter-spacing, and the post body drops its extra side padding inside the card. No title word breaks mid-word at 320px; only natural breaks at hyphens remain. Unchanged from 640px up. | `feaecd85` |
+| Small links on the home page | Kept. They pass WCAG 2.5.8 through its spacing exception at 375px and 1440px; enlarging them would change the layout. | |
+| Contrast colour changes | Kept the nearest passing shades listed above. | |
+| Show more button vs. render all | Kept "render all": it keeps the look identical and removes code. | |
+
 ## What was left, and why
 
-- **Current-page marker in the nav.** The light green bottom border (emerald-300) is 1.6:1 against white. The current page is also exposed with `aria-current="page"`, but if the border is treated as the visual state indicator, WCAG 1.4.11 asks for 3:1. emerald-600 (3.8:1) would pass. Left as is because it was a deliberate design choice; needs a decision.
-- **Small links on the home page.** The Connect links and project links are 17px tall. They pass WCAG 2.5.8 through its spacing exception (checked at 375px and 1440px), so they were not enlarged, which would change the layout.
-- **Long words in post titles on very narrow screens.** At 320px to 375px a few long title words (for example "Introduction") now break mid-word. Before, they ran outside the white card. A smaller mobile title size would avoid both, but changes the design.
-- **Extra Tab stops.** The project scroll box and post tables are now Tab stops even on wide screens where they don't scroll. This is the standard trade-off for keyboard-scrollable regions.
+- **Small links on the home page** (see above): pass through the spacing exception.
+- **Extra Tab stops.** The project scroll box and post tables are Tab stops even on wide screens where they don't scroll. This is the standard trade-off for keyboard-scrollable regions.
+- **Text-only enlargement.** With the browser's default font set to 32px (text alone at 200%, no zoom), the home page overflows by about 98px at 1280px (the content card's long name heading can't shrink next to the photo), and the one-word headings "Testimonials" and "Tumulty" overflow at 375px. WCAG 1.4.4 is met through browser zoom, which passes at 200% and 400% (320px reflow), so this was not changed. Fixing it would mean reworking the home layout.
 - **Third-party pages.** The Cal.com booking page and GitHub links were not audited.
+
+## Additional automated checks (follow-up)
+
+- **Windows High Contrast (forced colors, emulated in Chromium):** every Tab stop on all six pages keeps a 2px outline, and the current-page marker stays visible (system highlight colour).
+- **WebKit (Safari's engine, 26.4):** with Safari's default Tab, only scrollable regions get focus, as expected; with Option+Tab every link on every page is reachable, shows the focus outline, and the skip link is first and moves focus to the main content. On `/testimonials` the main content has no links, so the next Tab after the skip link correctly leaves it.
+- **Firefox:** could not be launched in this environment (timed out), so it is still a manual check.
 
 ## Manual testing still needed
 
 - A screen reader pass: VoiceOver on macOS (Safari) and iOS, and NVDA or JAWS on Windows. Check the landmarks and headings lists, the "Projects" region, the new-tab announcements, the email links, and the current page in the nav.
-- Keyboard-only use in Safari (turn on "Press Tab to highlight each item" or use Option+Tab) and Firefox.
+- Keyboard-only use in real Safari (the WebKit engine passed with Option+Tab) and in Firefox (not tested here).
 - Browser zoom at 200% and 400%, and a large default font size, in real browsers.
-- Windows High Contrast (forced colors): focus outlines and the nav marker should remain visible.
+- Windows High Contrast on a real Windows machine (passed in Chromium emulation).
 - On the live site after deploy: confirm Vercel serves the new 404 page for a missing URL.
 
