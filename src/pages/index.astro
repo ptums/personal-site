@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
     links: [],
   },
   {
-    title: "AI Agent Skill for Design-System Migration",
+    title: "AI Agent Skill for Design-System Update",
     description:
       "Team owned **two dozen libraries** with **thousands of lines of code** that had to move to the latest UI design system before the end of the quarter. We were given an AI skill that updated one library at a time. I built a wrapper skill around it that put every library on its own branch, generated a verification guide for each one, and added quality gates before review. I then handed the complex skill to an agentic workflow to run through the whole list. Per-library effort dropped from **hours to near-zero**, and the full set was done in **about three weeks**.",
     tools: ["Agentic Workflows", "AI Agent Skills", "Code Migration"],
@@ -93,7 +93,7 @@ const PROJECTS: Project[] = [
   {
     title: "Asbury Park High School Hall of Fame: Redesign & Migration",
     description:
-      "A high school Hall of Fame site had to be hand-coded page by page: adding one inductee meant editing up to **107 files**, because the navigation was copied into every page. It also ran on plain HTTP, had no mobile layout, and still showed a four-year-old announcement. I scoped it, planned three phases, and rebuilt it with a member directory filterable by year, ceremony photo galleries, event and donation pages, and contact and nomination forms. All content lives in one small data file that generates every page, so there is no database to host or maintain. Adding an inductee now takes **1 file**, accessibility rose from **53 to 96**, SEO from **82 to 100**, requires no hosting costs, and the site runs on HTTPS.",
+      "Non-profit high school Hall of Fame site had to be hand-coded page by page: adding one inductee meant editing up to **107 files**, because the navigation was copied into every page. It also ran on plain HTTP, had no mobile layout, and still showed a four-year-old announcement. I scoped it, planned three phases, and rebuilt it with a member directory filterable by year, ceremony photo galleries, event and donation pages, and contact and nomination forms. All content lives in one small data file that generates every page, so there is no database to host or maintain. Adding an inductee now takes **1 file**, accessibility rose from **53 to 96**, SEO from **82 to 100**, requires no hosting costs, and the site runs on HTTPS.",
     tools: ["Next.js", "Cloudinary", "Vercel", "Accessibility", "SEO"],
     links: [
       {
@@ -109,21 +109,30 @@ const PROJECTS: Project[] = [
   {
     title: "Unleashed Potential: Headless CMS Rebuild",
     description:
-      "Defined the roadmap and timeline for a site redesign, then built it on a headless CMS with sections for podcasts, interviews, blog posts, and YouTube videos, so the owner could publish her own marketing content. Set the keyword and technical SEO strategy and set up analytics and search indexing. Rebuilding on free-tier hosting eliminated her $20-a-month Wix cost, leaving only an $8-a-year domain.",
-    tools: ["Next.js", "TypeScript", "Contentful", "SEO"],
-    links: [],
+      "A life coach paid $20 a month for a Wix site and wanted to publish her own podcasts, interviews, and posts. I rebuilt it on a headless CMS so she can do that herself, then changed every content page from rendering on each visit to prebuilt pages, so the site keeps serving even if the CMS goes down. A later audit found a 3.6 MB hero photo and 150 known vulnerabilities, and I fixed both. Hosting fell from **$240 a year to $8**, Lighthouse performance rose from **73 to 88**, and known runtime vulnerabilities went from **150 to 0**.",
+    tools: ["Next.js", "TypeScript", "Contentful CMS", "SEO"],
+    links: [
+      {
+        label: "Baseline",
+        href: "https://github.com/UnleashedPotentialLifeCoaching/unleashedpotentiallifecoaching-web/blob/main/BASELINE.md",
+      },
+      {
+        label: "Results",
+        href: "https://github.com/UnleashedPotentialLifeCoaching/unleashedpotentiallifecoaching-web/blob/main/MIGRATION-RESULTS.md",
+      },
+    ],
   },
   {
     title: "CubbieKit: Shipping Label Automation",
     description:
-      "Designed the backend solution to a shipping label problem for a Shopify store and owned it as lead engineer, tracking work in Linear with twice-weekly standups. Built a Node.js server that queries Shopify through GraphQL and creates labels through Shippo, deployed it to Heroku, and tested it against the live store. Worked with customer service to automate return labels using sample orders.",
-    tools: ["Node.js", "Shopify GraphQL", "Shippo", "Heroku"],
+      "Shopify store had a problem creating shipping labels for its orders. I designed the backend fix and led the build as lead engineer, running twice-weekly standups and tracking work in Linear. The new service reads orders from the store and creates labels automatically, and I tested it against the live store before launch. I then worked with customer service to automate return labels too, testing with sample orders. Labels for orders and returns are now created automatically, with no manual step.",
+    tools: ["Node.js", "Shopify GraphQL", "Shippo", "Heroku", "Linear"],
     links: [],
   },
 ];
 ---
 
-<Layout transparent>
+<Layout>
   <div
     class="flex flex-col items-start lg:flex-row w-full pl-3 pr-4 mt-2 mb-8 gap-8 lg:gap-0 lg:gap-x-[5%]"
     style="min-height: 80vh"
@@ -181,15 +190,21 @@ const PROJECTS: Project[] = [
         </ul>
       </div>
 
-      <p class="text-base mb-8 text-emerald-800 font-normal">
-        I'm a software engineer focused on outcomes over outputs, with a focus
-        on automation and cloud. I use AI to modernize legacy code, stacks, and
-        workflows, guided by implementation strategy and system design. The goal
-        is to cut engineering effort and technical costs while building products
-        that scale, stay maintainable, and cost less to run. Below is work I can
-        show, with the results.
+      <p class="text-base mb-2 text-emerald-800 font-normal">
+        Hello, I'm Peter allow me to introduce myself. I am a technologist above
+        all else. My experience whether personal or professional has lead me to
+        touch all sorts of areas of tech. I've done some help desk work; setting
+        up computers and printers. I've done some IoT work and networking. I've
+        written programs that analyze complex data. I've even trained some AI
+        models.
       </p>
-
+      <p class="text-base mb-8 text-emerald-800 font-normal">
+        However, most of my experience lies in full-stack web development. I've
+        built everything from user experiences that reach tens of thousands of
+        people a month to interconnected systems that automate processes, and
+        deliver complex content. The purpose of this site is to share the
+        outcomes of projects I've had best to time working on.
+      </p>
       <hr class="border-stone-200 mb-8" />
 
       <div class="fade-in-up-delay-2">

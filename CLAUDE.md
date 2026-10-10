@@ -25,7 +25,7 @@ No test suite, no lint script configured.
 - `/blog` → `src/pages/blog/index.astro` (lists all posts, sorted by date)
 - `/blog/post/[slug]` → `src/pages/blog/post/[slug].astro` (renders markdown via `entry.render()`)
 
-**Navigation**: `src/components/Nav.astro` renders the "Words | Resume" links. On `/` it sits inside the main content card; on other pages `Header.astro` shows it on the right.
+**Navigation**: `src/components/Nav.astro` renders "Words | Resume" on `/` and "Home | Resume" elsewhere. On `/` and `/blog` it sits beside the page heading; on other pages `Header.astro` shows it on the right.
 
 Everything is static Astro. The only client JS is an inline `<script>` in `index.astro` that unhides project cards in batches of 3 as the user nears the end of the list, and fades each card in as it scrolls into view (both via IntersectionObserver); all cards are server-rendered, with a `<noscript>` fallback that shows them all.
 

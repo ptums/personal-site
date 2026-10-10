@@ -15,7 +15,11 @@ const { Content } = await post.render();
 ---
 
 <Layout title={`${post.data.title} | Peter Tumulty`} description={post.data.description}>
-  <div class="post-content">
-    <Content />
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <div class="bg-white border rounded-lg p-6 shadow-sm">
+      <div class="post-content">
+        <Content />
+      </div>
+    </div>
   </div>
 </Layout>

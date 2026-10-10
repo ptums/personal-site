@@ -5,8 +5,11 @@ interface Props {
 
 const { pathname } = Astro.props;
 
+// On the home page the first link goes to the blog; everywhere else it goes home
 const navigation = [
-  { name: "Words", href: "/blog" },
+  pathname === "/"
+    ? { name: "Words", href: "/blog" }
+    : { name: "Home", href: "/" },
   { name: "Resume", href: "/images/PFT-Resume-2026.pdf" },
 ];
 ---
@@ -18,7 +21,7 @@ const navigation = [
         {i > 0 && <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>}
         <a
           href={link.href}
-          class={`hover:underline ${pathname.startsWith(link.href) ? "underline" : ""}`}
+          class={`hover:underline ${link.href !== "/" && pathname.startsWith(link.href) ? "underline" : ""}`}
         >
           {link.name}
         </a>
