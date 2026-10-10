@@ -2,10 +2,9 @@
 title: "Avoiding the Global Scope with the Revealing Module Pattern"
 date: "2019-07-30"
 tagLine: "Keep your variables where they belong"
-description: "The Revealing Module Pattern gives you private state and a clean public API in plain JavaScript—no build tools or classes required."
+summary: "The Revealing Module Pattern gives you private state and a clean public API in plain JavaScript—no build tools or classes required."
+published: true
 ---
-
-# Avoiding the Global Scope with the Revealing Module Pattern
 
 Before ES modules, before bundlers, before `class` syntax—JavaScript developers faced a persistent problem: everything lived in the global scope. Scripts on the same page could overwrite each other's variables. Functions named `init` or `utils` would collide. The global object became a dumping ground.
 

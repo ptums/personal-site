@@ -1,0 +1,30 @@
+name: Check site
+
+on:
+  pull_request:
+    branches: [main2]
+  push:
+    branches: [main2, words-pipeline]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check notes for Obsidian-only syntax and broken images
+        run: npm run check:words
+
+      - name: Build the site
+        run: npm run build

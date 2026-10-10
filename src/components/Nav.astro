@@ -7,10 +7,10 @@ const { pathname } = Astro.props;
 
 const current = pathname.replace(/\/$/, "") || "/";
 
-// Every page except the one being viewed; blog posts still link back to /blog
+// Every page except the one being viewed; posts still link back to /words
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Words", href: "/blog" },
+  { name: "Words", href: "/words" },
   { name: "Testimonials", href: "/testimonials" },
   { name: "Resume", href: "/images/PFT-Resume-2026.pdf" },
 ].filter((link) => link.href !== current);

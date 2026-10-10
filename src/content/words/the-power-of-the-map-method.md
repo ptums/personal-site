@@ -2,10 +2,9 @@
 title: "The Power of the Map Method"
 date: "2019-03-14"
 tagLine: "Transform arrays without mutating them"
-description: "Array.map() is one of JavaScript's most useful methods. Learn how it works, when to use it, and how it pairs with other array methods to write clean, declarative code."
+summary: "Array.map() is one of JavaScript's most useful methods. Learn how it works, when to use it, and how it pairs with other array methods to write clean, declarative code."
+published: true
 ---
-
-# The Power of the Map Method
 
 `Array.prototype.map()` is one of the first higher-order functions JavaScript developers encounter—and one of the most frequently used. It's deceptively simple: take an array, apply a function to each element, and return a new array of the results. But the patterns you can build on top of that simplicity are extensive.
 
