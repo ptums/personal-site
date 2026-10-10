@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
 
 const CONTACTS = [
   { id: 1, slug: "https://github.com/ptums", label: "Github" },
@@ -160,7 +159,6 @@ const PROJECTS: Project[] = [
         >
           Peter F. Tumulty
         </h1>
-        <Nav pathname={Astro.url.pathname} />
       </div>
       <h2
         class="m-0 text-emerald-500 font-bold mb-8 playfair-display text-base lg:whitespace-nowrap"
