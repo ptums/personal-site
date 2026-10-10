@@ -42,6 +42,11 @@ button:focus-visible,
   @apply bg-gray-300 p-4 text-lg whitespace-pre-wrap overflow-x-auto max-w-full;
 }
 
+/* The code theme's comment grey (#6A737D) is 3:1 on its dark background; #959da5 is 5.3:1 */
+.post-content pre span[style*="#6A737D" i] {
+  color: #959da5 !important;
+}
+
 .post-content p code {
   @apply text-black py-0 px-0.5 bg-gray-300 text-lg;
 }
