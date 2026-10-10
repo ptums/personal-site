@@ -12,15 +12,17 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Words", href: "/words" },
   { name: "Testimonials", href: "/testimonials" },
+  { name: "Work with me", href: "/work-with-me" },
   { name: "Resume", href: "/images/PFT-Resume-2026.pdf" },
 ].filter((link) => link.href !== current);
 ---
 
+<!-- On small screens the links wrap as whole items, without the | separators -->
 <nav>
-  <ul class="flex items-center text-emerald-800">
+  <ul class="flex flex-wrap items-center gap-x-4 gap-y-1 sm:gap-x-0 text-emerald-800">
     {navigation.map((link, i) => (
-      <li class="flex items-center">
-        {i > 0 && <span class="mx-2 text-emerald-300" aria-hidden="true">|</span>}
+      <li class="flex items-center whitespace-nowrap">
+        {i > 0 && <span class="hidden sm:inline mx-2 text-emerald-300" aria-hidden="true">|</span>}
         <a
           href={link.href}
           class={`hover:underline ${link.href !== "/" && pathname.startsWith(link.href) ? "underline" : ""}`}
