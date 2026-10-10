@@ -184,6 +184,14 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
+"words": Record<string, {
+  id: string;
+  slug: string;
+  body: string;
+  collection: "words";
+  data: InferEntrySchema<"words">;
+  render(): Render[".md"];
+}>;
 
 	};
 
