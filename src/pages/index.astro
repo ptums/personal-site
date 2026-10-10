@@ -9,7 +9,6 @@ const CONTACTS = [
     slug: "https://www.linkedin.com/in/petertumulty",
     label: "LinkedIn",
   },
-  { id: 3, slug: "mailto:peter@tumulty.me", label: "Email" },
 ];
 
 // Projects shown on first load; the rest reveal in batches as the user scrolls
@@ -187,6 +186,18 @@ const PROJECTS: Project[] = [
               </li>
             ))
           }
+          {/* Built by the script in Header.astro so the address isn't in the HTML */}
+          <li>
+            <a
+              class="text-emerald-800 mr-4 text-sm underline"
+              data-email-user="peter"
+              data-email-domain="tumulty.me"
+              hidden>Email</a
+            >
+            <noscript>
+              <span class="text-emerald-800 text-sm">peter at tumulty dot me</span>
+            </noscript>
+          </li>
         </ul>
       </div>
 
