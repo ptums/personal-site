@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   // Used for absolute links in the RSS feed
-  site: "https://www.ptums.me",
+  site: "https://tumulty.me",
   // The blog moved to /words; keep old URLs working
   redirects: {
     "/blog": "/words",
