@@ -13,8 +13,10 @@ const {
   description = "Peter Tumulty, software engineer with 10+ years of experience building software for small businesses, startups, e-commerce companies, and agencies.",
 } = Astro.props;
 
-// The canonical address for this page on the primary domain (site in astro.config.mjs)
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+// The canonical address for this page on the primary domain (site in astro.config.mjs).
+// No trailing slash, to match internal links; vercel.json redirects /page/ to /page.
+const canonicalPath = Astro.url.pathname.replace(/(.)\/$/, "$1");
+const canonicalUrl = new URL(canonicalPath, Astro.site).href;
 ---
 
 <html lang="en">
