@@ -162,6 +162,13 @@ declare module 'astro:content' {
   collection: "words";
   data: InferEntrySchema<"words">
 } & { render(): Render[".md"] };
+"pipeline-test.md": {
+	id: "pipeline-test.md";
+  slug: "pipeline-test";
+  body: string;
+  collection: "words";
+  data: InferEntrySchema<"words">
+} & { render(): Render[".md"] };
 "the-pieces-that-make-up-browser-caching.md": {
 	id: "the-pieces-that-make-up-browser-caching.md";
   slug: "the-pieces-that-make-up-browser-caching";
