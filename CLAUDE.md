@@ -38,7 +38,7 @@ No test suite, no lint script configured.
 - `/words` → `src/pages/words/index.astro` (published posts, newest first)
 - `/words/[slug]` → `src/pages/words/[slug].astro` (prints the title and date, then renders markdown via `entry.render()`)
 - `/testimonials` → `src/pages/testimonials.astro` (reads `db/testimonials.json`, sorted by `order`)
-- `/blog` and `/blog/post/<slug>` redirect to `/words` via `redirects` in `astro.config.mjs`
+- `/blog` and `/blog/post/<slug>` redirect permanently (308) to `/words` and `/words/<slug>` via `redirects` in `vercel.json` (they only work on Vercel, not in `npm run dev`). `vercel.json` also sets `trailingSlash: false`, so `/page/` redirects to `/page`.
 
 **Navigation**: `src/components/Nav.astro` lists Home, Words, Testimonials and Work with me on every page; the current page (posts count as Words) gets `aria-current="page"` and a light green bottom border. `Header.astro` shows it on the same row as the logo and email on every page; below 640px the links wrap as whole items without the `|` separators. The email address is never in the static HTML: elements with `data-email-user` / `data-email-domain` get their `mailto:` from the inline script in `Header.astro`, with a `<noscript>` fallback.
 

@@ -38,3 +38,9 @@ STATUS: proposed | applied (commit) | rejected (why)
 ## Log
 
 (Entries go below.)
+
+### [2026-10-10] Ship / assistant
+OBSERVED: Making tumulty.me canonical showed the /blog redirect pages (Astro meta-refresh HTML) carried their own relative canonical, and every page answered at both /page and /page/.
+CAUSE: Astro `redirects` without an adapter can only write HTML pages; Vercel served both URL forms because no trailingSlash rule was set.
+ACTION: Moved the /blog redirects from astro.config.mjs to vercel.json as permanent redirects (applies seeded lesson 10), and set `trailingSlash: false` in vercel.json with canonical tags and RSS links that drop the slash.
+STATUS: applied (branch tumulty-domain)
