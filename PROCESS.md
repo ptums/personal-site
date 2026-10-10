@@ -36,7 +36,7 @@ G = human gate. Between gates, run autonomously.
 | ------------------ | ------------------------------------------------------------------------ |
 | GH_REPO            | `ptums/personal-site`                                                    |
 | PRODUCTION_BRANCH  | `main2` (there is no `main`)                                             |
-| LIVE_URL           | https://www.ptums.me (tumulty.me redirects here)                         |
+| LIVE_URL           | https://tumulty.me (www.tumulty.me, ptums.me and www.ptums.me redirect here) |
 | HOSTING            | Vercel, GitHub integration; every push builds, `main2` deploys to production |
 | PREVIEW_URL        | `https://personal-site-git-<branch>-peter-ts-projects-33da9322.vercel.app` (behind Vercel login) |
 | INSTALL            | `npm install` (from `vercel.json`)                                       |
