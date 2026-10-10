@@ -19,6 +19,18 @@ const SERVICES = [
   "Mentorship",
 ];
 
+const STEPS = [
+  {
+    name: "Discover",
+    text: "We start with conversation. I learn what the real problems are before anyone talks about solutions.",
+  },
+  { name: "Deliver", text: "I come up with a solution and build it." },
+  {
+    name: "Refine",
+    text: "I keep tuning the strategy until you're getting the results you want.",
+  },
+];
+
 // Only numbers already shown on the home page project cards (which have no anchors to link to)
 const RESULTS = [
   "A law firm's home page went from a D to an A on GTmetrix, uptime reached 99%, and hosting costs fell about 90%.",
@@ -36,8 +48,6 @@ const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-800";
 const sectionHeading = "text-2xl text-emerald-800 font-bold mb-4";
 const bodyText = "text-emerald-800 playfair-display";
-const placeholder =
-  "border border-dashed border-amber-500 bg-amber-50 text-amber-900 rounded-lg px-4 py-3";
 ---
 
 <Layout
@@ -82,8 +92,10 @@ const placeholder =
             <span class="text-emerald-800">Or email me: peter at tumulty dot me</span>
           </noscript>
         </div>
-        <p class={`${placeholder} playfair-display`}>
-          [PETER: 2-3 sentences in my own voice on who I help and why.]
+        <p class={bodyText}>
+          I take ownership of a business's technology, from the public website
+          and internal apps to the cloud they run on. I build what's missing and
+          get engineering teams onto better tooling so they ship faster.
         </p>
       </section>
 
@@ -111,9 +123,13 @@ const placeholder =
         <h2 id="process-heading" class={sectionHeading}>
           How an engagement works
         </h2>
-        <p class={`${placeholder} playfair-display`}>
-          [PETER: 3 short steps in my own voice]
-        </p>
+        <ol class={`list-decimal pl-5 flex flex-col gap-2 ${bodyText}`}>
+          {STEPS.map((step) => (
+            <li>
+              <strong>{step.name}.</strong> {step.text}
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section aria-labelledby="testimonials-heading">
