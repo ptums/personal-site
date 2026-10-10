@@ -4,13 +4,13 @@ import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/PostCard.astro";
 import Nav from "../../components/Nav.astro";
 
-const posts = await getCollection("blog");
-const sorted = posts.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+const posts = await getCollection("words", ({ data }) => data.published);
+const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout
-  title="Blog | Peter Tumulty Senior Software Engineer"
-  description="Technical writing on web development, JavaScript, testing, and software engineering best practices."
+  title="Words | Peter Tumulty"
+  description="Writing on software engineering, AI enablement, and modernization."
 >
   <div class="w-full pl-3 pr-4 mt-2 mb-8">
     <div
@@ -20,7 +20,7 @@ const sorted = posts.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
         style="letter-spacing: 8px"
         class="text-4xl text-emerald-800 tracking-wider font-bold"
       >
-        Blog
+        Words
       </h1>
       <Nav pathname={Astro.url.pathname} />
     </div>
@@ -29,8 +29,8 @@ const sorted = posts.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
         <PostCard
           title={post.data.title}
           tagLine={post.data.tagLine}
-          description={post.data.description}
-          href={`/blog/post/${post.slug}`}
+          description={post.data.summary}
+          href={`/words/${post.slug}`}
           index={index}
         />
       ))}

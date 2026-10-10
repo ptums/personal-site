@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("words", ({ data }) => data.published);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Dates are parsed as UTC midnight; format in UTC so they don't shift a day
+const formattedDate = post.data.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<Layout title={`${post.data.title} | Peter Tumulty`} description={post.data.summary}>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <div class="bg-white border rounded-lg p-6 shadow-sm">
+      <article class="post-content">
+        <h1>{post.data.title}</h1>
+        <time
+          datetime={post.data.date.toISOString().slice(0, 10)}
+          class="text-sm text-gray-400 font-semibold playfair-display"
+        >
+          {formattedDate}
+        </time>
+        <Content />
+      </article>
+    </div>
+  </div>
+</Layout>
