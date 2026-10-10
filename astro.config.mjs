@@ -3,6 +3,8 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
+  // Used for absolute links in the RSS feed
+  site: "https://www.ptums.me",
   // The blog moved to /words; keep old URLs working
   redirects: {
     "/blog": "/words",

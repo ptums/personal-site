@@ -4,11 +4,12 @@
   "license": "MIT",
   "dependencies": {
     "@astrojs/react": "^3.0.0",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/tailwind": "^5.0.0",
+    "@heroicons/react": "^2.0.16",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^4.0.0",
-    "@heroicons/react": "^2.0.16",
     "framer-motion": "^10.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
