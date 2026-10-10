@@ -93,3 +93,12 @@ Every page has a skip link, one h1, no skipped heading levels, and no hidden pro
 - Windows High Contrast on a real Windows machine (passed in Chromium emulation).
 - On the live site after deploy: confirm Vercel serves the new 404 page for a missing URL.
 
+## VoiceOver pass by the site owner (2026-10-10)
+
+Corrections from a manual VoiceOver run, applied on branch `heading-fixes` (visual styles unchanged):
+
+- **Home:** "Connect with me" and "Projects" are h3; project titles are h4 (under the h1 name and h2 tagline).
+- **Words:** each post title is an h2 and its tag line an h3.
+- **Testimonials:** each person's name is an h2 and their title and company an h3.
+- **Work with me:** the opening line is an h2; What I do, Results, How an engagement works, Testimonials and Get in touch are h3. Each section is also a labelled Tab stop (`tabindex="0"`, named by its heading), so Tab moves section by section as well as through the buttons and links. With a screen reader, VO+Command+H (next heading) and the rotor also move between sections.
+

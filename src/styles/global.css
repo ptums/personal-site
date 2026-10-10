@@ -17,6 +17,12 @@ button:focus-visible,
   border-radius: 2px;
 }
 
+/* Focusable page sections (Work with me) get room between the outline and their text */
+section[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+
 .playfair-display {
   font-family: "Playfair Display", serif;
 }

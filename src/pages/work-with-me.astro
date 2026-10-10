@@ -66,12 +66,13 @@ const bodyText = "text-emerald-800 playfair-display";
       </h1>
     </div>
 
+    <!-- Each section is a labelled Tab stop so keyboard and screen reader users can move section by section -->
     <div class="bg-white border rounded-lg p-6 shadow-sm flex flex-col gap-10">
-      <section aria-label="Introduction" class="flex flex-col gap-6">
-        <p class={`text-lg ${bodyText}`}>
+      <section aria-labelledby="intro-heading" tabindex="0" class="flex flex-col gap-6">
+        <h2 id="intro-heading" class={`text-lg ${bodyText}`}>
           Software engineer and technical product manager for long-term contract
           work.
-        </p>
+        </h2>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href={BOOKING_URL}
@@ -99,15 +100,15 @@ const bodyText = "text-emerald-800 playfair-display";
         </p>
       </section>
 
-      <section aria-labelledby="services-heading">
-        <h2 id="services-heading" class={sectionHeading}>What I do</h2>
+      <section aria-labelledby="services-heading" tabindex="0">
+        <h3 id="services-heading" class={sectionHeading}>What I do</h3>
         <ul class={`list-disc pl-5 sm:columns-2 gap-x-10 space-y-2 ${bodyText}`}>
           {SERVICES.map((service) => <li>{service}</li>)}
         </ul>
       </section>
 
-      <section aria-labelledby="results-heading">
-        <h2 id="results-heading" class={sectionHeading}>Results</h2>
+      <section aria-labelledby="results-heading" tabindex="0">
+        <h3 id="results-heading" class={sectionHeading}>Results</h3>
         <ul class="grid gap-4 md:grid-cols-3">
           {RESULTS.map((result) => (
             <li
@@ -119,10 +120,10 @@ const bodyText = "text-emerald-800 playfair-display";
         </ul>
       </section>
 
-      <section aria-labelledby="process-heading">
-        <h2 id="process-heading" class={sectionHeading}>
+      <section aria-labelledby="process-heading" tabindex="0">
+        <h3 id="process-heading" class={sectionHeading}>
           How an engagement works
-        </h2>
+        </h3>
         <ol class={`list-decimal pl-5 flex flex-col gap-2 ${bodyText}`}>
           {STEPS.map((step) => (
             <li>
@@ -132,8 +133,8 @@ const bodyText = "text-emerald-800 playfair-display";
         </ol>
       </section>
 
-      <section aria-labelledby="testimonials-heading">
-        <h2 id="testimonials-heading" class={sectionHeading}>Testimonials</h2>
+      <section aria-labelledby="testimonials-heading" tabindex="0">
+        <h3 id="testimonials-heading" class={sectionHeading}>Testimonials</h3>
         <ul class="flex flex-col gap-4">
           {featured.map((testimonial) => (
             <li class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4">
@@ -155,8 +156,8 @@ const bodyText = "text-emerald-800 playfair-display";
         </ul>
       </section>
 
-      <section aria-labelledby="contact-heading" class="flex flex-col gap-4">
-        <h2 id="contact-heading" class={sectionHeading}>Get in touch</h2>
+      <section aria-labelledby="contact-heading" tabindex="0" class="flex flex-col gap-4">
+        <h3 id="contact-heading" class={sectionHeading}>Get in touch</h3>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href={BOOKING_URL}
