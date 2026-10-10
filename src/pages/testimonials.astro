@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
 import testimonials from "../../db/testimonials.json";
 
 const sorted = [...testimonials].sort((a, b) => a.order - b.order);
@@ -20,7 +19,6 @@ const sorted = [...testimonials].sort((a, b) => a.order - b.order);
       >
         Testimonials
       </h1>
-      <Nav pathname={Astro.url.pathname} />
     </div>
     <ul class="flex flex-col w-full">
       {sorted.map((testimonial, index) => (
