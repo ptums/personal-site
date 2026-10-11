@@ -4,6 +4,11 @@
 
 export const SITE_URL = "https://tumulty.me";
 
+// PRE-LAUNCH: false keeps the site out of search engines and away from AI crawlers.
+// To launch, set this to true AND remove the "X-Robots-Tag" header block in vercel.json.
+// (Drives the robots meta tag in Layout.astro and /robots.txt.) See docs/seo.md, "Launch".
+export const ALLOW_INDEXING = false;
+
 export const BOOKING_URL = "https://cal.com/peter-tumulty-hnhdwj/30min";
 
 // Split so the address never appears in page text; the script in Header.astro joins it.

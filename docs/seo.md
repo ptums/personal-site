@@ -3,6 +3,25 @@
 How tumulty.me presents Peter Tumulty to search engines and AI assistants, how to keep it
 accurate, and how to check that it's working.
 
+## Launch (the site is currently hidden from search)
+
+Until launch, the site is kept out of search engines and away from AI crawlers:
+
+- `ALLOW_INDEXING = false` in `src/data/site.ts` adds `<meta name="robots" content="noindex">` to
+  every page and makes `/robots.txt` disallow the AI crawlers (search engines stay allowed so
+  they can read the noindex; a Disallow would hide it from them).
+- `vercel.json` sends `X-Robots-Tag: noindex` on every response, which also covers the resume
+  PDF, `llms.txt`, the sitemap and images.
+
+To launch:
+
+1. In `src/data/site.ts`, set `ALLOW_INDEXING = true`.
+2. In `vercel.json`, delete the first `headers` entry (`"source": "/(.*)"` with `X-Robots-Tag`).
+3. Commit, deploy, and check: `curl -sI https://tumulty.me | grep -i x-robots` prints nothing,
+   the page source has no `name="robots"` tag, and `https://tumulty.me/robots.txt` allows
+   everyone and lists the sitemap.
+4. Then work through "Phase 3: measure" below.
+
 ## Where things live
 
 | What | File |
@@ -13,7 +32,7 @@ accurate, and how to check that it's working.
 | JSON-LD graph (WebSite, Person, ProfessionalService, WebPage, BreadcrumbList) | `src/data/structured-data.ts`, added by `src/layouts/Layout.astro` |
 | `/sitemap.xml` | `src/pages/sitemap.xml.js` (generated at build) |
 | `/llms.txt` | `src/pages/llms.txt.js` (generated at build) |
-| `/robots.txt` | `public/robots.txt` |
+| `/robots.txt` | `src/pages/robots.txt.js` (generated at build from `ALLOW_INDEXING`) |
 | Link preview image | `public/images/og-card.jpg` (1200x630) |
 
 Everything reads from `src/data/site.ts`, so a change there updates the pages, the JSON-LD and
@@ -55,7 +74,7 @@ pick it up) and set `caseStudy` on the matching project in `src/pages/index.astr
 
 ## Phase 3: measure
 
-### Once, after deploying
+### Once, after launching
 
 - [ ] **Make ptums.me a permanent redirect.** Only `tumulty.me` should be indexed. Every
       `ptums.me` and `www.ptums.me` URL already redirects to the same path on `tumulty.me`, but with
