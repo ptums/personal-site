@@ -8,6 +8,7 @@ import {
   EMAIL_USER,
   SERVICES,
 } from "../data/site";
+import { CASE_STUDIES } from "../data/case-studies";
 
 const STEPS = [
   {
@@ -21,11 +22,20 @@ const STEPS = [
   },
 ];
 
-// Only numbers already shown on the home page project cards (which have no anchors to link to)
+// Only numbers already shown on the home page project cards; two have case studies
+const caseStudy = (slug: string) => CASE_STUDIES.find((study) => study.slug === slug)!;
 const RESULTS = [
-  "A law firm's home page went from a D to an A on GTmetrix, uptime reached 99%, and hosting costs fell about 90%.",
-  "A life coach's site cut hosting from $240 a year to $8.",
-  "A high school Hall of Fame site went from editing up to 107 files per new inductee to 1.",
+  {
+    text: caseStudy("law-firm-headless-migration").result,
+    href: "/work/law-firm-headless-migration",
+    name: "law firm",
+  },
+  { text: "A life coach's site cut hosting from $240 a year to $8." },
+  {
+    text: caseStudy("hall-of-fame-rebuild").result,
+    href: "/work/hall-of-fame-rebuild",
+    name: "Hall of Fame",
+  },
 ];
 
 // First three by order; cardQuote is the shorter excerpt when one exists
@@ -103,9 +113,16 @@ const bodyText = "text-emerald-800 playfair-display";
         <ul class="grid gap-4 md:grid-cols-3">
           {RESULTS.map((result) => (
             <li
-              class={`border-[0.5px] border-stone-200 rounded-lg shadow-md p-4 ${bodyText}`}
+              class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4 flex flex-col items-start gap-3"
             >
-              {result}
+              <p class={bodyText}>{result.text}</p>
+              {result.href && (
+                <a
+                  href={result.href}
+                  class={`text-emerald-800 font-semibold underline ${focusRing}`}
+                  >Read the case study<span class="sr-only">: {result.name}</span></a
+                >
+              )}
             </li>
           ))}
         </ul>
