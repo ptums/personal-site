@@ -38,9 +38,13 @@ No test suite, no lint script configured.
 - `/words` → `src/pages/words/index.astro` (published posts, newest first)
 - `/words/[slug]` → `src/pages/words/[slug].astro` (prints the title and date, then renders markdown via `entry.render()`)
 - `/testimonials` → `src/pages/testimonials.astro` (reads `db/testimonials.json`, sorted by `order`)
-- `/work-with-me` → `src/pages/work-with-me.astro`
+- `/work-with-me` → `src/pages/work-with-me.astro` (services, where I work, results, FAQ from `src/data/faq.ts`)
+- `/work/[slug]` → `src/pages/work/[slug].astro` (case studies from `src/data/case-studies.ts`)
+- `/sitemap.xml` and `/llms.txt` are generated at build by `src/pages/sitemap.xml.js` and `src/pages/llms.txt.js`; `public/robots.txt` is static
 - `src/pages/404.astro` → `dist/404.html`, which Vercel serves for missing URLs
 - `/blog` and `/blog/post/<slug>` redirect permanently (308) to `/words` and `/words/<slug>` via `redirects` in `vercel.json` (they only work on Vercel, not in `npm run dev`). `vercel.json` also sets `trailingSlash: false`, so `/page/` redirects to `/page`.
+
+**Identity and SEO**: `src/data/site.ts` is the single source for Peter's name, job title, description, business (Tumulty Web Services LLC), services, service area, booking URL and profile links. Pages, the JSON-LD graph (`src/data/structured-data.ts`, rendered by `Layout.astro` with optional `breadcrumbs` and `jsonLd` props), `sitemap.xml` and `llms.txt` all read from it, so change identity text there, not in pages. `[PETER: ...]` placeholders show on the page but are filtered out of structured data and `llms.txt`. See `docs/seo.md`.
 
 **Navigation**: `src/components/Nav.astro` lists Home, Words, Testimonials and Work with me on every page; the current page (posts count as Words) gets `aria-current="page"` and a light green bottom border. `Header.astro` shows it on the same row as the logo and email on every page; below 640px the links wrap as whole items without the `|` separators. The email address is never in the static HTML: elements with `data-email-user` / `data-email-domain` get their `mailto:` from the inline script in `Header.astro`, with a `<noscript>` fallback.
 
@@ -49,7 +53,8 @@ Everything is static Astro. The only client JS is the email script in `Header.as
 **Styles**:
 - `src/styles/global.css` — Tailwind base + custom `.post-content` styles for rendered markdown, `.playfair-display` font class, and CSS `fade-in-up` animation classes.
 - `tailwind.config.js` — extends with `bg-tech-pattern` background image.
-- Google Fonts (Lato + Playfair Display) loaded via link tag in `src/layouts/Layout.astro`.
+- Fonts are self-hosted in `public/fonts` (Lato 400 and 700, Playfair Display variable) with `@font-face` in `global.css`; only Playfair 400 and 800 are declared so bold text renders as before. No Google Fonts request.
+- The home photo uses `astro:assets` (`src/assets/peter-2023.webp`) for responsive sizes; `public/images/peter-2023.webp` stays for JSON-LD. The link preview card is `public/images/og-card.jpg`.
 
 **Layout**: `src/layouts/Layout.astro` wraps all pages with Header, Footer, analytics scripts, and all `<head>` meta/favicon tags.
 
