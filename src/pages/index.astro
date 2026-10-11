@@ -219,13 +219,15 @@ const PROJECTS: Project[] = [
         <h3 id="projects-heading" class="font-semibold text-lg text-emerald-800 mb-4">
           Projects
         </h3>
-        <!-- All cards are in the page; the box is focusable so it can be scrolled with arrow keys -->
+        <!-- All cards are in the page; the box is focusable so it can be scrolled with arrow keys.
+             "relative" keeps the absolutely positioned sr-only link text inside the box; without it
+             that text escaped to its spot far down the list and stretched the page below the footer. -->
         <div
           data-project-scroller
           tabindex="0"
           role="region"
           aria-labelledby="projects-heading"
-          class="max-h-[70vh] lg:max-h-[640px] overflow-y-auto overscroll-contain px-1 pb-2 -mx-1"
+          class="relative max-h-[70vh] lg:max-h-[640px] overflow-y-auto overscroll-contain px-1 pb-2 -mx-1"
         >
           <ol class="flex flex-col">
             {

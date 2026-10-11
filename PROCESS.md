@@ -80,7 +80,7 @@ Skip this gate for clear, small requests. Stop here when the request is ambiguou
 ### Verify (auto)
 
 1. `npm run build`: zero errors; read warnings.
-2. Browser check with Playwright against `npx astro preview --port 4399` (or the dev server): screenshot each changed page at 1440px and 390px wide and look at them. Measure alignment with `getBoundingClientRect` when the request is about alignment.
+2. Browser check with Playwright (also confirm nothing extends below the footer: document height equals the footer's bottom edge) against `npx astro preview --port 4399` (or the dev server): screenshot each changed page at 1440px and 390px wide and look at them. Measure alignment with `getBoundingClientRect` when the request is about alignment.
 3. Behaviour checks for what changed, for example: nav links per page, redirects resolve, drafts produce no page, cards fade in only when visible, bold renders as `<strong>`.
 4. Diff check: `git diff --stat` shows only files in scope; human edits are intact.
 
