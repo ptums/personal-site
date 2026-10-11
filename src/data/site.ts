@@ -26,6 +26,14 @@ export const PERSON = {
   ],
 };
 
+// Link preview card (1200x630) for LinkedIn, Slack, iMessage and X
+export const SOCIAL_IMAGE = {
+  url: `${SITE_URL}/images/og-card.jpg`,
+  width: 1200,
+  height: 630,
+  alt: "Peter Tumulty, AI-Driven Technical Product Management & Engineering, tumulty.me",
+};
+
 export const BUSINESS = {
   name: "Tumulty Web Services",
   legalName: "Tumulty Web Services LLC",
