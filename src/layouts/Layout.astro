@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { PERSON } from "../data/site";
+import { PERSON, SOCIAL_IMAGE } from "../data/site";
 import { buildGraph, toScriptJson, type Crumb } from "../data/structured-data";
 
 interface Props {
@@ -48,6 +48,14 @@ const structuredData = toScriptJson(
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={SOCIAL_IMAGE.url} />
+    <meta property="og:image:width" content={String(SOCIAL_IMAGE.width)} />
+    <meta property="og:image:height" content={String(SOCIAL_IMAGE.height)} />
+    <meta property="og:image:alt" content={SOCIAL_IMAGE.alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={SOCIAL_IMAGE.url} />
     <script type="application/ld+json" set:html={structuredData} />
 
     <!-- Fonts are self-hosted (public/fonts, @font-face in global.css); preload the two Lato
