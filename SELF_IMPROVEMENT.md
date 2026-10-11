@@ -51,3 +51,9 @@ CAUSE: Vercel runs `npm run build` (vercel.json) and serves its own output, so t
 ACTION: Stopped tracking dist/ (added to .gitignore); CLAUDE.md and PROCESS.md now say to build before committing but not to commit dist/.
 STATUS: applied (branch tagline-update)
 
+### [2026-10-10] Verify / assistant
+OBSERVED: After the accessibility sweep the home page had 3,600px of blank space below the footer on phones (970px on desktop). Found by the owner, not by any check.
+CAUSE: Visually hidden "(opens in a new tab)" text (Tailwind sr-only, position: absolute) sat inside the project scroll box, which wasn't a positioned element, so the text was laid out at its spot far down the list and stretched the document. Axe, Lighthouse and the overflow checks only measured width, not height.
+ACTION: Added `relative` to the scroll box in index.astro. PROCESS.md Verify now also compares document height with the footer's bottom edge.
+STATUS: applied (branch fix-home-blank-space)
+
