@@ -1,5 +1,6 @@
 ---
 import Nav from "./Nav.astro";
+import { EMAIL_DOMAIN, EMAIL_USER } from "../data/site";
 
 interface Props {
   pathname: string;
@@ -7,9 +8,6 @@ interface Props {
 
 const { pathname } = Astro.props;
 
-// Split so the address never appears in the HTML; the script below joins it
-const EMAIL_USER = "peter";
-const EMAIL_DOMAIN = "tumulty.me";
 ---
 
 <header class="w-full flex flex-row flex-wrap items-center justify-between gap-y-2 min-h-16 pr-4">

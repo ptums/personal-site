@@ -13,6 +13,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
+// Keep the <title> under 60 characters: add the name when it fits, else the title alone,
+// else the post's seoTitle
+const fullTitle = `${post.data.title} | Peter Tumulty`;
+const pageTitle =
+  post.data.seoTitle ?? (fullTitle.length <= 60 ? fullTitle : post.data.title);
+
 // Dates are parsed as UTC midnight; format in UTC so they don't shift a day
 const formattedDate = post.data.date.toLocaleDateString("en-US", {
   year: "numeric",
@@ -22,7 +28,7 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
 });
 ---
 
-<Layout title={`${post.data.title} | Peter Tumulty`} description={post.data.summary}>
+<Layout title={pageTitle} description={post.data.seoDescription ?? post.data.summary}>
   <div class="w-full pl-3 pr-4 mt-2 mb-8">
     <div class="bg-white border rounded-lg p-6 shadow-sm">
       <article class="post-content">
