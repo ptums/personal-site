@@ -48,6 +48,8 @@ pick it up) and set `caseStudy` on the matching project in `src/pages/index.astr
   publishes about itself, so testimonials stay plain text.
 - **FAQ rich results.** Google only shows FAQ rich results for government and health sites, so
   don't expect the expandable FAQ in search. The markup is still read by Bing and AI assistants.
+- **Only tumulty.me is indexed.** Canonical tags, the sitemap, JSON-LD and `llms.txt` all use
+  `https://tumulty.me`; `ptums.me` only redirects (see the checklist for making that permanent).
 - **Home title is 61 characters**, one over the 60 guideline, because it is the exact title you
   chose. Google truncates by pixel width, so it will most likely show in full.
 
@@ -55,6 +57,13 @@ pick it up) and set `caseStudy` on the matching project in `src/pages/index.astr
 
 ### Once, after deploying
 
+- [ ] **Make ptums.me a permanent redirect.** Only `tumulty.me` should be indexed. Every
+      `ptums.me` and `www.ptums.me` URL already redirects to the same path on `tumulty.me`, but with
+      a 307 (temporary), which can keep old ptums.me URLs in Google. In Vercel: Project, Settings,
+      Domains, `ptums.me`, Edit, change the redirect to **308 Permanent**; repeat for
+      `www.ptums.me`. Check: `curl -sI https://ptums.me/work-with-me` shows `308` and
+      `location: https://tumulty.me/work-with-me`. If ptums.me was ever added to Search Console or
+      Bing Webmaster Tools, then use Google's Change of Address tool or Bing's Site Move tool.
 - [ ] **Google Search Console** (search.google.com/search-console): add a **Domain** property for
       `tumulty.me` and verify it with the DNS TXT record (in Vercel: Project, Settings, Domains,
       or your registrar). A Domain property covers www, http and https.
