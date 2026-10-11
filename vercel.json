@@ -5,7 +5,35 @@
   "installCommand": "npm install",
   "trailingSlash": false,
   "redirects": [
-    { "source": "/blog", "destination": "/words", "permanent": true },
-    { "source": "/blog/post/:slug", "destination": "/words/:slug", "permanent": true }
+    {
+      "source": "/blog",
+      "destination": "/words",
+      "permanent": true
+    },
+    {
+      "source": "/blog/post/:slug",
+      "destination": "/words/:slug",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    }
   ]
 }
