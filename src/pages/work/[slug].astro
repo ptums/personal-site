@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { CASE_STUDIES, type CaseStudy } from "../../data/case-studies";
+import { BOOKING_URL, SITE_URL, isPlaceholder } from "../../data/site";
+import { IDS } from "../../data/structured-data";
+
+export function getStaticPaths() {
+  return CASE_STUDIES.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props as { study: CaseStudy };
+const url = new URL(`/work/${study.slug}`, SITE_URL).href;
+
+// Placeholder paragraphs are left out of the structured data
+const article = {
+  "@type": "Article",
+  "@id": `${url}#article`,
+  headline: study.title,
+  description: study.description,
+  url,
+  mainEntityOfPage: { "@id": `${url}#webpage` },
+  author: { "@id": IDS.person },
+  publisher: { "@id": IDS.business },
+  about: { "@id": IDS.business },
+  keywords: study.stack.join(", "),
+  articleBody: [...study.problem, ...study.approach, ...study.outcome]
+    .filter((text) => !isPlaceholder(text))
+    .join(" "),
+  inLanguage: "en",
+};
+
+const focusRing =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-800";
+const sectionHeading = "text-2xl text-emerald-800 font-bold mb-4";
+const bodyText = "text-emerald-800 playfair-display";
+const placeholder =
+  "border border-dashed border-amber-500 bg-amber-50 text-amber-900 rounded-lg px-4 py-3";
+const paragraphClass = (text: string) =>
+  isPlaceholder(text) ? `${placeholder} playfair-display` : bodyText;
+---
+
+<Layout
+  title={study.seoTitle}
+  description={study.description}
+  breadcrumbs={[{ name: study.title, path: `/work/${study.slug}` }]}
+  jsonLd={[article]}
+>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <p class="text-sm text-gray-500 font-semibold playfair-display mb-2">
+      Case study
+    </p>
+    <h1 class="text-3xl sm:text-4xl text-emerald-800 font-bold mb-8">
+      {study.title}
+    </h1>
+
+    <div class="bg-white border rounded-lg p-6 shadow-sm flex flex-col gap-10">
+      <p class={`text-lg ${bodyText}`}>{study.result}</p>
+
+      <section aria-labelledby="problem-heading">
+        <h2 id="problem-heading" class={sectionHeading}>The problem</h2>
+        <div class="flex flex-col gap-3">
+          {study.problem.map((text) => <p class={paragraphClass(text)}>{text}</p>)}
+        </div>
+      </section>
+
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading" class={sectionHeading}>What I did</h2>
+        <div class="flex flex-col gap-3">
+          {study.approach.map((text) => <p class={paragraphClass(text)}>{text}</p>)}
+        </div>
+      </section>
+
+      <section aria-labelledby="outcome-heading">
+        <h2 id="outcome-heading" class={sectionHeading}>The outcome</h2>
+        <div class="flex flex-col gap-4">
+          {study.outcome.map((text) => <p class={paragraphClass(text)}>{text}</p>)}
+          <dl class="grid gap-4 sm:grid-cols-2">
+            {study.metrics.map((metric) => (
+              <div class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4">
+                <dt class="text-sm text-gray-500 font-semibold playfair-display">
+                  {metric.label}
+                </dt>
+                <dd class="text-xl text-emerald-800 font-bold">{metric.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section aria-labelledby="stack-heading">
+        <h2 id="stack-heading" class={sectionHeading}>Stack</h2>
+        <p class={bodyText}>{study.stack.join(" · ")}</p>
+        {study.links.length > 0 && (
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+            {study.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`text-emerald-800 font-semibold underline ${focusRing}`}
+                  >{link.label}<span class="sr-only"> (opens in a new tab)</span></a
+                >
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section aria-labelledby="next-heading" class="flex flex-col gap-4">
+        <h2 id="next-heading" class={sectionHeading}>Work with me</h2>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-block rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 ${focusRing}`}
+          >
+            Book an intro call<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a
+            href="/work-with-me"
+            class={`text-emerald-800 font-semibold underline ${focusRing}`}
+            >See how I work</a
+          >
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
