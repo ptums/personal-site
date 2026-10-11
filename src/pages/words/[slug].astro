@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { SITE_URL } from "../../data/site";
+import { IDS } from "../../data/structured-data";
 
 export async function getStaticPaths() {
   const posts = await getCollection("words", ({ data }) => data.published);
@@ -19,6 +21,21 @@ const fullTitle = `${post.data.title} | Peter Tumulty`;
 const pageTitle =
   post.data.seoTitle ?? (fullTitle.length <= 60 ? fullTitle : post.data.title);
 
+const description = post.data.seoDescription ?? post.data.summary;
+const postUrl = new URL(`/words/${post.slug}`, SITE_URL).href;
+const blogPosting = {
+  "@type": "BlogPosting",
+  "@id": `${postUrl}#article`,
+  headline: post.data.title,
+  description,
+  datePublished: post.data.date.toISOString().slice(0, 10),
+  url: postUrl,
+  mainEntityOfPage: { "@id": `${postUrl}#webpage` },
+  author: { "@id": IDS.person },
+  publisher: { "@id": IDS.person },
+  inLanguage: "en",
+};
+
 // Dates are parsed as UTC midnight; format in UTC so they don't shift a day
 const formattedDate = post.data.date.toLocaleDateString("en-US", {
   year: "numeric",
@@ -28,7 +45,15 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
 });
 ---
 
-<Layout title={pageTitle} description={post.data.seoDescription ?? post.data.summary}>
+<Layout
+  title={pageTitle}
+  description={description}
+  breadcrumbs={[
+    { name: "Words", path: "/words" },
+    { name: post.data.title, path: `/words/${post.slug}` },
+  ]}
+  jsonLd={[blogPosting]}
+>
   <div class="w-full pl-3 pr-4 mt-2 mb-8">
     <div class="bg-white border rounded-lg p-6 shadow-sm">
       <article class="post-content">
