@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { PERSON } from "../data/site";
 
 const CONTACTS = [
   { id: 1, slug: "https://github.com/ptums", label: "Github" },
   {
     id: 2,
-    slug: "https://www.linkedin.com/in/petertumulty",
+    slug: "https://www.linkedin.com/in/petertumulty/",
     label: "LinkedIn",
   },
 ];
@@ -128,8 +129,8 @@ const PROJECTS: Project[] = [
 ---
 
 <Layout
-  title="Peter Tumulty | Software Engineer & Technical Product Manager"
-  description="AI-driven technical product management and engineering for long-term contracts: technical roadmaps, strategy, lead engineering, automation, and cloud."
+  title={`${PERSON.name} | ${PERSON.jobTitle}`}
+  description={PERSON.description}
 >
   <div
     class="flex flex-col items-start lg:flex-row w-full pl-3 pr-4 mt-2 mb-8 gap-8 lg:gap-0 lg:gap-x-[5%]"
