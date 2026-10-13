@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+// Baseline and results docs from src/content/proof, at /work/<project>/<doc>
+export async function getStaticPaths() {
+  const docs = await getCollection("proof");
+  return docs.map((doc) => ({
+    params: { doc: doc.slug },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+const { Content } = await doc.render();
+---
+
+<Layout
+  title={`${doc.data.title} | Peter Tumulty`}
+  description={doc.data.description}
+  breadcrumbs={[{ name: doc.data.title, path: `/work/${doc.slug}` }]}
+>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <div class="bg-white border rounded-lg p-6 shadow-sm">
+      <article class="post-content">
+        <Content />
+      </article>
+    </div>
+  </div>
+</Layout>
