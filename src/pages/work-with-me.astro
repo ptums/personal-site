@@ -11,7 +11,7 @@ import {
   isPlaceholder,
 } from "../data/site";
 import { CASE_STUDIES } from "../data/case-studies";
-import { FAQ } from "../data/faq";
+import { FAQ, SHOW_FAQ } from "../data/faq";
 
 const STEPS = [
   {
@@ -26,7 +26,8 @@ const STEPS = [
 ];
 
 // Only numbers already shown on the home page project cards; two have case studies
-const caseStudy = (slug: string) => CASE_STUDIES.find((study) => study.slug === slug)!;
+const caseStudy = (slug: string) =>
+  CASE_STUDIES.find((study) => study.slug === slug)!;
 const RESULTS = [
   {
     text: caseStudy("law-firm-headless-migration").result,
@@ -42,7 +43,9 @@ const RESULTS = [
 ];
 
 // FAQPage markup only includes answered questions, so placeholders never reach search results
-const answered = FAQ.filter((item) => !isPlaceholder(item.answer));
+const answered = SHOW_FAQ
+  ? FAQ.filter((item) => !isPlaceholder(item.answer))
+  : [];
 const faqPage = answered.length
   ? [
       {
@@ -89,7 +92,11 @@ const bodyText = "text-emerald-800 playfair-display";
 
     <!-- Each section is a labelled Tab stop so keyboard and screen reader users can move section by section -->
     <div class="bg-white border rounded-lg p-6 shadow-sm flex flex-col gap-10">
-      <section aria-labelledby="intro-heading" tabindex="0" class="flex flex-col gap-6">
+      <section
+        aria-labelledby="intro-heading"
+        tabindex="0"
+        class="flex flex-col gap-6"
+      >
         <h2 id="intro-heading" class={`text-lg ${bodyText}`}>
           Software engineer and technical product manager for long-term contract
           work.
@@ -111,19 +118,28 @@ const bodyText = "text-emerald-800 playfair-display";
             >Or email me</a
           >
           <noscript>
-            <span class="text-emerald-800">Or email me: peter at tumulty dot me</span>
+            <span class="text-emerald-800"
+              >Or email me: peter at tumulty dot me</span
+            >
           </noscript>
         </div>
         <p class={bodyText}>
           I take ownership of a business's technology, from the public website
           and internal apps to the cloud they run on. I build what's missing and
-          get engineering teams onto better tooling so they ship faster.
+          get engineering teams onto better tooling so they ship faster. I focus
+          on outcomes over outputs, and every project is driven by one of two
+          goals: cutting costs or making the team more efficient. As an
+          independent consultant, I brought down what clients paid to run their
+          sites, and as an engineer on a large team, I helped us deliver ahead
+          of schedule.
         </p>
       </section>
 
       <section aria-labelledby="services-heading" tabindex="0">
         <h3 id="services-heading" class={sectionHeading}>What I do</h3>
-        <ul class={`list-disc pl-5 sm:columns-2 gap-x-10 space-y-2 ${bodyText}`}>
+        <ul
+          class={`list-disc pl-5 sm:columns-2 gap-x-10 space-y-2 ${bodyText}`}
+        >
           {SERVICES.map((service) => <li>{service}</li>)}
         </ul>
       </section>
@@ -136,20 +152,22 @@ const bodyText = "text-emerald-800 playfair-display";
       <section aria-labelledby="results-heading" tabindex="0">
         <h3 id="results-heading" class={sectionHeading}>Results</h3>
         <ul class="grid gap-4 md:grid-cols-3">
-          {RESULTS.map((result) => (
-            <li
-              class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4 flex flex-col items-start gap-3"
-            >
-              <p class={bodyText}>{result.text}</p>
-              {result.href && (
-                <a
-                  href={result.href}
-                  class={`text-emerald-800 font-semibold underline ${focusRing}`}
-                  >Read the case study<span class="sr-only">: {result.name}</span></a
-                >
-              )}
-            </li>
-          ))}
+          {
+            RESULTS.map((result) => (
+              <li class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4 flex flex-col items-start gap-3">
+                <p class={bodyText}>{result.text}</p>
+                {result.href && (
+                  <a
+                    href={result.href}
+                    class={`text-emerald-800 font-semibold underline ${focusRing}`}
+                  >
+                    Read the case study
+                    <span class="sr-only">: {result.name}</span>
+                  </a>
+                )}
+              </li>
+            ))
+          }
         </ul>
       </section>
 
@@ -158,58 +176,74 @@ const bodyText = "text-emerald-800 playfair-display";
           How an engagement works
         </h3>
         <ol class={`list-decimal pl-5 flex flex-col gap-2 ${bodyText}`}>
-          {STEPS.map((step) => (
-            <li>
-              <strong>{step.name}.</strong> {step.text}
-            </li>
-          ))}
+          {
+            STEPS.map((step) => (
+              <li>
+                <strong>{step.name}.</strong> {step.text}
+              </li>
+            ))
+          }
         </ol>
       </section>
 
       <section aria-labelledby="testimonials-heading" tabindex="0">
         <h3 id="testimonials-heading" class={sectionHeading}>Testimonials</h3>
         <ul class="flex flex-col gap-4">
-          {featured.map((testimonial) => (
-            <li class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4">
-              <figure>
-                <blockquote class={`mb-3 ${bodyText}`}>
-                  “{testimonial.quote}”
-                </blockquote>
-                <figcaption>
-                  <span class="block text-lg text-emerald-700 font-bold">
-                    {testimonial.name}
-                  </span>
-                  <span class="block text-sm text-stone-600 font-semibold playfair-display">
-                    {testimonial.company}
-                  </span>
-                </figcaption>
-              </figure>
-            </li>
-          ))}
+          {
+            featured.map((testimonial) => (
+              <li class="border-[0.5px] border-stone-200 rounded-lg shadow-md p-4">
+                <figure>
+                  <blockquote class={`mb-3 ${bodyText}`}>
+                    “{testimonial.quote}”
+                  </blockquote>
+                  <figcaption>
+                    <span class="block text-lg text-emerald-700 font-bold">
+                      {testimonial.name}
+                    </span>
+                    <span class="block text-sm text-stone-600 font-semibold playfair-display">
+                      {testimonial.company}
+                    </span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))
+          }
         </ul>
       </section>
 
-      <section aria-labelledby="faq-heading" tabindex="0">
-        <h3 id="faq-heading" class={sectionHeading}>Questions</h3>
-        <div class="flex flex-col gap-5">
-          {FAQ.map((item) => (
-            <div>
-              <h4 class="text-lg text-emerald-800 font-bold mb-1">{item.question}</h4>
-              <p
-                class={
-                  isPlaceholder(item.answer)
-                    ? "border border-dashed border-amber-500 bg-amber-50 text-amber-900 rounded-lg px-4 py-3 playfair-display"
-                    : bodyText
-                }
-              >
-                {item.answer}
-              </p>
+      {
+        SHOW_FAQ && (
+          <section aria-labelledby="faq-heading" tabindex="0">
+            <h3 id="faq-heading" class={sectionHeading}>Questions</h3>
+            <div class="flex flex-col gap-5">
+              {
+                FAQ.map((item) => (
+                  <div>
+                    <h4 class="text-lg text-emerald-800 font-bold mb-1">
+                      {item.question}
+                    </h4>
+                    <p
+                      class={
+                        isPlaceholder(item.answer)
+                          ? "border border-dashed border-amber-500 bg-amber-50 text-amber-900 rounded-lg px-4 py-3 playfair-display"
+                          : bodyText
+                      }
+                    >
+                      {item.answer}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        )
+      }
 
-      <section aria-labelledby="contact-heading" tabindex="0" class="flex flex-col gap-4">
+      <section
+        aria-labelledby="contact-heading"
+        tabindex="0"
+        class="flex flex-col gap-4"
+      >
         <h3 id="contact-heading" class={sectionHeading}>Get in touch</h3>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
@@ -228,7 +262,9 @@ const bodyText = "text-emerald-800 playfair-display";
             >Or email me</a
           >
           <noscript>
-            <span class="text-emerald-800">Or email me: peter at tumulty dot me</span>
+            <span class="text-emerald-800"
+              >Or email me: peter at tumulty dot me</span
+            >
           </noscript>
         </div>
       </section>

@@ -31,7 +31,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A law firm's WordPress site was bloated, its home page graded D on GTmetrix, and it kept crashing due to hosting limits.",
     ],
     approach: [
-      "[PETER: 1 to 2 sentences on your role, the timeline, and who you worked with.]",
+      "I was the technical project manager and engineer. We worked on this for 6 months, and I worked with the head of business development on the project.",
       "I split the front end from the content server, put each on its own host, and set up monitoring and outage alerts on both. I also automated deploys and wrote a microservice for complex content delivery.",
       "With this new flexibility I was able to add email marketing and a CRM integration, which grew a new mailing list to 40+ subscribers in the first year.",
     ],
@@ -70,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "It also ran on plain HTTP, had no mobile layout, and still showed a four-year-old announcement.",
     ],
     approach: [
-      "[PETER: 1 to 2 sentences on your role, the timeline, and who you worked with.]",
+      "As the owner and technical lead of Tumulty Web Services, I led the technical roadmap, strategy and engineering. We worked on this for 5 months, and I worked with an independent marketing agency on the project.",
       "I scoped it, planned three phases, and rebuilt it with a member directory filterable by year, ceremony photo galleries, event and donation pages, and contact and nomination forms.",
       "All content lives in one small data file that generates every page, so there is no database to host or maintain.",
     ],
