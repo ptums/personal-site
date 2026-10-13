@@ -48,7 +48,7 @@ const PROJECTS: Project[] = [
       },
       {
         label: "Baseline",
-        href: "https://github.com/ptums/rachels-favorite-pets/blob/master/BASELINE.md",
+        href: "/work/rachels-favorite-pets/baseline",
       },
     ],
   },
@@ -84,11 +84,11 @@ const PROJECTS: Project[] = [
     links: [
       {
         label: "Baseline",
-        href: "https://github.com/aphshf/aphshalloffame.com/blob/main/BASELINE.md",
+        href: "/work/hall-of-fame/baseline",
       },
       {
         label: "Results",
-        href: "https://github.com/aphshf/aphshalloffame.com/blob/main/RESULTS.md",
+        href: "/work/hall-of-fame/results",
       },
     ],
   },
@@ -100,11 +100,11 @@ const PROJECTS: Project[] = [
     links: [
       {
         label: "Baseline",
-        href: "https://github.com/UnleashedPotentialLifeCoaching/unleashedpotentiallifecoaching-web/blob/main/BASELINE.md",
+        href: "/work/unleashed-potential/baseline",
       },
       {
         label: "Results",
-        href: "https://github.com/UnleashedPotentialLifeCoaching/unleashedpotentiallifecoaching-web/blob/main/MIGRATION-RESULTS.md",
+        href: "/work/unleashed-potential/results",
       },
     ],
   },
@@ -297,17 +297,21 @@ const PROJECTS: Project[] = [
                               <span class="sr-only">: {project.title}</span>
                             </a>
                           )}
-                          {project.links.map((link) => (
-                            <a
-                              href={link.href}
-                              class="text-emerald-800 underline mr-3"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {link.label}
-                              <span class="sr-only"> (opens in a new tab)</span>
-                            </a>
-                          ))}
+                          {project.links.map((link) =>
+                            // Pages on this site open in the same tab; other sites in a new one
+                            link.href.startsWith("/") ? (
+                              <a href={link.href} class="text-emerald-800 underline mr-3">
+                                {link.label}<span class="sr-only">: {project.title}</span></a>
+                            ) : (
+                              <a
+                                href={link.href}
+                                class="text-emerald-800 underline mr-3"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {link.label}<span class="sr-only"> (opens in a new tab)</span></a>
+                            ),
+                          )}
                         </>
                       )}
                     </p>
