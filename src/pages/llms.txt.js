@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import { CASE_STUDIES } from "../data/case-studies";
-import { FAQ } from "../data/faq";
+import { FAQ, SHOW_FAQ } from "../data/faq";
 import {
   BOOKING_URL,
   BUSINESS,
@@ -16,7 +16,9 @@ import {
 // data as the pages. Placeholder FAQ answers are left out until they're filled in.
 export async function GET() {
   const proof = await getCollection("proof");
-  const answered = FAQ.filter((item) => !isPlaceholder(item.answer));
+  const answered = SHOW_FAQ
+    ? FAQ.filter((item) => !isPlaceholder(item.answer))
+    : [];
   const lines = [
     `# ${PERSON.name}`,
     "",
@@ -42,7 +44,7 @@ export async function GET() {
     "## How to work with him",
     "",
     `- [Book an intro call](${BOOKING_URL}): a 30-minute call to start.`,
-    `- [Work with me](${SITE_URL}/work-with-me): services, results, how an engagement works, and questions.`,
+    `- [Work with me](${SITE_URL}/work-with-me): services, results, ${SHOW_FAQ ? "how an engagement works, and questions" : "and how an engagement works"}.`,
     `- Email: ${EMAIL}`,
     "",
     ...(answered.length

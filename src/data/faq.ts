@@ -1,5 +1,9 @@
 // Buyer questions for /work-with-me. Answers in [PETER: ...] are placeholders: they show
 // on the page but are left out of the FAQPage JSON-LD and llms.txt until filled in.
+// Feature flag: the FAQ is hidden on /work-with-me and left out of JSON-LD and llms.txt
+// until it's ready. Set to true to show it.
+export const SHOW_FAQ = false;
+
 export const FAQ = [
   {
     question: "How does an engagement work?",
