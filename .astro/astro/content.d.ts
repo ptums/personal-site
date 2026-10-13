@@ -162,6 +162,13 @@ declare module 'astro:content' {
   collection: "proof";
   data: InferEntrySchema<"proof">
 } & { render(): Render[".md"] };
+"rachels-favorite-pets/results.md": {
+	id: "rachels-favorite-pets/results.md";
+  slug: "rachels-favorite-pets/results";
+  body: string;
+  collection: "proof";
+  data: InferEntrySchema<"proof">
+} & { render(): Render[".md"] };
 "unleashed-potential/baseline.md": {
 	id: "unleashed-potential/baseline.md";
   slug: "unleashed-potential/baseline";
