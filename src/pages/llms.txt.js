@@ -1,3 +1,4 @@
+import { getCollection } from "astro:content";
 import { CASE_STUDIES } from "../data/case-studies";
 import { FAQ } from "../data/faq";
 import {
@@ -13,7 +14,8 @@ import {
 
 // Plain-Markdown summary for AI assistants (llmstxt.org format), built from the same
 // data as the pages. Placeholder FAQ answers are left out until they're filled in.
-export function GET() {
+export async function GET() {
+  const proof = await getCollection("proof");
   const answered = FAQ.filter((item) => !isPlaceholder(item.answer));
   const lines = [
     `# ${PERSON.name}`,
@@ -55,6 +57,7 @@ export function GET() {
     `- [Home](${SITE_URL}/): projects and background`,
     `- [Work with me](${SITE_URL}/work-with-me)`,
     ...CASE_STUDIES.map((study) => `- [Case study: ${study.title}](${SITE_URL}/work/${study.slug})`),
+    ...proof.map((doc) => `- [${doc.data.title}](${SITE_URL}/work/${doc.slug}): ${doc.data.description}`),
     `- [Testimonials](${SITE_URL}/testimonials): what clients and colleagues say`,
     `- [Words](${SITE_URL}/words): writing on engineering and product`,
     "",

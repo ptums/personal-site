@@ -5,10 +5,12 @@ import { SITE_URL } from "../data/site";
 // Every indexable page, at its canonical URL (no trailing slash). Posts include their date.
 export async function GET() {
   const posts = await getCollection("words", ({ data }) => data.published);
+  const proof = await getCollection("proof");
   const pages = [
     { path: "/" },
     { path: "/work-with-me" },
     ...CASE_STUDIES.map((study) => ({ path: `/work/${study.slug}` })),
+    ...proof.map((doc) => ({ path: `/work/${doc.slug}` })),
     { path: "/testimonials" },
     { path: "/words" },
     ...posts.map((post) => ({

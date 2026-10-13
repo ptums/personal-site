@@ -15,4 +15,14 @@ const words = defineCollection({
   }),
 });
 
-export const collections = { words };
+// Baseline and results docs for the project cards, copied from each project's repo.
+// The slug is "<project>/<doc>", served at /work/<project>/<doc>.
+const proof = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
+export const collections = { words, proof };
