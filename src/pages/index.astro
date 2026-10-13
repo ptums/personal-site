@@ -33,7 +33,7 @@ const PROJECTS: Project[] = [
     title: "Legacy App Migration to a New Stack, Built with AI",
     label: "Personal",
     description:
-      "A legacy photo-gallery app had **3 high-severity vulnerabilities** in its upload dependencies, **9 packages it used but never declared**, and failed to start on a clean install. I rebuilt it on a modern stack I had never used, with Claude as a partner, but made every design decision myself. I checked each result by hand, threw out two bad performance measurements, and confirmed deletes remove both the record and the stored file. Dependency checks now find **0** vulnerabilities, a fresh clone runs locally in **16 seconds** with **13 commands**, and compression cut CSS from **232 KB to 49 KB**.",
+      "Took an educational **photo-gallery app designed 10+ years ago** and rebuilt it on a modern stack I had never used, with Claude as a partner. That app had been archived and no major updates since 2015. When it first ran it had **3 high-severity vulnerabilities** in its upload dependencies, 9 packages it used but never listed in dependencies, and **failed to start on a clean install.** I checked each result by hand, threw out two bad performance measurements, and confirmed deletes remove both the record and the stored file.  Dependency checks now find 0 vulnerabilities, a fresh clone **runs locally in 16 seconds with 13 commands**, and compression **cut CSS from 232 KB to 49 KB.**",
     tools: [
       "Angular",
       "ASP.NET Core",
@@ -53,24 +53,10 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "Agentic Removal of a Deprecated Feature",
+    title: "AI-Assisted Migrations at Scale",
     description:
-      "A deprecated feature was still live in a production codebase that was **slowing teams down** with routine maintenance. I ran a multi-pass AI workflow: map every dependency, verify, send each scope question to a person, then delete. It caught multiple scope corrections the first estimate missed, and it kept files that a plain pattern-match would have wrongly removed. **300+ files** came out in **about half a day**, in a stack of pull requests that all passed CI.",
-    tools: ["Agentic Workflows", "CI/CD", "Code Migration"],
-    links: [],
-  },
-  {
-    title: "AI Agent Skill for Design-System Update",
-    description:
-      "A team owned **two dozen libraries** with **thousands of lines of code** that had to move to the latest UI design system before the end of the quarter. We were given an AI skill that updated one library at a time. I built a wrapper skill around it that put every library on its own branch, generated a verification guide for each one, and added quality gates before review. I then handed the complex skill to an agentic workflow to run through the whole list. Per-library effort dropped from **hours to near-zero**, and the full set was done in **about three weeks**.",
-    tools: ["Agentic Workflows", "AI Agent Skills", "Code Migration"],
-    links: [],
-  },
-  {
-    title: "Multi-Ticket Lint Cleanup Pipeline",
-    description:
-      "Ran a multi-phase agentic workflow (spec, plan, implement, test, review, PR) to resolve dozens of linting violations across roughly ten interconnected projects ahead of a strict compliance deadline. Parallel implementation agents handled independently scoped work items, with independent verification so a shared-state regression never reached review. Result: a handful of clean, CI-passing PRs opened in about a day and merged the next, with every caveat disclosed.",
-    tools: ["Agentic Workflows", "Parallel Agents", "CI/CD"],
+      "Between 2024 and 2025 our team's workspace needed several platform-level updates, and until they were done we couldn't release new features. The  timing was bad: we were also slated for a massive feature update before the end of the year. I  presented a plan to my manager and our staff engineer to let me automate the updates with agentic workflows and custom AI skills, so the team could stay on the feature work. I finished each update 3 to 6 weeks ahead of schedule, with minimal assistance from the team beyond reviewing PRs.",
+    tools: ["Agentic Workflows", "Parallel Agents", "Agent Skills", "CI/CD"],
     links: [],
   },
   {
@@ -89,7 +75,6 @@ const PROJECTS: Project[] = [
       "HubSpot",
     ],
     links: [{ label: "Site", href: "https://scarincihollenbeck.com" }],
-    caseStudy: "law-firm-headless-migration",
   },
   {
     title: "Asbury Park High School Hall of Fame: Redesign & Migration",
@@ -188,11 +173,15 @@ const PROJECTS: Project[] = [
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {contact.label}<span class="sr-only"> (opens in a new tab)</span></a>
+                  {contact.label}
+                  <span class="sr-only"> (opens in a new tab)</span>
+                </a>
               </li>
             ))
           }
-          {/* Built by the script in Header.astro so the address isn't in the HTML */}
+          {
+            /* Built by the script in Header.astro so the address isn't in the HTML */
+          }
           <li>
             <a
               class="text-emerald-800 mr-4 text-sm underline"
@@ -201,7 +190,9 @@ const PROJECTS: Project[] = [
               hidden>Email</a
             >
             <noscript>
-              <span class="text-emerald-800 text-sm">peter at tumulty dot me</span>
+              <span class="text-emerald-800 text-sm"
+                >peter at tumulty dot me</span
+              >
             </noscript>
           </li>
           <li>
@@ -210,7 +201,10 @@ const PROJECTS: Project[] = [
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              >Book an intro call<span class="sr-only"> (opens in a new tab)</span></a>
+              >Book an intro call<span class="sr-only">
+                (opens in a new tab)</span
+              ></a
+            >
           </li>
         </ul>
       </div>
@@ -233,7 +227,10 @@ const PROJECTS: Project[] = [
       <hr class="border-stone-200 mb-8" />
 
       <div class="fade-in-up-delay-2">
-        <h3 id="projects-heading" class="font-semibold text-lg text-emerald-800 mb-4">
+        <h3
+          id="projects-heading"
+          class="font-semibold text-lg text-emerald-800 mb-4"
+        >
           Projects
         </h3>
         <!-- All cards are in the page; the box is focusable so it can be scrolled with arrow keys.
@@ -249,10 +246,7 @@ const PROJECTS: Project[] = [
           <ol class="flex flex-col">
             {
               PROJECTS.map((project, i) => (
-                <li
-                  class="flex flex-col items-center opacity-0"
-                  data-project
-                >
+                <li class="flex flex-col items-center opacity-0" data-project>
                   {i > 0 && (
                     <span class="w-0.5 h-8 bg-stone-200" aria-hidden="true" />
                   )}
@@ -299,7 +293,10 @@ const PROJECTS: Project[] = [
                             <a
                               href={`/work/${project.caseStudy}`}
                               class="text-emerald-800 underline mr-3"
-                              >Case study<span class="sr-only">: {project.title}</span></a>
+                            >
+                              Case study
+                              <span class="sr-only">: {project.title}</span>
+                            </a>
                           )}
                           {project.links.map((link) => (
                             <a
@@ -308,7 +305,9 @@ const PROJECTS: Project[] = [
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              {link.label}<span class="sr-only"> (opens in a new tab)</span></a>
+                              {link.label}
+                              <span class="sr-only"> (opens in a new tab)</span>
+                            </a>
                           ))}
                         </>
                       )}
