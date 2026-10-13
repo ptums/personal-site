@@ -62,7 +62,7 @@ const PROJECTS: Project[] = [
   {
     title: "Law Firm Web Platform: Monolith to Headless",
     description:
-      "A law firm's WordPress site was bloated, its home page **graded D on GTmetrix**, and it kept **crashing due to hosting limits.** I split the front end from the content server, put each on its own host, and set up monitoring and outage alerts on both. I also automated deploys and wrote a microservice for complex content delivery. With this new flexibility I was able to add email marketing and a CRM integration, which grew a new mailing list to 40+ subscribers in the first year. The home page grade went from **D to A**, uptime reached **99%**, and **hosting costs fell about 90%**, which funded the new marketing integrations.",
+      "As a full-time technical product manager and engineer at a law firm, I owned a monolithic WordPress site on **$200 a month hosting** that kept **hitting its tier limits and crashing.** We were at a point where we needed to get out of the routine of just keeping the site stable and start driving lead generation. I proposed a plan that would solve both problems. First, a decoupled architecture: the front end moved to a **Next.js app on Vercel's free tier,** and WordPress moved to a **$10 a month DigitalOcean server** with a **$20 managed MySQL database.** This was a success because hosting fell from **$200 to $30** a month. Second, since I could write code, I wrote custom scripts and microservices to integrate **Mailchimp and HubSpot** and avoid paying for their premium plugins and marketing packages. Overall, the whole platform, marketing tools included, cost **$130 a month less** than the old hosting alone.",
     tools: [
       "Digital Ocean",
       "Next.js",
@@ -79,7 +79,7 @@ const PROJECTS: Project[] = [
   {
     title: "Asbury Park High School Hall of Fame: Redesign & Migration",
     description:
-      "A non-profit high school Hall of Fame site had to be hand-coded page by page: adding one inductee meant editing up to **107 files**, because the navigation was copied into every page. It also ran on plain HTTP, had no mobile layout, and still showed a four-year-old announcement. I scoped it, planned three phases, and rebuilt it with a member directory filterable by year, ceremony photo galleries, event and donation pages, and contact and nomination forms. All content lives in one small data file that generates every page, so there is no database to host or maintain. Adding an inductee now takes **1 file**, accessibility rose from **53 to 96**, SEO from **82 to 100**, requires no hosting costs, and the site runs on HTTPS.",
+      "As an independent consultant, I rebuilt the website for the Asbury Park High School Distinguished Alumni Hall of Fame, a non-profit. The old site was hand-written HTML: adding one inductee meant editing **up to 107 files**, because the navigation was copied into every page, and the copies had drifted out of sync (88, 76 and 63 names on different pages). It ran on plain HTTP, had no mobile layout, and in 2020 its homepage still congratulated the class of 2016. I scoped the work in three phases (wireframes, development, then testing), and the committee approved the designs before I wrote any code. All the content now lives in one data file that generates every page, and I moved the site off paid hosting onto a free tier, so **the committee pays nothing to keep it online**. Adding an inductee takes **1 file instead of 107**, the yearly content update takes me **about 30 minutes**, the whole class of 2026 went live in **one change**, Accessibility rose from **53 to 96**, SEO went from **82 to 100**, and all 141 inductees are served over HTTPS.",
     tools: ["Next.js", "Cloudinary", "Vercel", "Accessibility", "SEO"],
     links: [
       {
@@ -91,7 +91,6 @@ const PROJECTS: Project[] = [
         href: "https://github.com/aphshf/aphshalloffame.com/blob/main/RESULTS.md",
       },
     ],
-    caseStudy: "hall-of-fame-rebuild",
   },
   {
     title: "Unleashed Potential: Headless CMS Rebuild",
