@@ -66,7 +66,7 @@ const PROJECTS: Project[] = [
   {
     title: "Law Firm Web Platform: Monolith to Headless",
     description:
-      "As a full-time technical product manager and engineer at a law firm, I owned a monolithic WordPress site on **$200 a month hosting** that kept **hitting its tier limits and crashing.** We were at a point where we needed to get out of the routine of just keeping the site stable and start driving lead generation. I proposed a plan that would solve both problems. First, a decoupled architecture: the front end moved to a **Next.js app on Vercel's free tier,** and WordPress moved to a **$10 a month DigitalOcean server** with a **$20 managed MySQL database.** This was a success because hosting fell from **$200 to $30** a month. Second, since I could write code, I wrote custom scripts and microservices to integrate **Mailchimp and HubSpot** and avoid paying for their premium plugins and marketing packages. Overall, the whole platform, marketing tools included, cost **$130 a month less** than the old hosting alone.",
+      "As a full-time technical product manager and engineer at a law firm, I owned a monolithic WordPress site on **$200 a month hosting** that kept **hitting its tier limits and crashing.** We were at a point where we needed to get out of the routine of just keeping the site stable and start driving lead generation. I proposed a plan that would solve both problems. First, a decoupled architecture: the front end moved to a **Next.js app on Vercel hosting,** and WordPress moved to a **$10 a month DigitalOcean server** with a **$20 managed MySQL database.** This was a success because hosting fell from **$200 to $30** a month. Second, since I could write code, I wrote custom scripts and microservices to integrate **Mailchimp and HubSpot** and avoid paying for their premium plugins and marketing packages. Overall, the whole platform, marketing tools included, cost **$130 a month less** than the old hosting alone.",
     tools: [
       "Digital Ocean",
       "Next.js",
@@ -99,7 +99,7 @@ const PROJECTS: Project[] = [
   {
     title: "Unleashed Potential: Headless CMS Rebuild",
     description:
-      "A life coach paid $20 a month for a Wix site and wanted to publish her own podcasts, interviews, and posts. I rebuilt it on a headless CMS so she can do that herself, then changed every content page from rendering on each visit to prebuilt pages, so the site keeps serving even if the CMS goes down. A later audit found a 3.6 MB hero photo and 150 known vulnerabilities, and I fixed both. Hosting fell from **$240 a year to $8**, Lighthouse performance rose from **73 to 88**, and known runtime vulnerabilities went from **150 to 0**.",
+      "A friend referred me to a life coach whose site on a **popular website builder cost her $240 a year**, was hard to manage, and still didn't give her the marketing and SEO she wanted. After a discovery meeting about what she wanted the site to do, I proposed a plan: move off the builder, manage her own written content in a CMS, and bring me in for design updates. Once the site was on the new platform, we set up technical SEO, link building, a media (blog and podcast links) section on the site, search engine indexing, and Google Analytics, none of which she had before and all of which would have meant buying extra packages. Her yearly cost dropped from **$240 to $16**, the price of her domain, and the move has since paid for itself. Later rounds of updates raised Lighthouse performance from **73 to 88**.",
     tools: ["Next.js", "TypeScript", "Contentful CMS", "SEO"],
     links: [
       {
@@ -113,10 +113,19 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    title: "CubbieKit: Shipping Label Automation",
+    title: "Shopify Order Automation",
     description:
-      "Shopify store had a problem creating shipping labels for its orders. I designed the backend fix and led the build as lead engineer, running twice-weekly standups and tracking work in Linear. The new service reads orders from the store and creates labels automatically, and I tested it against the live store before launch. I then worked with customer service to automate return labels too, testing with sample orders. Labels for orders and returns are now created automatically, with no manual step.",
-    tools: ["Node.js", "Shopify GraphQL", "Shippo", "Heroku", "Linear"],
+      "Shopify stores often lean on manual steps to keep orders moving. On one project, I designed and led the build of a backend service that reads orders from the store and creates shipping labels automatically, then worked with customer service to automate return labels too. I ran twice-weekly standups, tracked the work in Linear, and tested against the live store before launch. On another, I built a tool that takes a CSV upload and updates item quantities across many orders at once through Shopify's GraphQL API, then reports which updates went through and which need a manual fix. In both cases, work that used to be done by hand now runs on its own.",
+    tools: [
+      "Node.js",
+      "Express",
+      "Shopify GraphQL",
+      "Shippo API",
+      "MongoDB",
+      "Heroku",
+      "DigitalOcean",
+      "Linear",
+    ],
     links: [],
   },
 ];
@@ -304,8 +313,13 @@ const PROJECTS: Project[] = [
                           {project.links.map((link) =>
                             // Pages on this site open in the same tab; other sites in a new one
                             link.href.startsWith("/") ? (
-                              <a href={link.href} class="text-emerald-800 underline mr-3">
-                                {link.label}<span class="sr-only">: {project.title}</span></a>
+                              <a
+                                href={link.href}
+                                class="text-emerald-800 underline mr-3"
+                              >
+                                {link.label}
+                                <span class="sr-only">: {project.title}</span>
+                              </a>
                             ) : (
                               <a
                                 href={link.href}
@@ -313,7 +327,12 @@ const PROJECTS: Project[] = [
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                {link.label}<span class="sr-only"> (opens in a new tab)</span></a>
+                                {link.label}
+                                <span class="sr-only">
+                                  {" "}
+                                  (opens in a new tab)
+                                </span>
+                              </a>
                             ),
                           )}
                         </>
