@@ -72,16 +72,23 @@ section[tabindex]:not([tabindex="-1"]):focus-visible {
 }
 
 .post-content h2 {
-  @apply text-2xl text-emerald-800 tracking-wide mb-4 font-normal;
+  /* Same space above and below; .post-content is a flex column, so margins add up instead of collapsing */
+  @apply text-2xl text-emerald-800 tracking-wide my-6 font-normal;
 }
 
 .post-content p {
   @apply text-xl text-emerald-800 my-4;
 }
 
+/* Lists get the same block spacing as paragraphs, so headings next to them are spaced evenly */
+.post-content ul,
+.post-content ol {
+  @apply my-4;
+}
+
 /* Long lines scroll inside the code block instead of widening the page */
 .post-content pre {
-  @apply bg-gray-300 p-4 text-lg whitespace-pre-wrap overflow-x-auto max-w-full;
+  @apply bg-[#24292e] p-4 my-4 text-lg whitespace-pre-wrap overflow-x-auto max-w-full;
 }
 
 /* The code theme's comment grey (#6A737D) is 3:1 on its dark background; #959da5 is 5.3:1 */
@@ -107,8 +114,9 @@ h3 {
   overflow-wrap: anywhere;
 }
 
-.post-content p code {
-  @apply text-black py-0 px-0.5 bg-gray-300 text-lg;
+.post-content :not(pre) > code {
+  /* Inline code is gray everywhere (paragraphs, lists, tables), as in the older posts */
+  @apply text-black py-0 px-0.5 bg-gray-300 text-[0.9em];
 }
 
 .post-content img {
