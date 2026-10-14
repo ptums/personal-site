@@ -20,34 +20,34 @@ The site shows:
 
 ## Get started
 
-You must have Node.js 18.17.1 or later and npm.
+You must have Node.js 18.17.1 or later and pnpm 10.
 
 1. Clone the repository.
 2. Install the dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Copy `.env.example` to `.env`. The site builds without values. Add `PUBLIC_POSTHOG_KEY` only if you test analytics.
 4. Start the development server:
 
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 5. Open http://localhost:4321.
 
-Use npm only. Vercel installs with npm, and npm also keeps `yarn.lock` in sync.
+Use pnpm only. Vercel installs with pnpm. Do not add a `package-lock.json` or `yarn.lock` file.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `npm run dev` | Starts the development server. |
-| `npm run build` | Checks the posts, then builds the site into `dist/`. |
-| `npm run preview` | Serves the build from `dist/`. |
-| `npm run check:words` | Checks the posts for Obsidian-only syntax and broken images. |
+| `pnpm run dev` | Starts the development server. |
+| `pnpm run build` | Checks the posts, then builds the site into `dist/`. |
+| `pnpm run preview` | Serves the build from `dist/`. |
+| `pnpm run check:words` | Checks the posts for Obsidian-only syntax and broken images. |
 
 There is no test suite and no lint script.
 
@@ -82,7 +82,7 @@ There is no test suite and no lint script.
 | `/privacy` | The privacy note. |
 | `/sitemap.xml`, `/robots.txt`, `/llms.txt` | Generated at build time. |
 
-Vercel also sends `/blog` and `/blog/post/<slug>` to `/words` and `/words/<slug>` with a permanent redirect (308). These redirects work only on Vercel, not in `npm run dev`.
+Vercel also sends `/blog` and `/blog/post/<slug>` to `/words` and `/words/<slug>` with a permanent redirect (308). These redirects work only on Vercel, not in `pnpm run dev`.
 
 ## Add a post
 
@@ -101,7 +101,7 @@ Vercel also sends `/blog` and `/blog/post/<slug>` to `/words` and `/words/<slug>
 
 3. Write the post in Markdown. Do not add a `# Title` line, because the page prints the title.
 4. Add links to related pages on the site, and add links back to the post from those pages.
-5. Run `npm run check:words`.
+5. Run `pnpm run check:words`.
 
 A post with `published: false` gets no page and does not show in the list.
 
