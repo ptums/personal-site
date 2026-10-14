@@ -7,11 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - If the user says **"read process.md and ship <change>"**, open `PROCESS.md` and follow it. Read `SELF_IMPROVEMENT.md` first.
 - Run `git status` and `git diff` before editing. The user edits copy by hand (and runs Prettier) between turns; build on their version, never overwrite it.
 - Never rewrite the user's wording. Paste copy verbatim; point out typos and let the user decide.
-- `dist/` is build output and is gitignored; Vercel runs `npm run build` itself. Still run `npm run build` before every commit to catch errors.
+- `dist/` is build output and is gitignored; Vercel runs `pnpm run build` itself. Still run `pnpm run build` before every commit to catch errors.
 - Never commit `wireframe.png`, `.astro/settings.json`, or `public/.DS_Store`.
 - Commit or push only when asked ("commit; push"). `main2` is the production branch (there is no `main`); pushing to it deploys the live site, so do it only when the user says so.
 - Never claim something works unless you ran it this session and can show the output. Visual changes are checked in a real browser (see PROCESS.md, Verify). State what you did not check.
-- Explain any new dependency before adding it; keep dependencies minimal. Install with npm only (`vercel.json` uses `npm install`; npm also keeps `yarn.lock` in sync).
+- Explain any new dependency before adding it; keep dependencies minimal. Install with pnpm only (`vercel.json` uses `pnpm install`). There is no npm or Yarn lock file; do not add one.
 - Ask only when blocked or at a gate; batch questions; include a recommendation.
 - Log real process problems in `SELF_IMPROVEMENT.md`.
 - Internal linking: every new or changed piece of written content (posts, case studies, baseline and results docs) links to its related pages on the site, and those pages link back. Use the page name as the link text.
@@ -19,9 +19,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev       # Start development server (http://localhost:4321)
-npm run build     # Production build → dist/
-npm run preview   # Preview production build locally
+pnpm dev          # Start development server (http://localhost:4321)
+pnpm build        # Production build → dist/
+pnpm preview      # Preview production build locally
 ```
 
 No test suite, no lint script configured.
@@ -43,7 +43,7 @@ No test suite, no lint script configured.
 - `/work/[slug]` → `src/pages/work/[slug].astro` (case studies from `src/data/case-studies.ts`)
 - `/sitemap.xml`, `/llms.txt` and `/robots.txt` are generated at build by `src/pages/sitemap.xml.js`, `src/pages/llms.txt.js` and `src/pages/robots.txt.js`
 - `src/pages/404.astro` → `dist/404.html`, which Vercel serves for missing URLs
-- `/blog` and `/blog/post/<slug>` redirect permanently (308) to `/words` and `/words/<slug>` via `redirects` in `vercel.json` (they only work on Vercel, not in `npm run dev`). `vercel.json` also sets `trailingSlash: false`, so `/page/` redirects to `/page`.
+- `/blog` and `/blog/post/<slug>` redirect permanently (308) to `/words` and `/words/<slug>` via `redirects` in `vercel.json` (they only work on Vercel, not in `pnpm dev`). `vercel.json` also sets `trailingSlash: false`, so `/page/` redirects to `/page`.
 
 **Identity and SEO**: `src/data/site.ts` is the single source for Peter's name, job title, description, business (Tumulty Web Services LLC), services, service area, booking URL and profile links. Pages, the JSON-LD graph (`src/data/structured-data.ts`, rendered by `Layout.astro` with optional `breadcrumbs` and `jsonLd` props), `sitemap.xml` and `llms.txt` all read from it, so change identity text there, not in pages. `[PETER: ...]` placeholders show on the page but are filtered out of structured data and `llms.txt`. **Pre-launch:** `ALLOW_INDEXING = false` in `src/data/site.ts` plus an `X-Robots-Tag: noindex` header in `vercel.json` keep the site out of search; launching means flipping the flag and removing that header (steps in `docs/seo.md`). See `docs/seo.md`.
 

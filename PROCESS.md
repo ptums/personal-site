@@ -16,7 +16,7 @@ G = human gate. Between gates, run autonomously.
 | Goal                                         | What you must produce                                                                    |
 | -------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | The site represents the owner accurately     | Their copy, verbatim. Typos and gaps are flagged, never silently fixed or invented.      |
-| Nothing breaks for visitors                  | A clean `npm run build`, a browser check of every changed page, old URLs still resolve.  |
+| Nothing breaks for visitors                  | A clean `pnpm run build`, a browser check of every changed page, old URLs still resolve.  |
 | The owner can maintain it                    | Simple Astro and Tailwind that matches the surrounding code; `CLAUDE.md` kept current.   |
 | Honest reporting                             | What changed, what was checked and how, what was not checked, anything you were unsure of. |
 
@@ -39,7 +39,7 @@ G = human gate. Between gates, run autonomously.
 | LIVE_URL           | https://tumulty.me (www.tumulty.me, ptums.me and www.ptums.me redirect here) |
 | HOSTING            | Vercel, GitHub integration; every push builds, `main2` deploys to production |
 | PREVIEW_URL        | `https://personal-site-git-<branch>-peter-ts-projects-33da9322.vercel.app` (behind Vercel login) |
-| INSTALL            | `npm install` (from `vercel.json`)                                       |
+| INSTALL            | `pnpm install` (from `vercel.json`)                                       |
 | CONTENT            | `src/content/words/` (Obsidian vault), `db/*.json`, `PROJECTS` in `src/pages/index.astro` |
 
 ## 1. Inputs
@@ -51,7 +51,7 @@ G = human gate. Between gates, run autonomously.
 
 ## 2. Operating rules
 
-**Autonomous (no asking):** reading files, creating branches, editing source inside the agreed scope, running `npm run build` / `npm run dev` / `npx astro preview`, browser checks, `git` and `gh` reads, checking Vercel deploy status.
+**Autonomous (no asking):** reading files, creating branches, editing source inside the agreed scope, running `pnpm run build` / `pnpm run dev` / `pnpm exec astro preview`, browser checks, `git` and `gh` reads, checking Vercel deploy status.
 **Always ask first (a gate):** committing and pushing (wait for "commit; push"), pushing to `main2`, adding a dependency, deleting files you didn't create, changing `vercel.json`, DNS, or anything that costs money.
 **Never:** rewrite the owner's wording; commit `wireframe.png`, `.astro/settings.json`, or `public/.DS_Store`; read or print `.env` or tokens; force-push; overwrite uncommitted human edits; touch GitHub Actions or LinkedIn/Substack automation unless that is the task.
 **Honesty about verification.** Never write "verified", "tested", or "works" unless you ran the check in this session and can show the output. Always say what you did NOT check.
@@ -75,12 +75,12 @@ Skip this gate for clear, small requests. Stop here when the request is ambiguou
 - Match the surrounding code: Astro components, Tailwind classes, existing spacing and colour tokens (emerald text, stone borders, `fade-in-up`).
 - Frontmatter cannot contain JSX; return data and render it in the template.
 - Data-driven content stays data: project cards in `PROJECTS`, testimonials in `db/testimonials.json`, posts in `src/content/words/`.
-- For multi-step tasks, one commit per step, and `npm run build` after each step.
+- For multi-step tasks, one commit per step, and `pnpm run build` after each step.
 
 ### Verify (auto)
 
-1. `npm run build`: zero errors; read warnings.
-2. Browser check with Playwright (also confirm nothing extends below the footer: document height equals the footer's bottom edge) against `npx astro preview --port 4399` (or the dev server): screenshot each changed page at 1440px and 390px wide and look at them. Measure alignment with `getBoundingClientRect` when the request is about alignment.
+1. `pnpm run build`: zero errors; read warnings.
+2. Browser check with Playwright (also confirm nothing extends below the footer: document height equals the footer's bottom edge) against `pnpm exec astro preview --port 4399` (or the dev server): screenshot each changed page at 1440px and 390px wide and look at them. Measure alignment with `getBoundingClientRect` when the request is about alignment.
 3. Behaviour checks for what changed, for example: nav links per page, redirects resolve, drafts produce no page, cards fade in only when visible, bold renders as `<strong>`.
 4. Diff check: `git diff --stat` shows only files in scope; human edits are intact.
 
