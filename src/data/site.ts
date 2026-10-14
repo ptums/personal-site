@@ -9,6 +9,11 @@ export const SITE_URL = "https://tumulty.me";
 // (Drives the robots meta tag in Layout.astro and /robots.txt.) See docs/seo.md, "Launch".
 export const ALLOW_INDEXING = true;
 
+// Analytics feature flag (TWS-71). false = no PostHog code on any page.
+// To launch: set PUBLIC_POSTHOG_KEY (and PUBLIC_POSTHOG_HOST for EU) in Vercel, then set this to true.
+// Runs cookieless with no person profiles, to match /privacy. See docs/analytics.md.
+export const ENABLE_POSTHOG = false;
+
 export const BOOKING_URL = "https://cal.com/peter-tumulty-hnhdwj/30min";
 
 // Split so the address never appears in page text; the script in Header.astro joins it.
