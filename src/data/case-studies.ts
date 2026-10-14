@@ -59,7 +59,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "hall-of-fame-rebuild",
-    title: "Asbury Park High School Hall of Fame: Redesign & Migration",
+    title: "High School Hall of Fame: Redesign & Migration",
     seoTitle: "Hall of Fame Site Rebuild Case Study | Peter Tumulty",
     description:
       "Case study: a high school Hall of Fame site rebuilt so adding an inductee takes 1 file instead of up to 107, with accessibility up from 53 to 96.",
