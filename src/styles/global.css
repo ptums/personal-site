@@ -95,7 +95,7 @@ section[tabindex]:not([tabindex="-1"]):focus-visible {
 }
 
 .post-content li {
-  @apply my-2 pl-1;
+  @apply my-3 pl-1;
 }
 
 /* Nested lists sit closer to their parent item */
