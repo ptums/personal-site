@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { EMAIL_DOMAIN, EMAIL_USER } from "../data/site";
+
+const bodyText = "text-emerald-800 playfair-display";
+---
+
+<Layout
+  title="Privacy | Peter Tumulty"
+  description="How tumulty.me measures visits: page views, clicks and booked calls, with no cookies, no stored IP address, and only city, country and visit time kept."
+  breadcrumbs={[{ name: "Privacy", path: "/privacy" }]}
+>
+  <div class="w-full pl-3 pr-4 mt-2 mb-8">
+    <h1 class="text-4xl text-emerald-800 tracking-[3px] sm:tracking-[8px] font-bold mb-8">
+      Privacy
+    </h1>
+    <div class="bg-white border rounded-lg p-6 shadow-sm flex flex-col gap-4">
+      <p class={bodyText}>
+        I track how people use this site so I can make it better. I record page
+        views, clicks, and when someone books a call. I don't use cookies. Each
+        visit gets an anonymous ID, so I can see how a visit moves from page to
+        page, and I keep only the city, the country and the time of the visit. I
+        don't store your IP address, and I don't sell or share this data. I use
+        it only to improve the site.
+      </p>
+      <p class={bodyText}>
+        When you book a call, the name and email you enter go to Cal.com, which
+        has its own privacy policy.
+      </p>
+      <p class={bodyText}>
+        Questions? Email me at
+        <a
+          data-email-user={EMAIL_USER}
+          data-email-domain={EMAIL_DOMAIN}
+          data-email-show-address
+          hidden
+          class="text-emerald-800 font-semibold underline">email</a
+        ><noscript>peter at tumulty dot me</noscript>.
+      </p>
+    </div>
+  </div>
+</Layout>
