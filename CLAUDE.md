@@ -14,6 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Explain any new dependency before adding it; keep dependencies minimal. Install with npm only (`vercel.json` uses `npm install`; npm also keeps `yarn.lock` in sync).
 - Ask only when blocked or at a gate; batch questions; include a recommendation.
 - Log real process problems in `SELF_IMPROVEMENT.md`.
+- Internal linking: every new or changed piece of written content (posts, case studies, baseline and results docs) links to its related pages on the site, and those pages link back. Use the page name as the link text.
 
 ## Commands
 
