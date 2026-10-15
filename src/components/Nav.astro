@@ -25,12 +25,12 @@ const isCurrent = (href: string) =>
     {navigation.map((link, i) => (
       <li class="flex items-center whitespace-nowrap">
         {i > 0 && <span class="hidden sm:inline mx-2 text-emerald-300" aria-hidden="true">|</span>}
-        {/* Every link has a 2px bottom border so marking the current page doesn't shift the layout.
-            The current-page border (emerald-600) is 3.8:1 on white, meeting WCAG 1.4.11. */}
+        {/* Every link is underlined. The current page gets a thicker emerald-600 underline
+            (3.8:1 on white, meeting WCAG 1.4.11); aria-current also marks it for screen readers. */}
         <a
           href={link.href}
           aria-current={isCurrent(link.href) ? "page" : undefined}
-          class={`border-b-2 ${isCurrent(link.href) ? "border-emerald-600" : "border-transparent hover:border-emerald-200"}`}
+          class={isCurrent(link.href) ? "decoration-2 decoration-emerald-600" : "decoration-emerald-300 hover:decoration-emerald-600"}
         >
           {link.name}
         </a>
