@@ -43,6 +43,12 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+/* Every text link is underlined. Button-style links and whole-card links opt out with no-underline. */
+a {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
+
 /* One visible focus style for every keyboard stop: emerald-800 is 7.7:1 on white
    and well above 3:1 on the light page background */
 a:focus-visible,
