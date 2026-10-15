@@ -57,3 +57,15 @@ CAUSE: Visually hidden "(opens in a new tab)" text (Tailwind sr-only, position: 
 ACTION: Added `relative` to the scroll box in index.astro. PROCESS.md Verify now also compares document height with the footer's bottom edge.
 STATUS: applied (branch fix-home-blank-space)
 
+
+### [2026-10-14] Ship / assistant
+OBSERVED: PR #31 closed without a merge. The assistant deleted the remote branch after the owner said "merged", but the owner had merged #30, not #31.
+CAUSE: The branch was deleted before the PR state was checked. Deleting a PR's head branch closes the PR.
+ACTION: Restored the branch from the PR's head commit and reopened #31. Rule: run `gh pr view <n> --json state` and delete a branch only when the state is MERGED.
+STATUS: applied
+
+### [2026-10-14] Verify / assistant
+OBSERVED: PostHog got events (status 200) but showed nothing. The assistant blamed cookieless mode and switched to memory persistence (PR #27). The real cause was that tumulty.me was not an authorized domain in the PostHog project. The owner found it.
+CAUSE: A 200 response only means PostHog received the request. The assistant guessed a cause from memory instead of listing the project-side settings that can drop events.
+ACTION: docs/analytics.md launch steps now include the authorized domain. Reverted to cookieless mode (PR #30). Also: PostHog drops events from automated browsers (`navigator.webdriver`), so Playwright tests must hide that flag, and Lighthouse runs send no events.
+STATUS: applied
