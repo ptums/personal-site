@@ -56,6 +56,22 @@ const host = import.meta.env.PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
       },
     });
 
+    // One event when a tracked block (data-track-view) first scrolls into view, e.g. Results on /work-with-me
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const block = (entry.target as HTMLElement).dataset.trackView;
+            posthog.capture(`${block}_viewed`, { page: location.pathname });
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.5 },
+      );
+      document.querySelectorAll("[data-track-view]").forEach((el) => observer.observe(el));
+    }
+
     // Named events for the two actions that matter most (the funnel in TWS-71)
     document.addEventListener("click", (event) => {
       const link = (event.target as HTMLElement).closest("a");

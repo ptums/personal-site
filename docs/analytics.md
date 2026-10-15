@@ -14,7 +14,8 @@ PostHog is behind a feature flag. It is on (TWS-71).
   - Session recording, heatmaps, surveys, feature flags and other remote-config features are off. `disable_external_dependency_loading` stops PostHog from loading extra scripts.
   - `before_send` removes `$ip` from each event. PostHog can still add the IP on its servers, so "Discard client IP data" must be on in the project.
   - History: on 2026-10-14 events did not show at first. The cause was the missing authorized domain (launch step 4). The site used `persistence: "memory"` for a short time (PR #27), but that cannot count unique visitors, so it went back to cookieless mode.
-  - Named events: `booking_link_clicked` (any `cal.com` link) and `email_link_clicked` (the email link). Both send the page path.
+  - Named events: `booking_link_clicked` (any `cal.com` link), `email_link_clicked` (the email link), and `results_viewed` (the Results block on `/work-with-me` is half in view, once per page load). All send the page path. To track another block, add `data-track-view="<name>"`; the event is `<name>_viewed`.
+  - UTM tags (for example `utm_source=one-pager` on the QR code) need no code. PostHog reads them from the page URL.
 
 ## To launch
 
