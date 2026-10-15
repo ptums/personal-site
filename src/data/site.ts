@@ -12,7 +12,7 @@ export const ALLOW_INDEXING = true;
 // Analytics feature flag (TWS-71). false = no PostHog code on any page.
 // To launch: set PUBLIC_POSTHOG_KEY (and PUBLIC_POSTHOG_HOST for EU) in Vercel, then set this to true.
 // Runs cookieless with no person profiles, to match /privacy. See docs/analytics.md.
-export const ENABLE_POSTHOG = false;
+export const ENABLE_POSTHOG = true;
 
 export const BOOKING_URL = "https://cal.com/peter-tumulty-hnhdwj/30min";
 

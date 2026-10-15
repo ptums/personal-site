@@ -29,5 +29,8 @@ PostHog is behind a feature flag. It is off until launch (TWS-71).
 |---|---|---|---|---|
 | Flag off | No | 0 | None | None |
 | Flag on, test key | Yes | Config and flags requests | None | None |
+| Flag on, real key (2026-10-14) | Yes | Config, then one event per page (`POST /e/`, status 200) | None | None |
 
-Not tested yet: a real event arriving in PostHog. That needs the real key (step 5).
+PostHog drops events from automated browsers (`navigator.webdriver` is true in Playwright). To test with Playwright, hide that flag with an init script. Otherwise the page loads PostHog but sends no events.
+
+Not tested yet: the events in PostHog's live events view, and the production site after deploy (step 5).
