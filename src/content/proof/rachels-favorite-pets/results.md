@@ -83,3 +83,5 @@ Open items are in the README backlog:
 - trimming unused CSS
 - long cache lifetimes on hashed assets
 - the fresh-clone setup measurement
+
+I wrote about what I learned in [Modernizing Rachel's Favorite Pets with AI](/words/modernizing-rachels-favorite-pets-with-ai).

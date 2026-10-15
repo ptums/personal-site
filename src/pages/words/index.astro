@@ -30,6 +30,7 @@ const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf(
           tagLine={post.data.tagLine}
           description={post.data.summary}
           href={`/words/${post.slug}`}
+          date={post.data.date}
           index={index}
         />
       ))}
