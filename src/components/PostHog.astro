@@ -1,6 +1,6 @@
 ---
 // PostHog analytics (TWS-71). Rendered only when ENABLE_POSTHOG is true in src/data/site.ts.
-// Settings match /privacy: no cookies (server-side daily hash), no person profiles,
+// Settings match /privacy: no cookies or browser storage (memory only), no person profiles,
 // page views, clicks, and named events for the booking and email links.
 const key = import.meta.env.PUBLIC_POSTHOG_KEY;
 const host = import.meta.env.PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
@@ -19,12 +19,38 @@ const host = import.meta.env.PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
   const config = document.querySelector("posthog-config") as HTMLElement | null;
   if (config?.dataset.key) {
     const { default: posthog } = await import("posthog-js");
+    // Same privacy setup as the parks finder (web/src/analytics.ts).
+    // Option names checked against @posthog/types 1.416 (posthog-js 1.435).
     posthog.init(config.dataset.key, {
       api_host: config.dataset.host,
-      cookieless_mode: "always",
+      persistence: "memory", // no cookies, no localStorage or sessionStorage
       person_profiles: "never",
+      respect_dnt: true,
+      disable_session_recording: true,
       capture_pageview: true,
-      autocapture: true,
+      capture_pageleave: false,
+      // Only clicks and the named events: turn off what the remote config could switch on
+      capture_performance: false,
+      capture_heatmaps: false,
+      capture_dead_clicks: false,
+      capture_exceptions: false,
+      rageclick: false,
+      disable_surveys: true,
+      disable_product_tours: true,
+      disable_conversations: true,
+      disable_web_experiments: true,
+      disable_external_dependency_loading: true,
+      advanced_disable_flags: true,
+      save_referrer: false,
+      // PostHog also adds the IP on its servers; "Discard client IP data" covers that
+      before_send: (event) => {
+        if (event) delete event.properties.$ip;
+        return event;
+      },
+      autocapture: {
+        dom_event_allowlist: ["click"],
+        element_allowlist: ["button", "a"],
+      },
     });
 
     // Named events for the two actions that matter most (the funnel in TWS-71)
