@@ -1,6 +1,6 @@
 ---
 // PostHog analytics (TWS-71). Rendered only when ENABLE_POSTHOG is true in src/data/site.ts.
-// Settings match /privacy: no cookies or browser storage (memory only), no person profiles,
+// Settings match /privacy: no cookies or browser storage (cookieless mode), no person profiles,
 // page views, clicks, and named events for the booking and email links.
 const key = import.meta.env.PUBLIC_POSTHOG_KEY;
 const host = import.meta.env.PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
@@ -19,11 +19,14 @@ const host = import.meta.env.PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
   const config = document.querySelector("posthog-config") as HTMLElement | null;
   if (config?.dataset.key) {
     const { default: posthog } = await import("posthog-js");
-    // Same privacy setup as the parks finder (web/src/analytics.ts).
+    // Privacy options as in the parks finder (web/src/analytics.ts), but cookieless mode
+    // instead of memory persistence, so unique visitors can be counted.
     // Option names checked against @posthog/types 1.416 (posthog-js 1.435).
     posthog.init(config.dataset.key, {
       api_host: config.dataset.host,
-      persistence: "memory", // no cookies, no localStorage or sessionStorage
+      // No cookies or browser storage. PostHog makes a daily-salted hash ID on its servers,
+      // so a visit can be followed across pages for one day. Needs "Cookieless server hash mode" on.
+      cookieless_mode: "always",
       person_profiles: "never",
       respect_dnt: true,
       disable_session_recording: true,
