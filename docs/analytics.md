@@ -17,6 +17,20 @@ PostHog is behind a feature flag. It is on (TWS-71).
   - Named events: `booking_link_clicked` (any `cal.com` link), `email_link_clicked` (the email link), and `results_viewed` (the Results block on `/work-with-me` is half in view, once per page load). All send the page path. To track another block, add `data-track-view="<name>"`; the event is `<name>_viewed`.
   - UTM tags (for example `utm_source=one-pager` on the QR code) need no code. PostHog reads them from the page URL.
 
+## Goals (Oct 19 to Nov 2, TWS-71)
+
+- **10 unique visitors from outside my own network.** PostHog Web analytics, with "Filter out internal and test users" on. Cookieless mode counts unique visitors per day.
+- **1 real inquiry** on the Work with me page. A real inquiry has all three:
+  1. **A real person:** a name and an email address that works.
+  2. **At a real company:** a business that I can find (a website or a LinkedIn page).
+  3. **With a real problem:** the Cal.com screening answers describe a specific problem, in their own words.
+
+  Spam, sales pitches and recruiters do not count.
+
+**The numbers are a minimum.** Brave and ad blockers block PostHog, so those visitors are not counted. My own visits come from Brave, so they are not counted either (checked 2026-10-15: 0 events in the last hour after I clicked around the site in Brave).
+
+The baseline for Oct 14 to Oct 18 goes in TWS-88.
+
 ## To launch
 
 1. In PostHog, go to Project Settings > Web analytics and turn on **Cookieless server hash mode**. Cookieless mode does not work without it. (On since 2026-10-14.)
