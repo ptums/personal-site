@@ -13,7 +13,7 @@ PostHog is behind a feature flag. It is on (TWS-71).
   - Page views are on. Autocapture records only clicks on links and buttons.
   - Session recording, heatmaps, surveys, feature flags and other remote-config features are off. `disable_external_dependency_loading` stops PostHog from loading extra scripts.
   - `before_send` removes `$ip` from each event. PostHog can still add the IP on its servers, so "Discard client IP data" must be on in the project.
-  - Why not `cookieless_mode: "always"` (the first setup): PostHog accepted those events (status 200) but did not show them. Cookieless mode also needs "Cookieless server hash mode" in the project settings.
+  - The first setup used `cookieless_mode: "always"`. Events did not show, but the real cause was the missing authorized domain (launch step 4), not the mode. The site now matches the parks finder. Cookieless mode also needs "Cookieless server hash mode" in the project settings.
   - Named events: `booking_link_clicked` (any `cal.com` link) and `email_link_clicked` (the email link). Both send the page path.
 
 ## To launch
@@ -24,6 +24,7 @@ PostHog is behind a feature flag. It is on (TWS-71).
    - `PUBLIC_POSTHOG_KEY`: the project API key (starts with `phc_`; it is public by design).
    - `PUBLIC_POSTHOG_HOST`: only for an EU project. The default is `https://us.i.posthog.com`.
 4. Set `ENABLE_POSTHOG = true`, commit, and deploy.
+   - In PostHog, add `https://tumulty.me` to the project's authorized domains (Web analytics). Without it, events arrive (status 200) but do not show in the dashboard. This was the real cause on 2026-10-14.
 5. Check: open the site, then confirm a page view in PostHog's live events, and confirm the browser has no PostHog cookie.
 6. Re-run the Lighthouse baseline (`docs/performance-baseline.md`) and add the "after" table (TWS-72).
 
