@@ -4,11 +4,19 @@ interface Props {
   tagLine?: string;
   description: string;
   href: string;
+  date: Date;
   index: number;
 }
 
-const { title, tagLine, description, href, index } = Astro.props;
+const { title, tagLine, description, href, date, index } = Astro.props;
 const delay = index * 0.15;
+// UTC so the date does not shift a day
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
 ---
 
 <a
@@ -16,7 +24,12 @@ const delay = index * 0.15;
   class="bg-white border-[0.5px] border-stone-200 rounded-lg shadow-md mb-6 last:mb-0 p-4 cursor-pointer flex flex-col justify-center text-left fade-in-up"
   style={`animation-delay: ${delay}s`}
 >
-  <h2 class="text-xl text-emerald-700 font-semibold mb-1">{title}</h2>
+  <div class="flex items-baseline justify-between gap-4 mb-1">
+    <h2 class="text-xl text-emerald-700 font-semibold">{title}</h2>
+    <time datetime={date.toISOString().slice(0, 10)} class="shrink-0 whitespace-nowrap text-sm text-stone-500">
+      {formattedDate}
+    </time>
+  </div>
   {tagLine && (
     <h3 class="text-sm text-gray-500 font-semibold mb-4 playfair-display">{tagLine}</h3>
   )}
