@@ -13,7 +13,7 @@ However, there was one major problem. The app's dependencies were so outdated th
 Here are some key insights I've learned from this experience:
 
 - DynamoDB Local works with dynamodb-admin, a local data browser. It's a nice feature to see and manage your data.
-- You can make your own learning plan with Claude. I already knew Docker and Angular, so I did not want to learn them again. Claude wrote a prompt to build those parts. Then Claude gave me lessons and practice questions. I learned the AWS services that run on my computer.
+- You can make your own learning plan with Claude. I already knew Docker, Angular and TypeScript, so I did not want to learn them again. Claude wrote a prompt to build those parts. Then Claude gave me lessons and practice questions. I learned the AWS services that run on my computer.
 - The result was good. Claude moved all the styles and the UI structure from the old Angular 1 and Bootstrap code. The new app looks like the app I designed many years ago.
 
 ## Related

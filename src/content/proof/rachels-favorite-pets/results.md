@@ -9,7 +9,7 @@ Related: [Baseline: Rachel's Favorite Pets](/work/rachels-favorite-pets/baseline
 
 ## Summary
 
-AI made it cheap to start work in an unfamiliar stack (a set of tools used to build an app). I spent less time typing code. I spent more time on decisions, checks, and documents.
+AI made it cheap to rebuild an old app on a modern stack (a set of tools used to build an app). I spent less time typing code. I spent more time on decisions, checks, and documents.
 
 I migrated Rachel's Favorite Pets from a legacy app to Angular, Node.js with TypeScript (Express 5), Amazon DynamoDB, and Amazon S3. Everything runs on local emulators (free copies of cloud services that run on my own computer). Claude was my working partner.
 
@@ -26,9 +26,9 @@ The new material was running AWS's DynamoDB (a cloud database) and S3 on my own 
 
 ## How AI changed the work
 
-My existing skills transferred into a stack I had never used. AI removed most of the cost of learning it. The decisions stayed mine.
+I already knew TypeScript, so my skills transferred directly. AI removed most of the cost of learning the AWS services. The decisions stayed mine.
 
-- Unfamiliar stack, familiar ideas. I knew what a protected route and a blob upload should do. AI helped me write that in TypeScript against DynamoDB and S3. I did not need a long search through the documentation.
+- New services, familiar ideas. I knew what a protected route and a file upload should do. AI helped me write that in TypeScript against DynamoDB and S3. I did not need a long search through the documentation.
 - Options, then my decision. I used AI to compare stack choices. Then I made the decision and recorded it myself (STACK.md). I did the same for the three auth modes (owner, open, accounts).
 - A deliberate scope. I chose emulators only, no CI/CD, and no automated tests. I wrote this in the README. It reads as a decision, not a gap.
 - Documents as a byproduct. The verification log, the Lighthouse record, and the README came from the same working session as the code.
