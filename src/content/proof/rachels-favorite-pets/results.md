@@ -1,6 +1,6 @@
 ---
 title: "Results: Rachel's Favorite Pets"
-description: "Legacy app modernization results: Angular, ASP.NET Core and Azure Cosmos DB migration with Lighthouse performance 70 to 85, SEO 91 to 100 and CSS cut 79%."
+description: "Legacy app modernization results: Angular, Node.js/TypeScript and DynamoDB migration with Lighthouse performance 70 to 85, SEO 91 to 100 and CSS cut 79%."
 ---
 
 # Results: Rachel's Favorite Pets (after migration)
@@ -9,26 +9,26 @@ Related: [Baseline: Rachel's Favorite Pets](/work/rachels-favorite-pets/baseline
 
 ## Summary
 
-AI made it cheap to start work in an unfamiliar stack (a set of tools used to build an app). I spent less time typing code. I spent more time on decisions, checks, and documents.
+AI made it cheap to rebuild an old app on a modern stack (a set of tools used to build an app). I spent less time typing code. I spent more time on decisions, checks, and documents.
 
-I migrated Rachel's Favorite Pets from a legacy app to Angular, ASP.NET Core, Azure Cosmos DB, and Azure Blob Storage. Everything runs on local emulators (free copies of cloud services that run on my own computer). Claude was my working partner.
+I migrated Rachel's Favorite Pets from a legacy app to Angular, Node.js with TypeScript (Express 5), Amazon DynamoDB, and Amazon S3. Everything runs on local emulators (free copies of cloud services that run on my own computer). Claude was my working partner.
 
 The migration is finished. The repo README documents it. I measured performance, accessibility, and SEO. I checked the delete route by hand.
 
 ## What I learned
 
-The new material was the C# ecosystem and running Azure's Cosmos DB (a cloud database) on my own computer. The ideas underneath were not new.
+The new material was running AWS's DynamoDB (a cloud database) and S3 on my own computer. The ideas underneath were not new.
 
-- C# ecosystem: ASP.NET Core minimal APIs, EF Core with the native Cosmos provider, NuGet, and dotnet tooling. This includes dotnet list package --vulnerable.
-- Cosmos DB, simulated locally: I ran the vnext-preview emulator in Docker. The Data Explorer is on port 1234. The API is on port 8081.
-- Blob storage (a service that stores files such as images), simulated locally: Azurite offers the blob service on port 10000.
-- Already known: routes, cookie auth, authorization rules, and blob storage as a pattern. Those skills transferred directly. Only the syntax and tools were new.
+- TypeScript backend: Express 5 with the AWS SDK for JavaScript v3. Node runs the .ts files directly with its type stripping, and tsc only type-checks. npm audit checks the dependencies.
+- DynamoDB, simulated locally: I ran DynamoDB Local in Docker on port 8000, with dynamodb-admin on port 8002 to see and manage the data.
+- S3 (a service that stores files such as images), simulated locally: S3Mock offers the S3 API on port 9090.
+- Already known: routes, cookie auth, authorization rules, and file storage as a pattern. Those skills transferred directly. Only the syntax and tools were new.
 
 ## How AI changed the work
 
-My existing skills transferred into a stack I had never used. AI removed most of the cost of learning it. The decisions stayed mine.
+I already knew TypeScript, so my skills transferred directly. AI removed most of the cost of learning the AWS services. The decisions stayed mine.
 
-- Unfamiliar stack, familiar ideas. I knew what a protected route and a blob upload should do. AI helped me write that in C#, EF Core, and Cosmos. I did not need a long search through the documentation.
+- New services, familiar ideas. I knew what a protected route and a file upload should do. AI helped me write that in TypeScript against DynamoDB and S3. I did not need a long search through the documentation.
 - Options, then my decision. I used AI to compare stack choices. Then I made the decision and recorded it myself (STACK.md). I did the same for the three auth modes (owner, open, accounts).
 - A deliberate scope. I chose emulators only, no CI/CD, and no automated tests. I wrote this in the README. It reads as a decision, not a gap.
 - Documents as a byproduct. The verification log, the Lighthouse record, and the README came from the same working session as the code.
@@ -41,8 +41,7 @@ AI output was wrong or incomplete several times. Each time, I found the fault by
 | --- | --- | --- |
 | My first Lighthouse run used the Angular dev server (11.3 s FCP, 1.57 MB unminified bundle). FCP (First Contentful Paint) is the time until the first text or image shows. | The report still showed @vite/client and an unminified main file | Run again on a production build |
 | My second run used a static server. It returned index.html for /config, /me, and robots.txt | The network table showed 200 text/html instead of JSON, and the console showed an error | Serve the build from the API |
-| The suggested Cosmos Data Explorer URL did not load | docker ps showed the vnext-preview image, which uses port 1234 over HTTP | Use http://localhost:1234 |
-| A delete route can return success and still leave a blob behind | I checked the Cosmos document and the blob container separately | Confirmed that both were removed |
+| A delete route can return success and still leave a file behind | I checked the DynamoDB item and the S3 object separately | Confirmed that both were removed |
 
 The pattern: AI is fast at giving a plausible answer. I had to make sure the answer was true for my setup.
 
@@ -65,8 +64,8 @@ LCP (Largest Contentful Paint) is the time until the biggest item on the page sh
 
 The "before" column comes from a misconfigured setup with an empty gallery. It is a note on method, not a legacy baseline. The "after" result is one Lighthouse mobile run, signed in as owner.
 
-- Dependencies: dotnet list api package --vulnerable found no vulnerable packages on Oct 8 2026. This check is valid for that day only.
-- Delete route: all six manual checks passed. They include blob removal, rejection of an unauthenticated request, and 404 for an ID that does not exist.
+- Dependencies: npm audit in api/ found 0 vulnerabilities on Oct 20 2026. This check is valid for that day only.
+- Delete route: all six manual checks passed. They include S3 object removal, rejection of an unauthenticated request, and 404 for an ID that does not exist.
 
 ## What I'd do differently, and what's next
 

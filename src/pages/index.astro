@@ -30,15 +30,16 @@ const boldParts = (text: string) => text.split(/\*\*(.+?)\*\*/);
 
 const PROJECTS: Project[] = [
   {
-    title: "Legacy App Migration to a New Stack, Built with AI",
+    title: "Legacy App Migration to TypeScript and AWS, Built with AI",
     label: "Personal",
     description:
-      "Took an educational **photo-gallery app designed 10+ years ago** and rebuilt it on a modern stack I had never used, with Claude as a partner. That app had been archived and no major updates since 2015. When it first ran it had **3 high-severity vulnerabilities** in its upload dependencies, 9 packages it used but never listed in dependencies, and **failed to start on a clean install.** I checked each result by hand, threw out two bad performance measurements, and confirmed deletes remove both the record and the stored file.  Dependency checks now find 0 vulnerabilities, a fresh clone **runs locally in 16 seconds with 13 commands**, and compression **cut CSS from 232 KB to 49 KB.**",
+      "Took an educational **photo-gallery app designed 10+ years ago** and rebuilt it on a modern TypeScript and AWS stack, with Claude as a partner. That app had been archived and no major updates since 2015. When it first ran it had **3 high-severity vulnerabilities** in its upload dependencies, 9 packages it used but never listed in dependencies, and **failed to start on a clean install.** I checked each result by hand, threw out two bad performance measurements, and confirmed deletes remove both the record and the stored file.  Dependency checks now find 0 vulnerabilities, a fresh clone **runs locally in 16 seconds with 13 commands**, and compression **cut CSS from 232 KB to 49 KB.**",
     tools: [
       "Angular",
-      "ASP.NET Core",
-      "Azure Cosmos DB",
-      "Blob Storage",
+      "TypeScript",
+      "Node.js",
+      "DynamoDB",
+      "S3",
       "Claude",
     ],
     links: [

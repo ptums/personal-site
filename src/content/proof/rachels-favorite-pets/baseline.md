@@ -1,6 +1,6 @@
 ---
 title: "Baseline: Rachel's Favorite Pets"
-description: "Legacy app modernization baseline: security vulnerabilities, undeclared dependencies and a failed clean install before an Angular and .NET rebuild."
+description: "Legacy app modernization baseline: security vulnerabilities, undeclared dependencies and a failed clean install before an Angular and TypeScript rebuild."
 ---
 
 # Baseline: Rachel's Favorite Pets (before migration)
