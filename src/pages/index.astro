@@ -30,6 +30,79 @@ const boldParts = (text: string) => text.split(/\*\*(.+?)\*\*/);
 
 const PROJECTS: Project[] = [
   {
+    title: "AI-Assisted Migrations at Scale",
+    description:
+      "Between 2024 and 2025 our team's workspace needed several platform-level updates, and until they were done we couldn't release new features. The  timing was bad: we were also slated for a massive feature update before the end of the year. I  presented a plan to my manager and our staff engineer to let me automate the updates with agentic workflows and custom AI skills, so the team could stay on the feature work. I finished each update 3 to 6 weeks ahead of schedule, with minimal assistance from the team beyond reviewing PRs.",
+    tools: ["Agentic Workflows", "Parallel Agents", "Agent Skills", "CI/CD"],
+    links: [],
+  },
+  {
+    title: "Law Firm Web Platform: Monolith to Headless",
+    description:
+      "As a full-time technical product manager and engineer at a law firm, I owned a monolithic WordPress site on **$200 a month hosting** that kept **hitting its tier limits and crashing.** We were at a point where we needed to get out of the routine of just keeping the site stable and start driving lead generation. I proposed a plan that would solve both problems. First, a decoupled architecture: the front end moved to a **Next.js app on Vercel hosting,** and WordPress moved to a **$10 a month DigitalOcean server** with a **$20 managed MySQL database.** This was a success because hosting fell from **$200 to $30** a month. Second, since I could write code, I wrote custom scripts and microservices to integrate **Mailchimp and HubSpot** and avoid paying for their premium plugins and marketing packages. Overall, the whole platform, marketing tools included, cost **$130 a month less** than the old hosting alone.",
+    tools: [
+      "Digital Ocean",
+      "Next.js",
+      "Node.js",
+      "Vercel",
+      "WordPress GraphQL",
+      "MySQL",
+      "GitHub Actions",
+      "Mailchimp",
+      "HubSpot",
+    ],
+    links: [{ label: "Site", href: "https://scarincihollenbeck.com" }],
+  },
+  {
+    title: "Shopify Order Automation",
+    description:
+      "Shopify stores often lean on manual steps to keep orders moving. On one project, I designed and led the build of a backend service that reads orders from the store and creates shipping labels automatically, then worked with customer service to automate return labels too. I ran twice-weekly standups, tracked the work in Linear, and tested against the live store before launch. On another, I built a tool that takes a CSV upload and updates item quantities across many orders at once through Shopify's GraphQL API, then reports which updates went through and which need a manual fix. In both cases, work that used to be done by hand now runs on its own.",
+    tools: [
+      "Node.js",
+      "Express",
+      "Shopify GraphQL",
+      "Shippo API",
+      "MongoDB",
+      "Heroku",
+      "DigitalOcean",
+      "Linear",
+    ],
+    links: [],
+  },
+  {
+    title: "Trauma Informed Life Coach Business Website: Headless CMS Rebuild",
+    description:
+      "A friend referred me to a life coach whose site on a **popular website builder cost her $240 a year**, was hard to manage, and still didn't give her the marketing and SEO she wanted. After a discovery meeting about what she wanted the site to do, I proposed a plan: move off the builder, manage her own written content in a CMS, and bring me in for design updates. Once the site was on the new platform, we set up technical SEO, link building, a media (blog and podcast links) section on the site, search engine indexing, and Google Analytics, none of which she had before and all of which would have meant buying extra packages. Her yearly cost dropped from **$240 to $16**, the price of her domain, and the move has since paid for itself. Later rounds of updates raised Lighthouse performance from **73 to 88**.",
+    tools: ["Next.js", "TypeScript", "Contentful CMS", "SEO"],
+    links: [
+      { label: "Site", href: "https://www.unleashedpotentiallifecoaching.com" },
+      {
+        label: "Baseline",
+        href: "/work/unleashed-potential/baseline",
+      },
+      {
+        label: "Results",
+        href: "/work/unleashed-potential/results",
+      },
+    ],
+  },
+  {
+    title: "High School Alumni Non-Profit Corporation: Redesign & Migration",
+    description:
+      "As an independent consultant, I rebuilt the website for the a non-profit high school alumni hall of fame group. The old site was hand-written HTML: adding one inductee meant editing **up to 107 files**, because the navigation was copied into every page, and the copies had drifted out of sync (88, 76 and 63 names on different pages). It ran on plain HTTP, had no mobile layout, and in 2020 its homepage still congratulated the class of 2016. I scoped the work in three phases (wireframes, development, then testing), and the committee approved the designs before I wrote any code. All the content now lives in one data file that generates every page, and I moved the site off paid hosting onto a free tier, so **the committee pays nothing to keep it online**. Adding an inductee takes **1 file instead of 107**, the yearly content update takes me **about 30 minutes**, the whole class of 2026 went live in **one change**, Accessibility rose from **53 to 96**, SEO went from **82 to 100**, and all 141 inductees are served over HTTPS.",
+    tools: ["Next.js", "Cloudinary", "Vercel", "Accessibility", "SEO"],
+    links: [
+      {
+        label: "Baseline",
+        href: "/work/hall-of-fame/baseline",
+      },
+      {
+        label: "Results",
+        href: "/work/hall-of-fame/results",
+      },
+    ],
+  },
+  {
     title: "Legacy App Migration to TypeScript and AWS, Built with AI",
     label: "Personal",
     description:
@@ -56,79 +129,6 @@ const PROJECTS: Project[] = [
         href: "/work/rachels-favorite-pets/results",
       },
     ],
-  },
-  {
-    title: "AI-Assisted Migrations at Scale",
-    description:
-      "Between 2024 and 2025 our team's workspace needed several platform-level updates, and until they were done we couldn't release new features. The  timing was bad: we were also slated for a massive feature update before the end of the year. I  presented a plan to my manager and our staff engineer to let me automate the updates with agentic workflows and custom AI skills, so the team could stay on the feature work. I finished each update 3 to 6 weeks ahead of schedule, with minimal assistance from the team beyond reviewing PRs.",
-    tools: ["Agentic Workflows", "Parallel Agents", "Agent Skills", "CI/CD"],
-    links: [],
-  },
-  {
-    title: "Law Firm Web Platform: Monolith to Headless",
-    description:
-      "As a full-time technical product manager and engineer at a law firm, I owned a monolithic WordPress site on **$200 a month hosting** that kept **hitting its tier limits and crashing.** We were at a point where we needed to get out of the routine of just keeping the site stable and start driving lead generation. I proposed a plan that would solve both problems. First, a decoupled architecture: the front end moved to a **Next.js app on Vercel hosting,** and WordPress moved to a **$10 a month DigitalOcean server** with a **$20 managed MySQL database.** This was a success because hosting fell from **$200 to $30** a month. Second, since I could write code, I wrote custom scripts and microservices to integrate **Mailchimp and HubSpot** and avoid paying for their premium plugins and marketing packages. Overall, the whole platform, marketing tools included, cost **$130 a month less** than the old hosting alone.",
-    tools: [
-      "Digital Ocean",
-      "Next.js",
-      "Node.js",
-      "Vercel",
-      "WordPress GraphQL",
-      "MySQL",
-      "GitHub Actions",
-      "Mailchimp",
-      "HubSpot",
-    ],
-    links: [{ label: "Site", href: "https://scarincihollenbeck.com" }],
-  },
-  {
-    title: "High School Hall of Fame: Redesign & Migration",
-    description:
-      "As an independent consultant, I rebuilt the website for the a non-profit high school alumni hall of fame group. The old site was hand-written HTML: adding one inductee meant editing **up to 107 files**, because the navigation was copied into every page, and the copies had drifted out of sync (88, 76 and 63 names on different pages). It ran on plain HTTP, had no mobile layout, and in 2020 its homepage still congratulated the class of 2016. I scoped the work in three phases (wireframes, development, then testing), and the committee approved the designs before I wrote any code. All the content now lives in one data file that generates every page, and I moved the site off paid hosting onto a free tier, so **the committee pays nothing to keep it online**. Adding an inductee takes **1 file instead of 107**, the yearly content update takes me **about 30 minutes**, the whole class of 2026 went live in **one change**, Accessibility rose from **53 to 96**, SEO went from **82 to 100**, and all 141 inductees are served over HTTPS.",
-    tools: ["Next.js", "Cloudinary", "Vercel", "Accessibility", "SEO"],
-    links: [
-      {
-        label: "Baseline",
-        href: "/work/hall-of-fame/baseline",
-      },
-      {
-        label: "Results",
-        href: "/work/hall-of-fame/results",
-      },
-    ],
-  },
-  {
-    title: "Unleashed Potential: Headless CMS Rebuild",
-    description:
-      "A friend referred me to a life coach whose site on a **popular website builder cost her $240 a year**, was hard to manage, and still didn't give her the marketing and SEO she wanted. After a discovery meeting about what she wanted the site to do, I proposed a plan: move off the builder, manage her own written content in a CMS, and bring me in for design updates. Once the site was on the new platform, we set up technical SEO, link building, a media (blog and podcast links) section on the site, search engine indexing, and Google Analytics, none of which she had before and all of which would have meant buying extra packages. Her yearly cost dropped from **$240 to $16**, the price of her domain, and the move has since paid for itself. Later rounds of updates raised Lighthouse performance from **73 to 88**.",
-    tools: ["Next.js", "TypeScript", "Contentful CMS", "SEO"],
-    links: [
-      { label: "Site", href: "https://www.unleashedpotentiallifecoaching.com" },
-      {
-        label: "Baseline",
-        href: "/work/unleashed-potential/baseline",
-      },
-      {
-        label: "Results",
-        href: "/work/unleashed-potential/results",
-      },
-    ],
-  },
-  {
-    title: "Shopify Order Automation",
-    description:
-      "Shopify stores often lean on manual steps to keep orders moving. On one project, I designed and led the build of a backend service that reads orders from the store and creates shipping labels automatically, then worked with customer service to automate return labels too. I ran twice-weekly standups, tracked the work in Linear, and tested against the live store before launch. On another, I built a tool that takes a CSV upload and updates item quantities across many orders at once through Shopify's GraphQL API, then reports which updates went through and which need a manual fix. In both cases, work that used to be done by hand now runs on its own.",
-    tools: [
-      "Node.js",
-      "Express",
-      "Shopify GraphQL",
-      "Shippo API",
-      "MongoDB",
-      "Heroku",
-      "DigitalOcean",
-      "Linear",
-    ],
-    links: [],
   },
 ];
 ---
