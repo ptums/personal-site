@@ -3,7 +3,7 @@ title: "Rebuilding a Shopify Bulk Order Update Tool the Right Way"
 date: "2026-10-22"
 tagLine: "My first pass was less wrong. The rebuild works with the API."
 summary: "How I rebuilt a 2021 Shopify bulk order update tool in TypeScript: edit sessions, rate limits and queues took it from 89 minutes to 12.5 seconds."
-published: false
+published: true
 ---
 
 ## The first pass: one problem at a time
