@@ -22,3 +22,4 @@ Here are some key insights I've learned from this experience:
 - [Baseline: Rachel's Favorite Pets](/work/rachels-favorite-pets/baseline)
 - [The project on the home page](/#projects-heading)
 - [Source code on GitHub](https://github.com/ptums/rachels-favorite-pets)
+- [Rebuilding a Shopify Bulk Order Update Tool the Right Way](/words/rebuilding-a-shopify-bulk-order-update-tool)
