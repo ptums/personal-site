@@ -28,13 +28,13 @@ Here are some more big takeaways from the experience:
 - The API has a **leaky bucket** design, which means we can't simply continuously call it till the job is done. Our solution was to read the bucket status in each response. Then we wait only as long as the next call needs: the points it costs minus the points left, divided by the refill rate of 50 points a second.
 - Using NATS and a queue took the code out of the "solve one problem at a time" phase and gave it **an intentional design.** It organized the updates into a process that could be managed. Failures and successes could be communicated. The solution now responds to what the API gives. If there is pushback, it waits just long enough and tries again. If an order fails, it goes back on the queue. If the system crashes, \*\*it picks up where it left off.
 
-\*\* _The more I reflect on this idea, the more I see programming with a new perspective._
+_The more I reflect on this idea, the more I see programming with a new perspective._
 
 ## Related
 
 - [The project on the home page](/#projects-heading)
 - [Adding GraphQL to Your Skill List](/words/adding-graphql-to-your-skill-list)
 - [Modernizing Rachel's Favorite Pets with AI](/words/modernizing-rachels-favorite-pets-with-ai)
-- [Baseline: the 2021 tool](https://github.com/ptums/reconcile-toy-order-fill-rate/blob/main/docs/BASELINE.md)
-- [Results: the rebuild against the 2021 tool](https://github.com/ptums/reconcile-toy-order-fill-rate/blob/main/docs/RESULTS.md)
+- [Baseline: Bulk Order Update Tool](/work/bulk-order-update-tool/baseline)
+- [Results: Bulk Order Update Tool](/work/bulk-order-update-tool/results)
 - [Source code on GitHub](https://github.com/ptums/reconcile-toy-order-fill-rate)
