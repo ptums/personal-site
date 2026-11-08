@@ -25,7 +25,11 @@ const bodyText = "text-emerald-800 playfair-display";
       </p>
       <p class={bodyText}>
         When you book a call, the name and email you enter go to Cal.com, which
-        has its own privacy policy.
+        has its own privacy policy. Cal.com then tells my analytics that a call
+        was booked. That record has the time and a booking ID, but not your
+        name, your email or your location. I can match the booking ID to the
+        booking in my Cal.com account, so I treat it as private and use it only
+        to count booked calls.
       </p>
       <p class={bodyText}>
         Questions? Email me at
